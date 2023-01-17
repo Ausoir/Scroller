@@ -1,0 +1,7 @@
+{
+	"O": {"name": "darkness", "img": "blank", "col": 0},
+	" ": {"name": "background", "img": "b_white", "col": 0},
+	".": {"name": "dirt", "img": "f_dirt", "col": 15, "height": 1},
+	"B": {"name": "brick", "img": "f_brick", "col": 15, "height": 1},
+	"W": {"name": "wood", "img": "f_wood", "col": 14, "height": 1},
+}

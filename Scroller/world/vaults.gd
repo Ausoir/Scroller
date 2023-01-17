@@ -1,0 +1,88 @@
+var name #name of file
+var data
+var flip = 0
+var rot = 0
+var current
+
+func load_vault(p):
+	name = p
+	data = G.data.get_json_data("vaults/" + p)
+	return data != null
+
+func make_vault(ssd, room):
+	var fromx = room[0]
+	var fromy = room[1]
+	for vault_data in data:
+		if ssd < vault_data[0]:
+			var vault = vault_data[2]
+			var rotvault = rotate(vault, rot)
+			var sx = rotvault[0].length()
+			var sy = rotvault.size()
+			return place_vault(rotvault, vault_data[3], fromx, fromy, sx, sy)
+
+func place_vault(vault, vault_palette, startX, startY, sizeX, sizeY):
+	var terrains = make_base(sizeX+1, sizeY+1, ' ')
+	var objects = make_base(sizeX+1, sizeY+1, null)
+	for y in range(sizeY):
+		for x in range(sizeX):
+			var sX = x
+			var sY = y
+			if flip == 1:
+				sX = (sizeX-1 - x)
+				sY = y
+			elif flip == 2:
+				sX = x
+				sY = (sizeY-1 - y)
+			elif flip == 3:
+				sX = (sizeX-1 - x)
+				sY = (sizeY-1 - y)
+			var fX = startX + sX
+			var fY = startY + sY
+			var val = vault[y][x]
+			if val != ' ':
+				var vpal = vault_palette.get(val)
+				if vpal != null:
+					if vpal[0].length() > 1:
+						terrains[fY][fX] = G.rng.r_arr(vpal[0])
+					else:
+						terrains[fY][fX] = vpal[0]
+					if vpal.size() > 1:
+						objects[fY][fX] = vpal[1]
+				else:
+					terrains[fY][fX] = val
+	return [terrains, objects]
+
+func make_base(sx, sy, val):
+	var r = []
+	for _y in range(sy):
+		var row = []
+		for _x in range(sx):
+			row.append(val)
+		r.append(row)
+	return r
+
+func rotate(vault, dir):
+	var rotvault = []
+	var sx = vault[0].length()
+	var sy = vault.size()
+	if dir >= 6:
+		for x in range(sx):
+			var nrow = ""
+			for y in range(sy):
+				nrow += vault[sy-y-1][x]
+			rotvault.append(nrow)
+	elif dir >= 4:
+		for y in range(sy):
+			var nrow = ""
+			for x in range(sx):
+				nrow += vault[sy-y-1][sx-x-1]
+			rotvault.append(nrow)
+	elif dir >= 2:
+		for x in range(sx):
+			var nrow = ""
+			for y in range(sy):
+				nrow += vault[y][sx-x-1]
+			rotvault.append(nrow)
+	else:
+		return vault
+	return rotvault

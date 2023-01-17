@@ -1,0 +1,11 @@
+{
+	"habitat": {
+		"base": "man",
+	},
+	"desc": {
+		"health": "Health determines the resilience to death.\nEach point of health can take 3 points of damage.",
+	},
+	"tips": {
+		"start": "This is your character selection screen.\nClick <REROLL> to choose another unit to play as or click <START> to begin.",
+	},
+}

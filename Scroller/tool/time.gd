@@ -1,0 +1,94 @@
+extends Node
+
+var frame
+var s
+var seconds
+var second
+var half_second
+var quarter_second
+var quarter_seconds
+var ambient_light = 2
+var sun_light = 3
+
+func _process(delta):
+	increment_seconds(delta)
+	if quarter_second:
+		G.world.turn.process_frames += 1
+		if second and s % 4 == 0:
+			seconds += 1
+	G.world.turn.on_process()
+	for i in range(G.events.size()-1,-1,-1):
+		var event = G.events[i]
+		event[0] -= delta
+		if event[0] <= 0:
+			if typeof(event[1]) == 17:
+				event[1].call_funcv(event[2])
+			else:
+				G.cmds(event[1], event[2][0], event[2][1])
+			G.events.remove(i)
+
+func reset():
+	second = false
+	half_second = false
+	quarter_second = false
+	s = 0
+	frame = 0
+	seconds = 0
+	quarter_seconds = 0
+
+func increment_seconds(delta):
+	frame += delta
+	second = false
+	half_second = false
+	quarter_second = false
+	if frame >= .125:
+		s += 1
+		frame = frame - .125
+		quarter_seconds = quarter_seconds + 1
+		quarter_second = true
+		if quarter_seconds == 2:
+			half_second = true
+		elif quarter_seconds == 4:
+			half_second = true
+			second = true
+			seconds += 1
+			quarter_seconds = 0
+
+func get_days():
+	return int(G.vars.time / 1440)
+
+func get_hour():
+	return int(G.vars.time / 60) % 24
+
+func get_minutes():
+	return int(G.vars.time) % 60
+
+func is_daytime(hour=null):
+	if hour == null:
+		hour = get_hour()
+	return hour > 6 and hour < 20
+
+func on_light_change():
+	var new_sunlight = sun_light
+	var hour = get_hour()
+	if is_daytime(hour):
+		ambient_light = 2
+		new_sunlight = 3
+	else:
+		ambient_light = 0
+		if hour < 5 or hour > 22:
+			new_sunlight = 1
+		else:
+			new_sunlight = 2
+	if new_sunlight != sun_light:
+		sun_light = new_sunlight
+		G.you.view_dirty = 2
+
+func to_text():
+	var hour = G.time.get_hour()
+	var minutes = G.time.get_minutes()
+	if minutes < 10:
+		minutes = "0" + str(minutes)
+	else:
+		minutes = str(minutes)
+	return str(hour) + ":" + minutes

@@ -1,0 +1,16 @@
+[
+    [
+        1.0,
+        "base",
+        [
+            "                 ",
+            "             LBBB",
+            "      @      LB B",
+            "   W  WW     LB B",
+            "BBBWWWWBB.....BBB",
+        ],
+        {
+            "L": [" ", "ladder"]
+        }
+    ]
+]

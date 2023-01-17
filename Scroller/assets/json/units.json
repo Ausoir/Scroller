@@ -1,0 +1,12 @@
+{
+	"player": {
+		"img": "face",
+		"team": 1,
+		"abilities": [],
+	},
+	"man": {
+		"img": "face",
+		"team": 2,
+		"abilities": [],
+	},
+}
