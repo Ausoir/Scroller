@@ -2,12 +2,6 @@ class Idle:
 	var target
 	var pilot
 
-	func unserialize(_arg):
-		pass
-
-	func record():
-		pilot.host.tags.remove('tgt')
-
 	func perform():
 		pass
 
@@ -22,9 +16,7 @@ class Idle:
 			pilot.set_task(pilot.default)
 			return false
 		return true
-	
-	func get_class():
-		return "idle"
+
 
 class TileTask extends Idle:
 	func on_turn():
@@ -41,6 +33,7 @@ class TargetTask extends Idle:
 				pilot.set_task(pilot.default)
 				return false
 			return true
+
 
 class Pathing extends TileTask:
 	class pathnode:
@@ -87,7 +80,7 @@ class Pathing extends TileTask:
 			return node
 		if achieved < closest.pos.difference_to(target):
 			closest = node
-		var options = node.pos.get_routes(pilot.host.col_mask)
+		var options = node.pos.get_routes()
 		for route in options:
 			var pos = node.pos.get_neighbor(route.x, route.y)
 			var new = pathnode.new(node, pos)
@@ -106,8 +99,15 @@ class Pathing extends TileTask:
 		if target == null or pilot.host.pos.difference_to(target) <= 1:
 			return true
 		if !result.empty():
-			var direction = pilot.host.pos.direction_to(result.pop_front())
-			pilot.host.action.next_action = ["walk", direction]
+			var pos = pilot.host.pos
+			var to = result.pop_front()
+			if pos.y > to.y:
+				pilot.host.action.next_action = ["jump"]
+			elif pos.y < to.y and pos.x == to.x:
+				pilot.host.action.next_action = ["down"]
+			else:
+				var dir = G.get_face(pilot.host.pos.x, to.x)
+				pilot.host.action.next_action = ["walk", dir]
 			result = []
 
 	func on_turn():
@@ -157,9 +157,7 @@ class Pathing extends TileTask:
 		open = [pathnode.new(null, pilot.host.pos)]
 		closed = []
 		closest = open[0]
-	
-	func get_class():
-		return "pathing"
+
 
 class Wander extends Idle:
 	func on_set():
@@ -175,9 +173,6 @@ class Wander extends Idle:
 		if .on_turn():
 			random_state()
 			return true
-	
-	func get_class():
-		return "wander"
 
 
 class Attack extends TargetTask:
@@ -195,23 +190,19 @@ class Attack extends TargetTask:
 	func perform():
 		if target != null:
 			var diff = target.pos.difference_to(pilot.host.pos)
-			if diff == 0:
-				pilot.host.action.next_action = ["walk", G.rng.dr()]
-#			else:
-#				if diff == 1:
-#					pilot.host.action.next_action = ["walk", pilot.host.pos.direction_to(target.pos)]
-#				else:
-#					var cards = pilot.host.pos.get_cardinals(1)
-#					for tile in cards:
-#						for item in tile.items:
-#							if item.team == pilot.host.team * -1:
-#								target = item
-#								pilot.host.action.next_action = ["walk", pilot.host.pos.direction_to(item.pos)]
-#					pilot.move.target = target.pos
-#					pilot.move.perform()
-
-	func get_class():
-		return "attack"
+			if !pilot.host.animation.current_animation.begins_with("focus"):
+				if diff == 0:
+					pilot.host.action.next_action = ["attack", 0]
+				elif diff == 1:
+					if target.pos.x != pilot.host.pos.x:
+						pilot.host.action.next_action = ["attack", G.get_face(pilot.host.pos.x, target.pos.x)]
+					elif target.pos.y < pilot.host.pos.y:
+						pilot.host.action.next_action = ["jump"]
+					else:
+						pilot.host.action.next_action = ["down"]
+				else:
+					pilot.move.target = target.pos
+					pilot.move.perform()
 
 
 class Follow extends TargetTask:
@@ -232,9 +223,6 @@ class Follow extends TargetTask:
 	func perform():
 		pilot.move.target = target.pos
 		pilot.move.perform()
-	
-	func get_class():
-		return "follow"
 
 
 class Guard extends Pathing:
@@ -256,6 +244,3 @@ class Guard extends Pathing:
 				tile = pilot.host.pos
 			target = tile
 		return .on_turn()
-	
-	func get_class():
-		return "guard"

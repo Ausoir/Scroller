@@ -9,12 +9,11 @@ func generate(biome):
 	width = 62
 	height = 42
 	G.rng.set_seed(G.vars.seed + 3456789)
-	var v = place_vault(Vector2(1, 1), biome, [0], G.rng.f())
+	var v = place_vault(Vector2(), biome, [0], G.rng.f())
 	terrains = v[0]
 	objects = v[1]
 	width = terrains[0].size()
 	height = terrains.size()
-	make_border('.')
 	special_points = []
 	for y in range(height):
 		for x in range(width):
@@ -30,14 +29,6 @@ func place_vault(pos, structure, dirs, sd, flip=0):
 		vaults.flip = flip
 		var bounds = [pos.x, pos.y]
 		return vaults.make_vault(sd, bounds)
-
-func make_border(val):
-	for i in range(width):
-		terrains[0][i] = val
-		terrains[height-1][i] = val
-	for i in range(height):
-		terrains[i][0] = val
-		terrains[i][width-1] = val
 
 func assign_area(area_data, value):
 	for area in area_data:

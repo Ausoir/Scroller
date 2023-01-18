@@ -69,9 +69,9 @@ func pos_to_vec(x, y):
 
 func get_face(x1, x2):
 	if x1 < x2:
-		return -1
-	else:
 		return 1
+	else:
+		return -1
 
 func vector_to_dir(x, y):
 	var count = 0

@@ -13,11 +13,12 @@ func make_unit(name, pos):
 	var json = G.data.unit_data.get(name)
 	if json != null:
 		var r = Unit.instance()
-		r.dat = json.duplicate()
-		if pos != null:
-			r.relocate(pos, true)
+		assign_dat(r, json, pos)
 		r.team = r.dat.get("team", 2)
 		G.world.team[r.team].append(r)
+		for i in r.dat.get("skills", []):
+			r.action.skills.append(i)
+		r.color(Color(r.dat.get("color", "#000")))
 		if r.team != 1:
 			r.possess()
 		return r
@@ -26,10 +27,15 @@ func make_item(name, pos):
 	var json = G.data.item_data.get(name)
 	if json != null:
 		var r = Item.instance()
-		r.dat = json.duplicate()
-		if pos != null:
-			r.relocate(pos, true)
+		assign_dat(r, json, pos)
 		return r
+
+func assign_dat(item, json, pos):
+	item.dat = json.duplicate()
+	if pos != null:
+		item.relocate(pos, true)
+	item.col = int(item.dat.get("col", 0)) | item.col
+	item.set_texture_from_path(item.dat.get("img"))
 
 func make_group(arg, pos):
 	var groups = G.data.get_group(arg)

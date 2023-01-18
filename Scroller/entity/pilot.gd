@@ -65,8 +65,7 @@ func on_hit(hitter):
 			task.target = hitter
 
 func on_die():
-	if host.last_hitter == G.you.host:
-		G.you.on_kill(host)
+	G.you.on_kill(host)
 
 func hear(at):
 	if priority > 3:

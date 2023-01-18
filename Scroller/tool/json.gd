@@ -9,29 +9,20 @@ var vars
 var terrain_data
 var item_data
 var unit_data
+var skill_data
 var group_data
 
 func _init():
 	file = File.new()
 	vars = get_json_from_dir("res://assets/json/vars.json")
 	terrain_data = get_json_from_dir("res://assets/json/terrains.json")
+	skill_data = get_json_from_dir("res://assets/json/skills.json")
+	attach_meta(skill_data)
 	item_data = get_json_from_dir("res://assets/json/items.json")
 	attach_meta(item_data)
 	unit_data = get_json_from_dir("res://assets/json/units.json")
 	attach_meta(item_data)
 	group_data = get_json_from_dir("res://assets/json/groups.json")
-
-func load_cache():
-	var cache = get_json_from_dir("res://assets/json/cache.json")
-	for key in cache.json:
-		json_cache[key] = get_json_from_dir(cache.json[key])
-	for key in cache.images:
-		images_cache[key] = load("res://assets/images/" + cache.images[key])
-	for key in cache.sounds:
-		sounds_cache[key] = load("res://assets/audio/" + cache.sounds[key])
-		G.sfx.play(key, G.camera.target.pos)
-	for fx in cache.effects:
-		G.make_particle(fx, G.camera.target.pos)
 
 func get_combo(dat):
 	var r = []
@@ -178,8 +169,8 @@ func attach_meta(p):
 
 func save(path, contents):
 	var map_save_name = "user://" + path
-	if G.data.file.open(map_save_name, File.WRITE) == OK:
-		G.data.file.store_string(contents)
-		G.data.file.close()
+	if file.open(map_save_name, File.WRITE) == OK:
+		file.store_string(contents)
+		file.close()
 	else:
 		push_error("Could not open file [" +path+ "] for saving.")

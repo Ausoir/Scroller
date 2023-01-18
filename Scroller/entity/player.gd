@@ -26,7 +26,8 @@ func on_kill(_victim):
 		make_money(money)
 
 func on_die():
-	G.cmds([["custom","return",null]])
+	var unit = G.factory.make_unit("player", host.pos)
+	unit.possess(self)
 
 func make_money(p):
 	G.vars.money = G.vars.money+p
@@ -85,7 +86,7 @@ func _physics_process(_delta):
 		if Input.is_action_pressed("ui_up"):
 			host.action.next_action = ["jump"]
 		elif Input.is_action_pressed("ui_down"):
-			host.action.next_action = ["focus"]
+			host.action.next_action = ["down"]
 		elif Input.is_action_pressed("ui_right"):
 			host.action.next_action = ["walk", 1]
 		elif Input.is_action_pressed("ui_left"):
@@ -94,7 +95,7 @@ func _physics_process(_delta):
 			host.action.next_action = ["attack", get_face()]
 
 func get_face():
-	return G.get_face(get_mouse().x, host.position.x)
+	return G.get_face(host.position.x, get_mouse().x)
 
 func on_turn():
 	perceive()

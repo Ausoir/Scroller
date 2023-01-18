@@ -1,6 +1,6 @@
 {
 	"ladder": {
-		"img": "ladder",
+		"img": "tile/ladder",
 		"col": 4,
 	},
 }

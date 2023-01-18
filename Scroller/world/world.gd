@@ -43,7 +43,6 @@ func _ready():
 	G.you.unserialize()
 	G.get_tree().set_pause(false)
 	spawn_mob()
-	spawn_mob()
 
 func create(_name):
 	mapname = _name

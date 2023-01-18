@@ -21,8 +21,8 @@ func make_vault(ssd, room):
 			return place_vault(rotvault, vault_data[3], fromx, fromy, sx, sy)
 
 func place_vault(vault, vault_palette, startX, startY, sizeX, sizeY):
-	var terrains = make_base(sizeX+1, sizeY+1, ' ')
-	var objects = make_base(sizeX+1, sizeY+1, null)
+	var terrains = make_base(sizeX, sizeY, ' ')
+	var objects = make_base(sizeX, sizeY, null)
 	for y in range(sizeY):
 		for x in range(sizeX):
 			var sX = x

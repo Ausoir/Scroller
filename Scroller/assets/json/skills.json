@@ -1,0 +1,50 @@
+{
+	"takedown": {
+		"type": "grab",
+		"run": [[0, "dod", "takedown_1"],[0, "pop", "takedown"],[6, "col", 0], [6, "grab"], [7, "col", 2]],
+	},
+	"uppercut": {
+		"type": "grab",
+		"run": [[0, "dod", "takedown_2"],[0, "pop", "uppercut"],[4, "col", 0], [4, "grab"], [5, "col", 2]],
+	},
+	"right straight": {
+		"type": "melee",
+		"run": [[0, "dod", "right straight"],[0, "pop", "right straight"],[0, "attack", "light"]],
+	},
+	"right hook": {
+		"type": "melee",
+		"run": [[0, "dod", "right hook"],[0, "pop", "right hook"],[0, "attack", "light"]],
+	},
+	"left straight": {
+		"type": "melee",
+		"run": [[0, "dod", "left straight"],[0, "pop", "left straight"],[1, "attack", "light"]],
+	},
+	"left hook": {
+		"type": "melee",
+		"run": [[0, "dod", "left hook"],[0, "pop", "left hook"],[0, "attack", "light"]],
+	},
+	"flurry": {
+		"type": "melee",
+		"run": [[0, "dod", "flurry"],[0, "pop", "flurry"],[1, "attack", "light"],[2, "attack", "light"]],
+	},
+	"crush": {
+		"type": "melee",
+		"run": [[0, "dod", "crush"],[0, "pop", "crush"],[1, "attack", "heavy"]],
+	},
+	"retreat": {
+		"type": "melee",
+		"run": [[0, "dod", "retreat"],[0, "toward", -1, 2],[2, "refresh", "melee"],[2, "pop", "retreat"]],
+	},
+	"kick": {
+		"type": "lunge",
+		"run": [[0, "dod", "kick"],[0, "pop", "kick"],[0, "toward", 1, 4],[1, "attack", "heavy"]],
+	},
+	"lunge": {
+		"type": "lunge",
+		"run": [[0, "dod", "lunge"],[0, "pop", "lunge"],[0, "toward", 1, 4],[3, "attack", "heavy"]],
+	},
+	"roll": {
+		"type": "dodge",
+		"run": [[0, "dod", "roll"],[0, "pop", "roll"],[0, "toward", -1, 4]],
+	},
+}

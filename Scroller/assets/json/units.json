@@ -1,12 +1,18 @@
 {
-	"player": {
-		"img": "face",
+	"ghost": {
+		"img": "blank",
 		"team": 1,
-		"abilities": [],
+		"skills": [],
+	},
+	"player": {
+		"img": "face/face",
+		"color": "#276",
+		"team": 1,
+		"skills": ["crush", "flurry", "kick", "uppercut", "right straight", "left straight", "lunge"],
 	},
 	"man": {
-		"img": "face",
+		"img": "face/bandana",
 		"team": 2,
-		"abilities": [],
+		"skills": ["takedown", "left hook", "right straight", "retreat", "roll"],
 	},
 }

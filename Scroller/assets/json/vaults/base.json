@@ -1,13 +1,19 @@
 [
     [
         1.0,
-        "base",
+        " ase",
         [
-            "                 ",
-            "             LBBB",
-            "      @      LB B",
-            "   W  WW     LB B",
-            "BBBWWWWBB.....BBB",
+            "             L   ",
+            "             L   ",
+            "             L   ",
+            "    @        L   ",
+            " BBBBBBBBBBBBL   ",
+            "             L   ",
+            "             L   ",
+            "             L   ",
+            "             L   ",
+            "      WW     L   ",
+            ".....WWBBBB......",
         ],
         {
             "L": [" ", "ladder"]

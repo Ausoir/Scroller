@@ -4,28 +4,33 @@ const Pilot = preload("res://entity/pilot.gd")
 const Action = preload("res://entity/action.gd")
 
 onready var animation = $Animation
-onready var sprite = $Sprite
 onready var body = $Body
 
 var delay = 0
 
 var team = 2
-var col_mask = 12
+var col_mask = 8
 var pilot
+var injury = false
 var action = Action.new(self)
-var skills = ["lunge", "knockdown", "flurry", "kick", "punch"]
 
 func _ready():
-	col = 14
+	col = 2
 	sprite.show()
-	action.refresh_skills()
+	offset.y = 32
 
 func get_type():
 	return 2
 
+func color(p):
+	body.default_color = p
+	for i in body.get_children():
+		i.default_color = p
+
 func _physics_process(delta):
 	._physics_process(delta)
 	sprite.position = body.get_point_position(1)
+	sprite.rotation = (sprite.position-body.get_point_position(0)).angle() + 1.57
 
 func on_attack(_type, _dmg):
 	pass
@@ -51,21 +56,20 @@ func on_turn():
 	.on_turn()
 	if pos.state != null and pos.state[1] >= G.world.turn.turns:
 		hit(pos.state[0], pos.state[2])
+	elif fall_height > 0:
+		set_animation("fall")
 	else:
 		pilot.on_turn()
 		action.on_turn()
 
 func hit(state, dir):
-	face(dir)
-	if state == "hit":
-		action.hit()
-	elif state == "bash":
-		action.knockout()
-	.hit(state, dir)
+	if col & 2 > 0:
+		face(dir)
+		action.set_action(["hit", state])
+		.hit(state, dir)
 
 func on_land():
-	action.delay = 0
-	action.next_action = ["fall"]
+	action.set_action(["land"])
 
 func set_texture_from_path(path):
 	if path != null:
@@ -87,6 +91,13 @@ func remove():
 	.remove()
 
 func relocate(p, force=false):
+	if check_overlap(p):
+		if G.rng.b():
+			offset.x += G.rng.ir(3, 7)
+		else:
+			offset.x += G.rng.ir(-7, -3)
+	else:
+		offset.x = 0
 	.relocate(p, force)
 	if pos.visible:
 		update_z()
@@ -100,3 +111,13 @@ func set_animation(p, speed=1):
 
 func callback_animation(p):
 	action.callv(p, [])
+
+func _on_animation_finished(anim_name):
+	action.on_animation_done(anim_name)
+
+func check_overlap(targetpos):
+	for item in targetpos.items:
+		if is_instance_valid(item):
+			if item.get_type() == 2:
+				return true
+	return false

@@ -1,5 +1,3 @@
-const LUNGE = [["kick", 8], ["lunge", 12]]
-const MELEE = [["punch", 5], ["flurry", 6], ["knockdown", 7]]
 var host
 var on_finish = null
 var current_action = null
@@ -8,8 +6,10 @@ var last_action = null
 var next_action = null
 var delay = 0
 var move_delay = 2
-var idle_frame = 0
 var skills = []
+var skills_spent = []
+var commands = []
+var turns = 0
 
 func _init(p):
 	host = p
@@ -21,11 +21,15 @@ func on_turn():
 		if next_action != null:
 			set_action(next_action)
 			next_action = null
-		else:
-			stand()
+		elif turns > 12:
+			focus()
+			turns = 0
+	turns += 1
+	process_commands()
 
 func set_action(params):
-	idle_frame = 0
+	turns = 0
+	commands = []
 	if delay != 0:
 		on_finish = null
 	current_action = params.pop_front()
@@ -38,92 +42,168 @@ func set_action(params):
 	current_action_fn.call_funcv(params)
 	last_action = current_action
 
-func set_moveset(moveset):
-	for i in moveset:
-		var skill = i[0]
-		if skill in skills:
-			skills.erase(skill)
-			host.set_animation(skill)
-			delay = i[1]
+func on_animation_done(p):
+	if delay == 0 and !p.begins_with("idle"):
+		stand()
+
+func has_moveset(moveset):
+	for i in skills:
+		var skill = G.data.skill_data.get(i)
+		if skill != null and skill.type == moveset:
 			return true
-	stand()
 	return false
 
-func refresh_skills():
-	skills = host.skills.duplicate()
+func pop_moveset(moveset, dir=0):
+	for i in skills:
+		var skill = G.data.skill_data.get(i)
+		if skill != null and skill.type == moveset:
+			commands = skill.get("run", []).duplicate()
+			delay = skill.get("delay", 1)
+			if dir != 0:
+				host.face(dir)
+			return true
+
+func refresh_skills(p=null):
+	if p == null:
+		skills = []
+		skills_spent = []
+		for i in host.dat.get("skills", []):
+			skills.append(i)
+	else:
+		for i in skills_spent.duplicate():
+			if G.data.skill_data.get(i).type == p:
+				skills.append(i)
+				skills_spent.erase(i)
 
 func stand():
-	host.set_animation("stand")
+	host.set_col(2)
+	host.set_animation("idle_1")
 
-func focus():
-	host.set_animation("focus1")
-	delay = 18
-	refresh_skills()
+func land():
+	if !pop_moveset("plunge"):
+		host.set_animation("land")
+		delay = 4
 
 func attack(dir):
-	host.face(dir)
+	for item in host.pos.items:
+		if is_instance_valid(item):
+			if item.get_type() == 2 and item.team != host.team:
+				if pop_moveset("grab"):
+					return
 	var targetpos = host.pos.get_neighbor(host.dir, 0)
-	if !targetpos.is_col(host.col_mask):
-		if set_moveset(LUNGE):
-			host.position_speed = 4
-			host.relocate(targetpos)
-			host.pos.get_neighbor(host.dir, 0).set_state("bash", host.pos.x)
+	if !targetpos.is_col(2):
+		if pop_moveset("lunge", dir):
+			return
+	if !pop_moveset("melee", dir):
+		focus()
 	else:
-		if set_moveset(MELEE):
-			targetpos.set_state("hit", host.pos.x)
+		stand()
 
-func fall():
-	host.set_animation("fall")
-	delay = 2
+func focus():
+	if !skills_spent.empty() and !host.animation.get_assigned_animation().begins_with("focus"):
+		host.set_animation("focus_" + str(G.rng.ir(1, 3)))
+		delay = 1
 
-func hit():
-	host.set_animation("hit")
-	delay = 2
+func hit(type):
+	if host.col & 2 == 0:
+		return
+	if delay == 0 and type == "light":
+		host.set_animation("block_" + str(G.rng.ir(1, 2)))
+		delay = 4
+	else:
+		host.set_col(0)
+		if !pop_moveset("dodge"):
+			if !host.injury:
+				host.set_animation("ko_1")
+				host.injury = true
+				commands = [[10, "col", 2]]
+				delay = 12
+			else:
+				host.set_animation("ko_" + str(G.rng.ir(2, 3)))
+				commands = [[14, "do", "fadeout"],[32, "die"]]
+				delay = -1
 
-func knockout():
-	host.set_animation("knockout")
-	delay = 40
-
-func knockback():
-	host.set_animation("knockback")
-	delay = 40
+func down():
+	if host.beneath.is_col(4):
+		host.position_speed = 1
+		var targetpos = host.pos.get_neighbor(0, 1)
+		host.relocate(targetpos)
+		host.set_animation("climb", 2)
+		delay = 3
 
 func jump():
-	host.position_speed = 16
-	host.set_animation("jump", 1)
-	delay = 4
+	if host.pos.is_col(4):
+		var targetpos = host.pos.get_neighbor(0, -1)
+		if !targetpos.is_col(4):
+			host.position_speed = -1
+			host.set_animation("pullup")
+		else:
+			host.position_speed = 1
+			host.set_animation("climb", 2)
+		host.relocate(targetpos)
+		delay = 3
+	else:
+		host.set_animation("jump")
+		delay = 4
 
 func jump_1():
-	host.position_speed = 16
+	host.position_speed = -3
 	var targetpos = host.pos.get_neighbor(host.dir, -1)
 	host.relocate(targetpos)
 	delay = 4
 
-func lunge():
-	var targetpos = host.pos.get_neighbor(host.dir, 0)
-	host.set_animation("lunge")
-	host.relocate(targetpos)
-	delay = 16
-
 func walk(dir):
+	var faced = host.dir == dir
 	host.face(dir)
 	var targetpos = host.pos.get_neighbor(host.dir, 0)
-	for item in targetpos.items:
-		if is_instance_valid(item):
-			if item.get_type() == 2:
-				if item.action.delay == 0 and item.team == host.team:
-					item.relocate(host.pos)
+	if targetpos.is_col(2):
+		for i in targetpos.get_items_by_type(2):
+			if i.team != host.team:
+				attack(dir)
+				return
 	if !targetpos.is_col(host.col_mask):
 		host.position_speed = 4
-		host.set_animation("walk", 2)
+		if faced:
+			host.set_animation("walk", 1.5)
+		else:
+			host.set_animation("walk_flip", 1.5)
 		host.relocate(targetpos)
 		delay = 2
 	else:
-		host.set_animation("stand")
+		host.set_animation("idle_1")
 
-func ability(idx, at):
-	if idx < 0:
-		return G.fx.do(G.data.ability_data.get("pickup"), host, at)
-	elif idx < host.abilities.size():
-		host.face_toward(at)
-		return G.fx.do(host.abilities[idx], host, at)
+func die():
+	host.set_animation("fadeout")
+	delay = -1
+
+func process_commands():
+	if commands.empty():
+		return false
+	var cmd = commands[0]
+	if turns < cmd[0]:
+		return false
+	commands.pop_front()
+	if cmd[1] == "do":
+		host.set_animation(cmd[2])
+	elif cmd[1] == "dod":
+		host.set_animation(cmd[2])
+		delay = int(host.animation.get_current_animation_length() * 6.67)
+	elif cmd[1] == "attack":
+		host.pos.get_neighbor(host.dir, 0).set_state(cmd[2], host.pos.x)
+	elif cmd[1] == "grab":
+		host.pos.set_state("grab", host.pos.x)
+	elif cmd[1] == "toward":
+		host.position_speed = cmd[3]
+		var to = host.pos.get_neighbor(host.dir * cmd[2], 0)
+		if !to.is_col(10):
+			host.relocate(to)
+	elif cmd[1] == "col":
+		host.set_col(cmd[2])
+	elif cmd[1] == "refresh":
+		refresh_skills(cmd[2])
+	elif cmd[1] == "pop":
+		skills_spent.append(cmd[2])
+		skills.erase(cmd[2])
+	elif cmd[1] == "die":
+		host.die()
+	return true

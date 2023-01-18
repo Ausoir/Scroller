@@ -1,6 +1,6 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=36 format=2]
 
-[ext_resource path="res://assets/images/face.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/face/face.png" type="Texture" id=1]
 [ext_resource path="res://entity/unit.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=2]
@@ -15,7 +15,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 0, -8 ) ]
+"values": [ PoolVector2Array( 0, -20, 0, -40 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body/Rarm:points")
@@ -27,7 +27,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, 4, 0, 8, 12 ) ]
+"values": [ PoolVector2Array( 0, -40, 4, -32, 8, -20 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Body/Larm:points")
@@ -39,7 +39,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, -4, 0, -8, 12 ) ]
+"values": [ PoolVector2Array( 0, -40, -4, -32, -8, -20 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Body/Leg:points")
@@ -51,7 +51,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, -4, 20, -8, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, -4, -12, -8, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Body/Reg:points")
@@ -63,10 +63,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 4, 20, 8, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Sprite:offset")
+tracks/5/path = NodePath("Sprite:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -75,19 +75,263 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -12 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("Sprite:rotation_degrees")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
 "values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "block_1"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Rarm:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 4, -36, 12, -32, 16, -36 ), PoolVector2Array( -4, -36, 8.57143, -28.5714, 5.71429, -40 ), PoolVector2Array( -8, -32, -5.71429, -22.8571, -2.85714, -31.4286 ), PoolVector2Array( 4, -36, 11.4286, -28.5714, 11.4286, -37.1429 ), PoolVector2Array( 0, -36, -2.85714, -31.4286, 8.57143, -34.2857 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Larm:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 4, -36, 8.57143, -28.5714, 8.57143, -37.1429 ), PoolVector2Array( -4, -36, 4, -32, 12, -36 ), PoolVector2Array( -8, -32, 4, -28, 8, -36 ), PoolVector2Array( 4, -36, 8, -28, 12, -32 ), PoolVector2Array( 0, -36, 8, -28, 12, -36 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Reg:points")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 4, -12, 4, 0 ), PoolVector2Array( 0, -20, 4, -8, 4, 0 ), PoolVector2Array( 0, -20, 8, -12, 8, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Leg:points")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( 0, -20, 0, -8, -4, 0 ), PoolVector2Array( 0, -20, -4, -8, -8, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 4, -36 ), PoolVector2Array( 0, -20, -4, -36 ), PoolVector2Array( 0, -20, -8, -32 ), PoolVector2Array( 0, -20, 4, -36 ), PoolVector2Array( 0, -20, 0, -36 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "block_2"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Rarm:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -36, 12, -40, 16, -36 ), PoolVector2Array( -4, -28, -8, -24, 0, -28 ), PoolVector2Array( 0, -36, 12, -32, 16, -36 ), PoolVector2Array( 0, -36, 4, -28, 8, -20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Larm:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -36, 8, -32, 8, -40 ), PoolVector2Array( -4, -28, 8, -36, 0, -44 ), PoolVector2Array( 0, -36, 0, -28, 8, -32 ), PoolVector2Array( 0, -36, -4, -28, -4, -20 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Reg:points")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 4, -12, 4, 0 ), PoolVector2Array( 0, -20, 8, -12, 12, 0 ), PoolVector2Array( 0, -20, 4, -12, 4, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Leg:points")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( 0, -20, 0, -8, -4, 0 ), PoolVector2Array( 0, -20, -4, -8, -8, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 0, -36 ), PoolVector2Array( 0, -20, -4, -28 ), PoolVector2Array( 0, -20, 0, -36 ) ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "climb"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 0, -20, -2.85714, -37.1429 ), PoolVector2Array( 0, -20, 0, -40 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Rarm:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, 8.57143, -42.8571, 5.71429, -51.4286 ), PoolVector2Array( -2.85714, -37.1429, 5.71429, -34.2857, 8.57143, -37.1429 ), PoolVector2Array( 0, -40, 8.57143, -42.8571, 5.71429, -51.4286 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Larm:points")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, -8.57143, -34.2857, -8.57143, -37.1429 ), PoolVector2Array( -2.85714, -37.1429, -8.57143, -42.8571, -5.71429, -51.4286 ), PoolVector2Array( 0, -40, -5.71429, -34.2857, -5.71429, -37.1429 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Leg:points")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, -5.71429, -22.8571, -5.71429, -14.2857 ), PoolVector2Array( 0, -20, -5.71429, -11.4286, -5.71429, 0 ), PoolVector2Array( 0, -20, -5.71429, -22.8571, -5.71429, -14.2857 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Reg:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 5.71429, -14.2857, 5.71429, -2.85714 ), PoolVector2Array( 0, -20, 8.57143, -25.7143, 5.71429, -14.2857 ), PoolVector2Array( 0, -20, 5.71429, -14.2857, 5.71429, -2.85714 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "crush"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Rarm:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, -8, -32, -8, -20 ), PoolVector2Array( 8, -36, 0, -44, -8, -44 ), PoolVector2Array( 32, -28, 40, -40, 36, -44 ), PoolVector2Array( 32, -24, 44, -24, 56, -24 ), PoolVector2Array( 32, -24, 44, -20, 52, -16 ), PoolVector2Array( 0, -40, -8, -32, -8, -20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Larm:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, 4, -28, 12, -24 ), PoolVector2Array( 8, -36, -4, -40, -12, -44 ), PoolVector2Array( 32, -28, 44, -40, 36, -44 ), PoolVector2Array( 32, -24, 48, -20, 56, -24 ), PoolVector2Array( 32, -24, 40, -16, 52, -16 ), PoolVector2Array( 0, -40, 4, -28, 12, -24 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Reg:points")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( 12, -20, 8, -12, 0, 0 ), PoolVector2Array( 20, -12, 8, -4, 0, 0 ), PoolVector2Array( 20, -12, 8, -4, 0, 0 ), PoolVector2Array( 20, -12, 12, -4, 4, 0 ), PoolVector2Array( 0, -20, 4, -12, 8, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Leg:points")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( 12, -20, 20, -16, 20, -8 ), PoolVector2Array( 20, -12, 28, -8, 24, 0 ), PoolVector2Array( 20, -12, 32, -4, 28, 0 ), PoolVector2Array( 20, -12, 28, -8, 28, 0 ), PoolVector2Array( 0, -20, -4, -8, -8, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 12, -20, 8, -36 ), PoolVector2Array( 20, -12, 32, -28 ), PoolVector2Array( 20, -12, 32, -24 ), PoolVector2Array( 20, -12, 32, -24 ), PoolVector2Array( 0, -20, 0, -40 ) ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -104,7 +348,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, -8, 0, -8, 12 ), PoolVector2Array( -12, 0, -20, 8, -8, 12 ) ]
+"values": [ PoolVector2Array( 0, -40, -8, -32, -8, -20 ), PoolVector2Array( -12, -32, -20, -24, -8, -20 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body/Larm:points")
@@ -116,7 +360,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, 4, 4, 12, 8 ), PoolVector2Array( -12, 0, 4, 4, 4, -4 ) ]
+"values": [ PoolVector2Array( 0, -40, 4, -28, 12, -24 ), PoolVector2Array( -12, -32, 4, -28, 4, -36 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Body/Reg:points")
@@ -128,7 +372,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 4, 20, 8, 32 ), PoolVector2Array( -4, 16, 4, 20, 4, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( -4, -16, 4, -12, 4, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Body/Leg:points")
@@ -140,7 +384,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, -4, 24, -8, 32 ), PoolVector2Array( -4, 16, -4, 24, -8, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( -4, -16, -4, -8, -8, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Body:points")
@@ -152,46 +396,77 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 0, -8 ), PoolVector2Array( -4, 16, -12, 0 ) ]
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( -4, -16, -12, -32 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "fall"
+[sub_resource type="Animation" id=24]
+resource_name = "fadeout"
+length = 3.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Body/Rarm:points")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 4, -4, 12, -12, 12, -20 ), PoolVector2Array( 12, 4, 12, 8, 20, 12 ), PoolVector2Array( 20, 20, 20, 24, 20, 32 ), PoolVector2Array( 20, 20, 20, 24, 20, 32 ), PoolVector2Array( 4, -4, 0, 4, 0, 12 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("Body/Larm:points")
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 2.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "die"
+} ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "fall"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 4, -4, 12, -4, 20, -8 ), PoolVector2Array( 12, 4, 8, 8, 8, 16 ), PoolVector2Array( 20, 20, 24, 28, 28, 32 ), PoolVector2Array( 20, 20, 24, 28, 28, 32 ), PoolVector2Array( 4, -4, 8, 4, 12, 8 ) ]
+"values": [ PoolVector2Array( 4, -20, 0, -40 ), PoolVector2Array( 4, -24, 0, -40 ), PoolVector2Array( 4, -24, 4, -40 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Rarm:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, 8, -44, 12, -52 ), PoolVector2Array( 0, -40, 8, -52, 8, -60 ), PoolVector2Array( 4, -40, 8, -52, 12, -60 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Body/Reg:points")
+tracks/2/path = NodePath("Body/Larm:points")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 4, 20, 4, 32 ), PoolVector2Array( -4, 16, 8, 24, 0, 32 ), PoolVector2Array( 4, 16, 8, 24, 0, 32 ), PoolVector2Array( 4, 16, 8, 24, 0, 32 ), PoolVector2Array( 0, 12, 4, 20, 4, 32 ) ]
+"values": [ PoolVector2Array( 0, -40, -12, -44, -16, -48 ), PoolVector2Array( 0, -40, -8, -48, -8, -56 ), PoolVector2Array( 4, -40, -4, -48, -12, -56 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Body/Leg:points")
@@ -200,27 +475,26 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, -4, 24, -8, 32 ), PoolVector2Array( -4, 16, 0, 24, -8, 32 ), PoolVector2Array( 4, 16, 0, 24, -8, 32 ), PoolVector2Array( 4, 16, 0, 24, -8, 32 ), PoolVector2Array( 0, 12, -4, 24, -8, 32 ) ]
+"values": [ PoolVector2Array( 4, -20, -4, -16, -8, -4 ), PoolVector2Array( 4, -24, -4, -20, -12, -8 ), PoolVector2Array( 4, -24, -4, -16, -8, -8 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Body:points")
+tracks/4/path = NodePath("Body/Reg:points")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 4, -4 ), PoolVector2Array( -4, 16, 12, 4 ), PoolVector2Array( 4, 16, 20, 20 ), PoolVector2Array( 4, 16, 20, 20 ), PoolVector2Array( 0, 12, 4, -4 ) ]
+"values": [ PoolVector2Array( 4, -20, 4, -12, 8, 0 ), PoolVector2Array( 4, -24, 8, -16, 16, -12 ), PoolVector2Array( 4, -24, 4, -12, 12, -12 ) ]
 }
 
 [sub_resource type="Animation" id=10]
 resource_name = "flurry"
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Rarm:points")
 tracks/0/interp = 1
@@ -228,10 +502,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.9 ),
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, -8, 0, -8, 12 ), PoolVector2Array( 24, 4, 12, -4, 20, -4 ), PoolVector2Array( 28, 4, 20, 4, 20, 8 ), PoolVector2Array( 40, 0, 52, 4, 60, -4 ), PoolVector2Array( 44, -4, 60, -8, 60, -20 ), PoolVector2Array( 0, -8, -4, 4, 4, -4 ) ]
+"values": [ PoolVector2Array( 0, -40, -8, -32, -8, -20 ), PoolVector2Array( 24, -28, 12, -36, 20, -36 ), PoolVector2Array( 28, -28, 20, -28, 20, -24 ), PoolVector2Array( 40, -32, 48.5714, -31.4286, 54.2857, -28.5714 ), PoolVector2Array( 31.4286, -34.2857, 25.7143, -28.5714, 25.7143, -22.8571 ), PoolVector2Array( 0, -40, -4, -28, 4, -36 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body/Larm:points")
@@ -240,10 +514,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.9 ),
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, 4, 4, 12, 8 ), PoolVector2Array( 24, 4, 16, 8, 24, 16 ), PoolVector2Array( 28, 4, 40, 4, 48, 0 ), PoolVector2Array( 40, 0, 32, 4, 28, 8 ), PoolVector2Array( 44, -4, 36, 4, 36, 12 ), PoolVector2Array( 0, -8, 4, 4, 12, 0 ) ]
+"values": [ PoolVector2Array( 0, -40, 4, -28, 12, -24 ), PoolVector2Array( 24, -28, 16, -24, 24, -16 ), PoolVector2Array( 28, -28, 40, -28, 48, -32 ), PoolVector2Array( 40, -32, 32, -28, 28, -24 ), PoolVector2Array( 31.4286, -34.2857, 42.8571, -37.1429, 45.7143, -45.7143 ), PoolVector2Array( 0, -40, 4, -28, 12, -32 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Body/Reg:points")
@@ -252,10 +526,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.9 ),
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 4, 20, 8, 32 ), PoolVector2Array( 16, 16, 8, 20, 0, 32 ), PoolVector2Array( 20, 16, 16, 24, 4, 32 ), PoolVector2Array( 36, 12, 40, 20, 44, 32 ), PoolVector2Array( 40, 12, 44, 20, 44, 32 ), PoolVector2Array( 0, 12, -4, 24, -8, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( 16, -16, 8, -12, 0, 0 ), PoolVector2Array( 17.1429, -14.2857, 11.4286, -8.57143, 0, 0 ), PoolVector2Array( 36, -20, 40, -12, 44, 0 ), PoolVector2Array( 34.2857, -17.1429, 40, -8.57143, 44, 0 ), PoolVector2Array( 0, -20, -4, -8, -8, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Body/Leg:points")
@@ -264,10 +538,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.9 ),
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, -4, 24, -8, 32 ), PoolVector2Array( 16, 16, 24, 24, 28, 32 ), PoolVector2Array( 20, 16, 28, 20, 28, 32 ), PoolVector2Array( 36, 12, 32, 24, 24, 32 ), PoolVector2Array( 40, 12, 32, 24, 24, 32 ), PoolVector2Array( 0, 12, 12, 20, 16, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( 16, -16, 24, -8, 28, 0 ), PoolVector2Array( 17.1429, -14.2857, 25.7143, -8.57143, 25.7143, 0 ), PoolVector2Array( 36, -20, 32, -8, 24, 0 ), PoolVector2Array( 34.2857, -17.1429, 32, -8, 24, 0 ), PoolVector2Array( 0, -20, 6.15385, -9.23077, 9.23077, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Body:points")
@@ -276,16 +550,171 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.9 ),
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 0, -8 ), PoolVector2Array( 16, 16, 24, 4 ), PoolVector2Array( 20, 16, 28, 4 ), PoolVector2Array( 36, 12, 40, 0 ), PoolVector2Array( 40, 12, 44, -4 ), PoolVector2Array( 0, 12, 0, -8 ) ]
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 16, -16, 24, -28 ), PoolVector2Array( 17.1429, -14.2857, 28.5714, -28.5714 ), PoolVector2Array( 36, -20, 40, -32 ), PoolVector2Array( 34.2857, -17.1429, 31.4286, -34.2857 ), PoolVector2Array( 0, -20, 0, -40 ) ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "focus_1"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 0, -20, 0, -40 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Rarm:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, 4, -32, 8, -20 ), PoolVector2Array( 0, -40, 11.4286, -31.4286, 2.85714, -31.4286 ), PoolVector2Array( 0, -40, 5.71429, -25.7143, 2.85714, -31.4286 ), PoolVector2Array( 0, -40, 11.4286, -31.4286, 2.85714, -31.4286 ), PoolVector2Array( 0, -40, 5.71429, -25.7143, 2.85714, -31.4286 ), PoolVector2Array( 0, -40, 4, -32, 8, -20 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Larm:points")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, -4, -32, -8, -20 ), PoolVector2Array( 0, -40, -8.57143, -28.5714, 2.85714, -31.4286 ), PoolVector2Array( 0, -40, -2.85714, -25.7143, 2.85714, -31.4286 ), PoolVector2Array( 0, -40, -8.57143, -28.5714, 2.85714, -31.4286 ), PoolVector2Array( 0, -40, -2.85714, -25.7143, 2.85714, -31.4286 ), PoolVector2Array( 0, -40, -4, -32, -8, -20 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Leg:points")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, -4, -12, -8, 0 ), PoolVector2Array( 0, -20, -2.85714, -8.57143, -5.71429, 0 ), PoolVector2Array( 0, -20, -3.68254, -11.0476, -5.71429, 0 ), PoolVector2Array( 0, -20, -2.85714, -11.4286, -5.71429, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Reg:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( 0, -20, 4.85714, -10.2857, 5.71429, 0 ), PoolVector2Array( 0, -20, 5.71429, -8.57143, 5.71429, 0 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "refresh_skills" ],
+"method": "callback_animation"
+} ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "focus_2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 1, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 2.85714, -20, 0, -40 ), PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 2.85714, -20, 0, -40 ), PoolVector2Array( 0, -20, 0, -40 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Rarm:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, 4, -32, 8, -20 ), PoolVector2Array( 0, -40, 14.2857, -45.7143, 11.4286, -37.1429 ), PoolVector2Array( 0, -40, 11.4286, -28.5714, 2.85714, -28.5714 ), PoolVector2Array( 0, -40, 5.71429, -57.1429, 11.4286, -48.5714 ), PoolVector2Array( 0, -40, 14.2857, -45.7143, 11.4286, -37.1429 ), PoolVector2Array( 0, -40, 11.4286, -28.5714, 2.85714, -28.5714 ), PoolVector2Array( 0, -40, 5.71429, -57.1429, 11.4286, -48.5714 ), PoolVector2Array( 0, -40, 14.2857, -45.7143, 11.4286, -37.1429 ), PoolVector2Array( 0, -40, 4, -32, 8, -20 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Larm:points")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 1, 1.2, 1.4, 1.6, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, -4, -32, -8, -20 ), PoolVector2Array( 0, -40, -8.57143, -31.4286, 2.85714, -40 ), PoolVector2Array( 0, -40, -5.71429, -31.4286, 8.57143, -34.2857 ), PoolVector2Array( 0, -40, -4, -32, 2.85714, -42.8571 ), PoolVector2Array( 0, -40, -5.71429, -31.4286, 8.57143, -34.2857 ), PoolVector2Array( 0, -40, -8.57143, -34.2857, 2.85714, -48.5714 ), PoolVector2Array( 0, -40, -2.85714, -28.5714, 5.71429, -40 ), PoolVector2Array( 0, -40, -2.85714, -28.5714, 2.85714, -25.7143 ), PoolVector2Array( 0, -40, -4, -32, -8, -20 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Leg:points")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 1, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, -4, -12, -8, 0 ), PoolVector2Array( 2.85714, -20, -5.71429, -8.57143, -2.85714, 0 ), PoolVector2Array( 2.85714, -20, -2.85714, -8.57143, -2.85714, 0 ), PoolVector2Array( 0, -20, -4, -12, -8, 0 ), PoolVector2Array( 2.85714, -20, -2.85714, -8.57143, -2.85714, 0 ), PoolVector2Array( 0, -20, -4, -12, -8, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Reg:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 1, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( 2.85714, -20, 5.71429, -11.4286, 8, 0 ), PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( 2.85714, -20, 5.71429, -11.4286, 8, 0 ), PoolVector2Array( 0, -20, 4, -12, 8, 0 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "refresh_skills" ],
+"method": "callback_animation"
+} ]
 }
 
 [sub_resource type="Animation" id=12]
-resource_name = "focus1"
-length = 2.4
-loop = true
+resource_name = "focus_3"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Rarm:points")
 tracks/0/interp = 1
@@ -293,10 +722,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5, 0.7, 0.9, 1, 1.1, 1.3, 1.5, 1.7, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, -8, 0, -8, 12 ), PoolVector2Array( 4, 8, -4, 16, -12, 28 ), PoolVector2Array( 8, 16, 0, 20, -12, 28 ), PoolVector2Array( 4, 8, -4, 16, -12, 28 ), PoolVector2Array( 8, 16, 0, 20, -12, 28 ), PoolVector2Array( 4, 8, -4, 16, -12, 28 ), PoolVector2Array( 0, -8, -8, 0, -8, 12 ), PoolVector2Array( -4, 8, -16, 12, -12, 24 ), PoolVector2Array( -8, 16, -20, 16, -16, 28 ), PoolVector2Array( -4, 8, -12, 16, -12, 24 ), PoolVector2Array( -8, 16, -20, 16, -16, 28 ), PoolVector2Array( -4, 8, -12, 16, -12, 24 ) ]
+"values": [ PoolVector2Array( 0, -40, -8, -32, -8, -20 ), PoolVector2Array( 4, -24, -4, -16, -12, -4 ), PoolVector2Array( 8, -16, 0, -12, -12, -4 ), PoolVector2Array( 4, -24, -4, -16, -12, -4 ), PoolVector2Array( 8, -16, 0, -12, -12, -4 ), PoolVector2Array( 4, -24, -4, -16, -12, -4 ), PoolVector2Array( 0, -40, -8, -32, -8, -20 ), PoolVector2Array( -4, -24, -16, -20, -12, -8 ), PoolVector2Array( -8, -16, -20, -16, -16, -4 ), PoolVector2Array( -4, -24, -12, -16, -12, -8 ), PoolVector2Array( -8, -16, -20, -16, -16, -4 ), PoolVector2Array( -4, -24, -12, -16, -12, -8 ), PoolVector2Array( 0, -40, -4, -32, -8, -24 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body/Larm:points")
@@ -305,10 +734,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5, 0.7, 0.9, 1, 1.1, 1.3, 1.5, 1.7, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, 4, 4, 12, 8 ), PoolVector2Array( 4, 8, 12, 16, 12, 24 ), PoolVector2Array( 8, 16, 20, 16, 16, 28 ), PoolVector2Array( 4, 8, 12, 16, 12, 24 ), PoolVector2Array( 8, 16, 20, 16, 16, 28 ), PoolVector2Array( 4, 8, 16, 12, 12, 24 ), PoolVector2Array( 0, -8, 4, 4, 12, 8 ), PoolVector2Array( -4, 8, 8, 16, 12, 28 ), PoolVector2Array( -8, 16, 4, 20, 12, 28 ), PoolVector2Array( -4, 8, 8, 16, 12, 28 ), PoolVector2Array( -8, 16, 4, 20, 12, 28 ), PoolVector2Array( -4, 8, 8, 16, 12, 28 ) ]
+"values": [ PoolVector2Array( 0, -40, 4, -28, 12, -24 ), PoolVector2Array( 4, -24, 12, -16, 12, -8 ), PoolVector2Array( 8, -16, 20, -16, 16, -4 ), PoolVector2Array( 4, -24, 12, -16, 12, -8 ), PoolVector2Array( 8, -16, 20, -16, 16, -4 ), PoolVector2Array( 4, -24, 16, -20, 12, -8 ), PoolVector2Array( 0, -40, 4, -28, 12, -24 ), PoolVector2Array( -4, -24, 8, -16, 12, -4 ), PoolVector2Array( -8, -16, 4, -12, 12, -4 ), PoolVector2Array( -4, -24, 8, -16, 12, -4 ), PoolVector2Array( -8, -16, 4, -12, 12, -4 ), PoolVector2Array( -4, -24, 8, -16, 12, -4 ), PoolVector2Array( 0, -40, 4, -32, 8, -24 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Body/Reg:points")
@@ -317,10 +746,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5, 0.7, 0.9, 1, 1.1, 1.3, 1.5, 1.7, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 4, 20, 8, 32 ), PoolVector2Array( 4, 20, 12, 24, 8, 32 ), PoolVector2Array( 4, 24, 16, 28, 8, 32 ), PoolVector2Array( 4, 20, 12, 24, 8, 32 ), PoolVector2Array( 4, 24, 16, 28, 8, 32 ), PoolVector2Array( 4, 20, 12, 24, 8, 32 ), PoolVector2Array( 0, 12, 4, 20, 8, 32 ), PoolVector2Array( -4, 20, 4, 24, 20, 32 ), PoolVector2Array( -4, 24, 8, 28, 20, 32 ), PoolVector2Array( -4, 20, 4, 24, 20, 32 ), PoolVector2Array( -4, 24, 8, 28, 20, 32 ), PoolVector2Array( -4, 20, 4, 24, 20, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( 4, -12, 12, -8, 8, 0 ), PoolVector2Array( 4, -8, 16, -4, 8, 0 ), PoolVector2Array( 4, -12, 12, -8, 8, 0 ), PoolVector2Array( 4, -8, 16, -4, 8, 0 ), PoolVector2Array( 4, -12, 12, -8, 8, 0 ), PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( -4, -12, 4, -8, 20, 0 ), PoolVector2Array( -4, -8, 8, -4, 20, 0 ), PoolVector2Array( -4, -12, 4, -8, 20, 0 ), PoolVector2Array( -4, -8, 8, -4, 20, 0 ), PoolVector2Array( -4, -12, 4, -8, 20, 0 ), PoolVector2Array( 0, -20, 4, -12, 8, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Body/Leg:points")
@@ -329,10 +758,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5, 0.7, 0.9, 1, 1.1, 1.3, 1.5, 1.7, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, -4, 24, -8, 32 ), PoolVector2Array( 4, 20, -4, 24, -20, 32 ), PoolVector2Array( 4, 24, -8, 28, -20, 32 ), PoolVector2Array( 4, 20, -4, 24, -20, 32 ), PoolVector2Array( 4, 24, -8, 28, -20, 32 ), PoolVector2Array( 4, 20, -4, 24, -20, 32 ), PoolVector2Array( 0, 12, -4, 24, -8, 32 ), PoolVector2Array( -4, 20, -12, 24, -8, 32 ), PoolVector2Array( -4, 24, -16, 28, -8, 32 ), PoolVector2Array( -4, 20, -12, 24, -8, 32 ), PoolVector2Array( -4, 24, -16, 28, -8, 32 ), PoolVector2Array( -4, 20, -12, 24, -8, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( 4, -12, -4, -8, -20, 0 ), PoolVector2Array( 4, -8, -8, -4, -20, 0 ), PoolVector2Array( 4, -12, -4, -8, -20, 0 ), PoolVector2Array( 4, -8, -8, -4, -20, 0 ), PoolVector2Array( 4, -12, -4, -8, -20, 0 ), PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( -4, -12, -12, -8, -8, 0 ), PoolVector2Array( -4, -8, -16, -4, -8, 0 ), PoolVector2Array( -4, -12, -12, -8, -8, 0 ), PoolVector2Array( -4, -8, -16, -4, -8, 0 ), PoolVector2Array( -4, -12, -12, -8, -8, 0 ), PoolVector2Array( 0, -20, -4, -12, -8, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Body:points")
@@ -341,15 +770,29 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5, 0.7, 0.9, 1, 1.1, 1.3, 1.5, 1.7, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 0, -8 ), PoolVector2Array( 4, 20, 4, 8 ), PoolVector2Array( 4, 24, 8, 16 ), PoolVector2Array( 4, 20, 4, 8 ), PoolVector2Array( 4, 24, 8, 16 ), PoolVector2Array( 4, 20, 4, 8 ), PoolVector2Array( 0, 12, 0, -8 ), PoolVector2Array( -4, 20, -4, 8 ), PoolVector2Array( -4, 24, -8, 16 ), PoolVector2Array( -4, 20, -4, 8 ), PoolVector2Array( -4, 24, -8, 16 ), PoolVector2Array( -4, 20, -4, 8 ) ]
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 4, -12, 4, -24 ), PoolVector2Array( 4, -8, 8, -16 ), PoolVector2Array( 4, -12, 4, -24 ), PoolVector2Array( 4, -8, 8, -16 ), PoolVector2Array( 4, -12, 4, -24 ), PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( -4, -12, -4, -24 ), PoolVector2Array( -4, -8, -8, -16 ), PoolVector2Array( -4, -12, -4, -24 ), PoolVector2Array( -4, -8, -8, -16 ), PoolVector2Array( -4, -12, -4, -24 ), PoolVector2Array( 0, -20, 0, -40 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "refresh_skills" ],
+"method": "callback_animation"
+} ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "hit"
-length = 0.8
+[sub_resource type="Animation" id=9]
+resource_name = "hit_heavy"
+length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Rarm:points")
 tracks/0/interp = 1
@@ -357,10 +800,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -4, 12, -8, 16, -4 ), PoolVector2Array( -4, 4, -8, 8, 0, 4 ), PoolVector2Array( 0, -4, 12, 0, 16, -4 ), PoolVector2Array( 0, -4, 4, 4, 8, 12 ) ]
+"values": [ PoolVector2Array( 0, -40, -8, -32, -8, -20 ), PoolVector2Array( -12, -32, -8, -24, -4, -36 ), PoolVector2Array( -16, -20, -20, -16, -20, -8 ), PoolVector2Array( -16, -24, -20, -20, -16, -12 ), PoolVector2Array( -20, -16, -12, -20, -16, -8 ), PoolVector2Array( 8, -12, 4, -20, -4, -16 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body/Larm:points")
@@ -369,10 +812,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -4, 8, 0, 8, -8 ), PoolVector2Array( -4, 4, 8, -4, 0, -12 ), PoolVector2Array( 0, -4, 0, 4, 8, 0 ), PoolVector2Array( 0, -4, -4, 4, -4, 12 ) ]
+"values": [ PoolVector2Array( 0, -40, 4, -28, 12, -24 ), PoolVector2Array( -12, -32, -4, -44, -16, -40 ), PoolVector2Array( -12, -24, -12, -32, -16, -20 ), PoolVector2Array( -16, -12, -20, 0, -12, 0 ), PoolVector2Array( -16, -8, -20, 0, -12, 0 ), PoolVector2Array( -4, -16, -12, -8, -16, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Body/Reg:points")
@@ -381,10 +824,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 4, 20, 4, 32 ), PoolVector2Array( 0, 12, 8, 20, 12, 32 ), PoolVector2Array( 0, 12, 4, 20, 4, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( 0, -20, 12, -20, 16, -16 ), PoolVector2Array( 0, -12, 4, -24, 8, -12 ), PoolVector2Array( 0, 0, 0, -16, 12, -16 ), PoolVector2Array( 0, 0, 8, -12, 16, 0 ), PoolVector2Array( 0, 0, 8, -12, 12, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Body/Leg:points")
@@ -393,10 +836,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, -4, 24, -8, 32 ), PoolVector2Array( 0, 12, 0, 24, -4, 32 ), PoolVector2Array( 0, 12, -4, 24, -8, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( 0, -20, 4, -12, 0, 0 ), PoolVector2Array( 0, -12, 8, -16, 8, 0 ), PoolVector2Array( 0, 0, 4, -12, 12, -20 ), PoolVector2Array( 0, 0, -4, -4, 8, 0 ), PoolVector2Array( 0, 0, -4, 0, -12, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Body:points")
@@ -405,10 +848,73 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 0, -4 ), PoolVector2Array( 0, 12, -4, 4 ), PoolVector2Array( 0, 12, 0, -4 ) ]
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 0, -20, -12, -32 ), PoolVector2Array( 0, -12, -16, -20 ), PoolVector2Array( 0, 0, -16, -12 ), PoolVector2Array( 0, 0, -16, -8 ), PoolVector2Array( 0, 0, -4, -16 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle_1"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 0, -40 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Rarm:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, 4, -32, 8, -20 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Larm:points")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, -4, -32, -8, -20 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Leg:points")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, -4, -12, -8, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Reg:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -420,10 +926,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.7 ),
+"times": PoolRealArray( 0, 0.2, 0.3, 0.5, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, -8, 0, -8, 12 ), PoolVector2Array( 12, 4, 0, 4, -4, 12 ), PoolVector2Array( 12, -4, 20, 0, 28, -4 ), PoolVector2Array( 16, -20, 20, -12, 28, -12 ), PoolVector2Array( 8, 4, 16, 12, 8, 16 ) ]
+"values": [ PoolVector2Array( 0, -40, -8, -32, -8, -20 ), PoolVector2Array( 12, -24, 4, -20, 4, -12 ), PoolVector2Array( 14.2857, -45.7143, 25.7143, -40, 31.4286, -45.7143 ), PoolVector2Array( 16, -52, 20, -44, 28, -44 ), PoolVector2Array( 8, -28, 16, -20, 16.6667, -13.3333 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body/Larm:points")
@@ -432,10 +938,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.7 ),
+"times": PoolRealArray( 0, 0.2, 0.3, 0.5, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, 4, 4, 12, 8 ), PoolVector2Array( 12, 4, 4, 8, 16, 12 ), PoolVector2Array( 12, -4, 0, -4, -4, 4 ), PoolVector2Array( 16, -20, 12, -28, 4, -20 ), PoolVector2Array( 8, 4, 8, 12, 8, 24 ) ]
+"values": [ PoolVector2Array( 0, -40, 4, -28, 12, -24 ), PoolVector2Array( 12, -24, 12, -12, 16, -8 ), PoolVector2Array( 14.2857, -45.7143, 5.71429, -51.4286, 0, -45.7143 ), PoolVector2Array( 16, -52, 12, -60, 4, -52 ), PoolVector2Array( 8, -28, 8, -20, 8, -8 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Body/Reg:points")
@@ -444,10 +950,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.7 ),
+"times": PoolRealArray( 0, 0.2, 0.3, 0.5, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 4, 20, 8, 32 ), PoolVector2Array( -4, 16, 8, 24, 0, 32 ), PoolVector2Array( 0, 12, 12, 8, 12, 16 ), PoolVector2Array( 4, -8, 12, -4, 4, 0 ), PoolVector2Array( 0, 20, -4, 28, -12, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( -4, -12, -4, -4, -16, 0 ), PoolVector2Array( 0, -31.4286, 11.4286, -28.5714, 0, -22.8571 ), PoolVector2Array( 4, -40, 12, -36, 4, -32 ), PoolVector2Array( 0, -12, -4, -4, -12, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Body/Leg:points")
@@ -456,10 +962,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.7 ),
+"times": PoolRealArray( 0, 0.2, 0.3, 0.5, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, -4, 24, -8, 32 ), PoolVector2Array( -4, 16, 0, 24, -8, 32 ), PoolVector2Array( 0, 12, -4, 20, -12, 28 ), PoolVector2Array( 4, -8, 0, 4, -4, 8 ), PoolVector2Array( 0, 20, 8, 24, 4, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( -4, -12, 8, -12, 4, 0 ), PoolVector2Array( 0, -31.4286, -11.4286, -22.8571, -20, -17.1429 ), PoolVector2Array( 4, -40, 0, -28, -4, -24 ), PoolVector2Array( 0, -12, 8, -8, 10, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Body:points")
@@ -468,10 +974,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.7 ),
+"times": PoolRealArray( 0, 0.2, 0.3, 0.5, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 0, -8 ), PoolVector2Array( -4, 16, 12, 4 ), PoolVector2Array( 0, 12, 12, -4 ), PoolVector2Array( 4, -8, 16, -20 ), PoolVector2Array( 0, 20, 8, 4 ) ]
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( -4, -12, 12, -24 ), PoolVector2Array( 0, -31.4286, 14.2857, -45.7143 ), PoolVector2Array( 4, -40, 16, -52 ), PoolVector2Array( 0, -12, 8, -28 ) ]
 }
 tracks/5/type = "method"
 tracks/5/path = NodePath(".")
@@ -501,7 +1007,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.3, 0.5, 0.6, 0.8, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, -8, 0, -8, 12 ), PoolVector2Array( 16, -8, 8, 0, 0, 4 ), PoolVector2Array( 32, -8, 40, -8, 44, -8 ), PoolVector2Array( 32, -4, 40, 0, 36, 4 ), PoolVector2Array( 32, 8, 36, 12, 40, 20 ), PoolVector2Array( 32, 8, 32, 16, 36, 20 ), PoolVector2Array( 0, -8, -8, 0, -8, 12 ) ]
+"values": [ PoolVector2Array( 0, -40, -8, -32, -8, -20 ), PoolVector2Array( 16, -40, 8, -32, 0, -28 ), PoolVector2Array( 32, -40, 40, -40, 44, -40 ), PoolVector2Array( 32, -36, 40, -32, 36, -28 ), PoolVector2Array( 32, -24, 36, -20, 40, -12 ), PoolVector2Array( 32, -24, 32, -16, 36, -12 ), PoolVector2Array( 0, -40, 5.71429, -31.4286, 11.4286, -25.7143 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body/Larm:points")
@@ -513,7 +1019,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2, 0.3, 0.5, 0.6, 0.8, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, 4, 4, 12, 8 ), PoolVector2Array( 16, -8, 20, 0, 16, 8 ), PoolVector2Array( 32, -8, 24, -12, 20, -8 ), PoolVector2Array( 32, -4, 24, -4, 20, 0 ), PoolVector2Array( 32, 8, 24, 4, 20, 8 ), PoolVector2Array( 32, 8, 24, 8, 20, 12 ), PoolVector2Array( 0, -8, 4, 4, 12, 8 ) ]
+"values": [ PoolVector2Array( 0, -40, 4, -28, 12, -24 ), PoolVector2Array( 16, -40, 20, -32, 16, -24 ), PoolVector2Array( 32, -40, 24, -44, 20, -40 ), PoolVector2Array( 32, -36, 24, -36, 20, -32 ), PoolVector2Array( 32, -24, 24, -28, 20, -24 ), PoolVector2Array( 32, -24, 24, -24, 20, -20 ), PoolVector2Array( 0, -40, -5.71429, -31.4286, -5.71429, -22.8571 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Body/Reg:points")
@@ -525,7 +1031,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.2, 0.3, 0.5, 0.6, 0.8, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 4, 20, 8, 32 ), PoolVector2Array( 12, 12, 8, 20, 4, 32 ), PoolVector2Array( 24, 8, 16, 16, 12, 24 ), PoolVector2Array( 24, 12, 20, 20, 12, 28 ), PoolVector2Array( 20, 16, 16, 24, 8, 32 ), PoolVector2Array( 20, 16, 16, 24, 8, 32 ), PoolVector2Array( 0, 12, 4, 20, 8, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( 12, -20, 8, -12, 4, 0 ), PoolVector2Array( 24, -24, 16, -16, 12, -8 ), PoolVector2Array( 24, -20, 20, -12, 12, -4 ), PoolVector2Array( 20, -16, 16, -8, 8, 0 ), PoolVector2Array( 20, -16, 16, -8, 8, 0 ), PoolVector2Array( 0, -20, 4, -12, 8, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Body/Leg:points")
@@ -537,7 +1043,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.2, 0.3, 0.5, 0.6, 0.8, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, -4, 24, -8, 32 ), PoolVector2Array( 12, 12, 4, 8, 4, 20 ), PoolVector2Array( 24, 8, 36, 4, 52, 0 ), PoolVector2Array( 24, 12, 36, 8, 52, 4 ), PoolVector2Array( 20, 16, 32, 20, 36, 32 ), PoolVector2Array( 20, 16, 28, 24, 28, 32 ), PoolVector2Array( 0, 12, -4, 24, -8, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( 12, -20, 4, -24, 4, -12 ), PoolVector2Array( 24, -24, 36, -28, 52, -32 ), PoolVector2Array( 24, -20, 36, -24, 52, -28 ), PoolVector2Array( 20, -16, 32, -12, 36, 0 ), PoolVector2Array( 20, -16, 28, -8, 28, 0 ), PoolVector2Array( 0, -20, -4, -8, -8, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Body:points")
@@ -549,12 +1055,11 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.2, 0.3, 0.5, 0.6, 0.8, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 0, -8 ), PoolVector2Array( 12, 12, 16, -8 ), PoolVector2Array( 24, 8, 32, -8 ), PoolVector2Array( 24, 12, 32, -4 ), PoolVector2Array( 20, 16, 32, 8 ), PoolVector2Array( 20, 16, 32, 8 ), PoolVector2Array( 0, 12, 0, -8 ) ]
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 12, -20, 16, -40 ), PoolVector2Array( 24, -24, 32, -40 ), PoolVector2Array( 24, -20, 32, -36 ), PoolVector2Array( 20, -16, 32, -24 ), PoolVector2Array( 20, -16, 32, -24 ), PoolVector2Array( 0, -20, 0, -40 ) ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "knockback"
-length = 1.2
+[sub_resource type="Animation" id=30]
+resource_name = "ko_1"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Rarm:points")
 tracks/0/interp = 1
@@ -565,7 +1070,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, -8, 0, -8, 12 ), PoolVector2Array( -12, 0, -8, 8, -4, -4 ), PoolVector2Array( -16, 12, -20, 16, -20, 24 ), PoolVector2Array( -16, 8, -20, 12, -16, 20 ), PoolVector2Array( -20, 16, -12, 12, -16, 24 ), PoolVector2Array( 8, 20, 4, 12, -4, 16 ) ]
+"values": [ PoolVector2Array( 0, -40, -8, -32, -8, -20 ), PoolVector2Array( -12, -32, -8, -24, -4, -36 ), PoolVector2Array( -16, -20, -20, -16, -20, -8 ), PoolVector2Array( -17.1429, -11.4286, -20, -20, -8.57143, -22.8571 ), PoolVector2Array( -17.1429, -8.57143, -12, -20, -17.1429, -17.1429 ), PoolVector2Array( -14.2857, -8.57143, -8.57143, -5.71429, -5.71429, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body/Larm:points")
@@ -577,7 +1082,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, 4, 4, 12, 8 ), PoolVector2Array( -12, 0, -4, -12, -16, -8 ), PoolVector2Array( -12, 8, -12, 0, -16, 12 ), PoolVector2Array( -16, 20, -20, 32, -12, 32 ), PoolVector2Array( -16, 24, -20, 32, -12, 32 ), PoolVector2Array( -4, 16, -12, 24, -16, 32 ) ]
+"values": [ PoolVector2Array( 0, -40, 4, -28, 12, -24 ), PoolVector2Array( -12, -32, -4, -44, -16, -40 ), PoolVector2Array( -12, -24, -12, -32, -16, -20 ), PoolVector2Array( -16, -12, -20, 0, -12, 0 ), PoolVector2Array( -16, -8, -20, 0, -12, 0 ), PoolVector2Array( -16, -8, -20, 0, -12, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Body/Reg:points")
@@ -589,7 +1094,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 4, 20, 8, 32 ), PoolVector2Array( 0, 12, 12, 12, 16, 16 ), PoolVector2Array( 0, 20, 4, 8, 8, 20 ), PoolVector2Array( 0, 32, 0, 16, 12, 16 ), PoolVector2Array( 0, 32, 8, 20, 16, 32 ), PoolVector2Array( 0, 32, 8, 20, 12, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( 0, -20, 12, -20, 16, -16 ), PoolVector2Array( 0, -12, 4, -24, 8, -12 ), PoolVector2Array( 0, 0, 0, -16, 12, -16 ), PoolVector2Array( 0, 0, 8, -12, 16, 0 ), PoolVector2Array( 0, 0, 8, -12, 16, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Body/Leg:points")
@@ -601,7 +1106,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, -4, 24, -8, 32 ), PoolVector2Array( 0, 12, 4, 20, 0, 32 ), PoolVector2Array( 0, 20, 8, 16, 8, 32 ), PoolVector2Array( 0, 32, 4, 20, 12, 12 ), PoolVector2Array( 0, 32, -4, 28, 8, 32 ), PoolVector2Array( 0, 32, -4, 32, -12, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( 0, -20, 4, -12, 0, 0 ), PoolVector2Array( 0, -12, 8, -16, 8, 0 ), PoolVector2Array( 0, 0, 4, -12, 12, -20 ), PoolVector2Array( 0, 0, -4, -4, 8, 0 ), PoolVector2Array( 0, 0, 8.57143, 0, 14.2857, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Body:points")
@@ -613,12 +1118,12 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 0, -8 ), PoolVector2Array( 0, 12, -12, 0 ), PoolVector2Array( 0, 20, -16, 12 ), PoolVector2Array( 0, 32, -16, 20 ), PoolVector2Array( 0, 32, -16, 24 ), PoolVector2Array( 0, 32, -4, 16 ) ]
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 0, -20, -12, -32 ), PoolVector2Array( 0, -12, -16, -20 ), PoolVector2Array( 0, 0, -16, -12 ), PoolVector2Array( 0, 0, -16, -8 ), PoolVector2Array( 0, 0, -16, -8 ) ]
 }
 
-[sub_resource type="Animation" id=15]
-resource_name = "knockdown"
-loop = true
+[sub_resource type="Animation" id=19]
+resource_name = "ko_2"
+length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Rarm:points")
 tracks/0/interp = 1
@@ -626,10 +1131,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, -8, 0, -8, 12 ), PoolVector2Array( 8, -4, 0, -12, -8, -12 ), PoolVector2Array( 32, 4, 40, -8, 36, -12 ), PoolVector2Array( 32, 8, 44, 8, 56, 8 ), PoolVector2Array( 32, 8, 44, 12, 52, 16 ) ]
+"values": [ PoolVector2Array( 4, -36, 12, -32, 16, -36 ), PoolVector2Array( -4, -36, -8, -24, 0, -16 ), PoolVector2Array( -8, -32, -10.6667, -20, -5.33333, -12 ), PoolVector2Array( -8, -28, -12, -20, -10.6667, -8 ), PoolVector2Array( -12, -20, -16, -12, -16, -4 ), PoolVector2Array( -16, 0, -20, -8, -28, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body/Larm:points")
@@ -638,10 +1143,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, 4, 4, 12, 8 ), PoolVector2Array( 8, -4, -4, -8, -12, -12 ), PoolVector2Array( 32, 4, 44, -8, 36, -12 ), PoolVector2Array( 32, 8, 48, 12, 56, 8 ), PoolVector2Array( 32, 8, 40, 16, 52, 16 ) ]
+"values": [ PoolVector2Array( 4, -36, 0, -28, 0, -20 ), PoolVector2Array( -4, -36, 4, -32, 12, -36 ), PoolVector2Array( -8, -32, 2.66667, -28, 10.6667, -30.6667 ), PoolVector2Array( -8, -28, 1.33333, -24, 9.33333, -25.3333 ), PoolVector2Array( -12, -20, 0, -20, 8, -20 ), PoolVector2Array( -16, 0, -8, -4, 0, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Body/Reg:points")
@@ -650,10 +1155,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 4, 20, 8, 32 ), PoolVector2Array( 12, 12, 8, 20, 0, 32 ), PoolVector2Array( 20, 20, 8, 28, 0, 32 ), PoolVector2Array( 20, 20, 8, 28, 0, 32 ), PoolVector2Array( 20, 20, 12, 28, 4, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, 4, -12, 4, 0 ), PoolVector2Array( 0, -20, 4, -8, 4, 0 ), PoolVector2Array( 0, -8, 12, -8, 4, 0 ), PoolVector2Array( 0, 0, 8, -8, 8, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Body/Leg:points")
@@ -662,10 +1167,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, -4, 24, -8, 32 ), PoolVector2Array( 12, 12, 20, 16, 20, 24 ), PoolVector2Array( 20, 20, 28, 24, 24, 32 ), PoolVector2Array( 20, 20, 32, 28, 28, 32 ), PoolVector2Array( 20, 20, 28, 24, 28, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( 0, -20, 0, -8, -4, 0 ), PoolVector2Array( 0, -8, -8, -8, -4, 0 ), PoolVector2Array( 0, 0, -8, -4, -4, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Body:points")
@@ -674,14 +1179,14 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 0, -8 ), PoolVector2Array( 12, 12, 8, -4 ), PoolVector2Array( 20, 20, 32, 4 ), PoolVector2Array( 20, 20, 32, 8 ), PoolVector2Array( 20, 20, 32, 8 ) ]
+"values": [ PoolVector2Array( 0, -20, 4, -36 ), PoolVector2Array( 0, -20, -4, -36, -5, -36 ), PoolVector2Array( 0, -16, -8, -32 ), PoolVector2Array( 0, -12, -8, -28 ), PoolVector2Array( 0, -8, -12, -20 ), PoolVector2Array( 0, 0, -16, 0 ) ]
 }
 
 [sub_resource type="Animation" id=16]
-resource_name = "knockout"
+resource_name = "ko_3"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Rarm:points")
 tracks/0/interp = 1
@@ -692,7 +1197,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, -8, 0, -8, 12 ), PoolVector2Array( -4, 0, -12, -4, -4, -16 ), PoolVector2Array( -12, 20, -20, 20, -32, 24 ), PoolVector2Array( -12, 32, -20, 32, -28, 28 ), PoolVector2Array( -12, 32, -20, 32, -28, 32 ) ]
+"values": [ PoolVector2Array( 0, -40, -8, -32, -8, -20 ), PoolVector2Array( -4, -32, -12, -36, -4, -48 ), PoolVector2Array( -12, -12, -20, -12, -32, -8 ), PoolVector2Array( -12, 0, -20, 0, -28, -4 ), PoolVector2Array( -12, 0, -20, 0, -28, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body/Larm:points")
@@ -704,7 +1209,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, 4, 4, 12, 8 ), PoolVector2Array( -4, 0, 8, -8, 12, -12 ), PoolVector2Array( -12, 20, -4, 8, 0, 0 ), PoolVector2Array( -12, 32, -8, 20, -8, 12 ), PoolVector2Array( -12, 32, -4, 32, 4, 28 ) ]
+"values": [ PoolVector2Array( 0, -40, 4, -28, 12, -24 ), PoolVector2Array( -4, -32, 8, -40, 12, -44 ), PoolVector2Array( -12, -12, -4, -24, 0, -32 ), PoolVector2Array( -12, 0, -8, -12, -8, -20 ), PoolVector2Array( -12, 0, -4, 0, 4, -4 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Body/Reg:points")
@@ -716,7 +1221,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 4, 20, 8, 32 ), PoolVector2Array( 8, 12, 12, 16, 16, 32 ), PoolVector2Array( 4, 16, 12, 24, 16, 32 ), PoolVector2Array( 4, 28, 12, 32, 24, 32 ), PoolVector2Array( 4, 32, 12, 32, 24, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( 8, -20, 12, -16, 16, 0 ), PoolVector2Array( 4, -16, 12, -8, 16, 0 ), PoolVector2Array( 4, -4, 12, 0, 24, 0 ), PoolVector2Array( 4, 0, 12, 0, 24, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Body/Leg:points")
@@ -728,7 +1233,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, -4, 24, -8, 32 ), PoolVector2Array( 8, 12, 16, 8, 24, 8 ), PoolVector2Array( 4, 16, 12, 4, 20, -4 ), PoolVector2Array( 4, 28, 0, 20, 0, 12 ), PoolVector2Array( 4, 32, 12, 20, 20, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( 8, -20, 16, -24, 24, -24 ), PoolVector2Array( 4, -16, 12, -28, 20, -36 ), PoolVector2Array( 4, -4, 0, -12, 0, -20 ), PoolVector2Array( 4, 0, 12, -12, 20, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Body:points")
@@ -740,7 +1245,198 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 0, -8 ), PoolVector2Array( 8, 12, -4, 0 ), PoolVector2Array( 4, 16, -12, 20 ), PoolVector2Array( 4, 28, -12, 32 ), PoolVector2Array( 4, 32, -12, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 8, -20, -4, -32 ), PoolVector2Array( 4, -16, -12, -12 ), PoolVector2Array( 4, -4, -12, 0 ), PoolVector2Array( 4, 0, -12, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "land"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Rarm:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 4, -36, 12, -44, 12, -52 ), PoolVector2Array( 12, -28, 12, -24, 20, -20 ), PoolVector2Array( 20, -12, 20, -8, 20, 0 ), PoolVector2Array( 16, -16, 16, -8, 20, 0 ), PoolVector2Array( 4, -36, -3.07692, -27.6923, 0, -20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Larm:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 4, -36, 12, -36, 20, -40 ), PoolVector2Array( 12, -28, 8, -24, 8, -16 ), PoolVector2Array( 20, -12, 24, -4, 28, 0 ), PoolVector2Array( 16, -16, 18, -13, 22, -9 ), PoolVector2Array( 4, -36, 6.15385, -24.6154, 6.15385, -21.5385 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Reg:points")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 4, -12, 4, 0 ), PoolVector2Array( -4, -16, 8, -8, 0, 0 ), PoolVector2Array( 4, -16, 8, -4, 0, 0 ), PoolVector2Array( 0, -16, 8, -8, 8, 0 ), PoolVector2Array( 0, -20, 4, -12, 4, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Leg:points")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( -4, -16, 0, -12, -4, 0 ), PoolVector2Array( 4, -16, 0, -8, -8, 0 ), PoolVector2Array( 0, -16, 0, -8, -8, 0 ), PoolVector2Array( 0, -20, -4, -8, -8, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 4, -36 ), PoolVector2Array( -4, -16, 12, -28 ), PoolVector2Array( 4, -16, 20, -12 ), PoolVector2Array( 0, -16, 16, -16 ), PoolVector2Array( 0, -20, 4, -36 ) ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "left hook"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Rarm:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, -8, -32, -8, -20 ), PoolVector2Array( 20, -25.3333, 16.6667, -18.6667, 20, -12 ), PoolVector2Array( 28, -28, 40, -18.6667, 46.6667, -25.3333 ), PoolVector2Array( 28, -28, 43.3333, -25.3333, 50, -32 ), PoolVector2Array( 23.3333, -28.6667, 40, -32, 40, -38.6667 ), PoolVector2Array( 0, -40, -4, -28, 4, -36 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Larm:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, 4, -28, 12, -24 ), PoolVector2Array( 20, -25.3333, 23.3333, -18.6667, 30, -18.6667 ), PoolVector2Array( 16.6667, -18.6667, 13.3333, -22, 28, -28 ), PoolVector2Array( 10, -22, 16.6667, -25.3333, 28, -28 ), PoolVector2Array( 10, -22, 13.3333, -28.6667, 23.3333, -28.6667 ), PoolVector2Array( 0, -40, 4, -28, 12, -32 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Reg:points")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( 16, -16, 12, -8, 0, 0 ), PoolVector2Array( 16, -16, 8, -8, 0, 0 ), PoolVector2Array( 20, -15.3333, 8, -8, 0, 0 ), PoolVector2Array( 20, -15.3333, 10, -8.6667, 3.33333, 1.3333 ), PoolVector2Array( 0, -20, 4, -12, 8, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Leg:points")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( 16, -16, 28, -8, 28, 0 ), PoolVector2Array( 16, -16, 28, -8, 24, 0 ), PoolVector2Array( 20, -15.3333, 30, -5.3333, 24, 0 ), PoolVector2Array( 20, -15.3333, 26.6667, -8.6667, 24, 0 ), PoolVector2Array( 0, -20, -4, -8, -8, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 16, -16, 20, -25.3333 ), PoolVector2Array( 16, -16, 28, -28 ), PoolVector2Array( 20, -15.3333, 28, -28 ), PoolVector2Array( 20, -15.3333, 23.3333, -28.6667 ), PoolVector2Array( 0, -20, 0, -40 ) ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "left straight"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Rarm:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, -8, -32, -8, -20 ), PoolVector2Array( 6.66667, -32, 16.6667, -25.3333, 26.6667, -28.6667 ), PoolVector2Array( 28, -28, 36.6667, -18.6667, 40, -25.3333 ), PoolVector2Array( 21.5385, -24.6154, 27.6923, -18.4615, 27.6923, -24.6154 ), PoolVector2Array( 0, -40, -4, -28, 4, -36 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Larm:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, 4, -28, 12, -24 ), PoolVector2Array( 6.66667, -32, 0, -35.3333, 0, -42 ), PoolVector2Array( 27.6923, -27.6923, 40, -28.6667, 52.3077, -27.6923 ), PoolVector2Array( 21.5385, -24.6154, 24.6154, -18.4615, 33.8462, -21.5385 ), PoolVector2Array( 0, -40, 4, -28, 12, -32 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Reg:points")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( 16, -16, 12, -8, 0, 0 ), PoolVector2Array( 16, -16, 8, -8, 0, 0 ), PoolVector2Array( 6.15385, -15.3846, 6.15385, -6.15385, 0, 0 ), PoolVector2Array( 0, -20, 4, -12, 8, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Leg:points")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( 16, -16, 28, -8, 28, 0 ), PoolVector2Array( 16, -16, 28, -8, 24, 0 ), PoolVector2Array( 8, -18, 15.3846, -9.23077, 12.3077, 0 ), PoolVector2Array( 0, -20, -4, -8, -8, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 16, -16, 6.66667, -32 ), PoolVector2Array( 16, -16, 28, -28 ), PoolVector2Array( 6.15385, -15.3846, 21.5385, -24.6154 ), PoolVector2Array( 0, -20, 0, -40 ) ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -753,10 +1449,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 0.8, 1, 2 ),
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 0.8, 1, 1.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, -8, 0, -8, 12 ), PoolVector2Array( 12, 8, 4, 4, -4, 12 ), PoolVector2Array( 28, -4, 16, -8, 8, 4 ), PoolVector2Array( 36, -8, 28, -8, 28, 4 ), PoolVector2Array( 44, 4, 36, -8, 28, -8 ), PoolVector2Array( 44, 20, 36, 16, 36, 28 ), PoolVector2Array( 40, 12, 40, 24, 40, 32 ), PoolVector2Array( 0, -8, -8, 0, -8, 12 ) ]
+"values": [ PoolVector2Array( 0, -40, -8, -32, -8, -20 ), PoolVector2Array( 12, -24, 4, -28, -4, -20 ), PoolVector2Array( 28, -36, 16, -40, 8, -28 ), PoolVector2Array( 36, -40, 28, -40, 28, -28 ), PoolVector2Array( 44, -36, 36, -40, 36, -28 ), PoolVector2Array( 44, -12, 36, -16, 36, -4 ), PoolVector2Array( 40, -20, 40, -8, 40, 0 ), PoolVector2Array( 0, -40, 2.85714, -28.5714, 11.4286, -22.8571 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body/Larm:points")
@@ -765,10 +1461,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 0.8, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, 4, 4, 12, 8 ), PoolVector2Array( 12, 8, 20, 12, 20, 16 ), PoolVector2Array( 28, -4, 20, -4, 17, 13 ), PoolVector2Array( 36, -8, 28, -16, 32, -20 ), PoolVector2Array( 44, 4, 56, 8, 64, 12 ), PoolVector2Array( 44, 20, 48, 24, 48, 32 ), PoolVector2Array( 40, 12, 40, 20, 32, 24 ), PoolVector2Array( 0, -8, 4, 4, 12, 8 ) ]
+"values": [ PoolVector2Array( 0, -40, 4, -28, 12, -24 ), PoolVector2Array( 12, -24, 20, -20, 20, -16 ), PoolVector2Array( 28, -36, 20, -36, 17, -19 ), PoolVector2Array( 36, -40, 28, -48, 32, -52 ), PoolVector2Array( 44, -36, 56, -36, 68, -36 ), PoolVector2Array( 44, -24, 52, -12, 44, -8 ), PoolVector2Array( 44, -12, 48, -8, 48, 0 ), PoolVector2Array( 40, -20, 40, -12, 32, -8 ), PoolVector2Array( 0, -40, -5.71429, -31.4286, -8.57143, -22.8571 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Body/Reg:points")
@@ -777,10 +1473,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 0.8, 1, 2 ),
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 0.8, 1, 1.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 4, 20, 8, 32 ), PoolVector2Array( 4, 20, 12, 20, 8, 32 ), PoolVector2Array( 16, 4, 12, 12, 4, 24 ), PoolVector2Array( 20, 0, 16, 8, 8, 16 ), PoolVector2Array( 28, 0, 24, 12, 12, 8 ), PoolVector2Array( 28, 16, 24, 32, 16, 28 ), PoolVector2Array( 24, 20, 24, 32, 16, 32 ), PoolVector2Array( 0, 12, 4, 20, 8, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( 4, -12, 12, -12, 8, 0 ), PoolVector2Array( 16, -28, 12, -20, 4, -8 ), PoolVector2Array( 20, -32, 16, -24, 8, -16 ), PoolVector2Array( 28, -32, 24, -20, 12, -24 ), PoolVector2Array( 28, -16, 24, 0, 16, -4 ), PoolVector2Array( 24, -12, 24, 0, 16, 0 ), PoolVector2Array( 0, -20, 4, -12, 8, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Body/Leg:points")
@@ -789,10 +1485,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 0.8, 1, 2 ),
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 0.8, 1, 1.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, -4, 24, -8, 32 ), PoolVector2Array( 4, 20, 4, 28, -8, 32 ), PoolVector2Array( 16, 4, 20, 12, 8, 20 ), PoolVector2Array( 20, 0, 24, 8, 16, 8 ), PoolVector2Array( 28, 0, 36, 8, 32, 16 ), PoolVector2Array( 28, 16, 32, 28, 28, 32 ), PoolVector2Array( 24, 20, 32, 24, 32, 32 ), PoolVector2Array( 0, 12, -4, 24, -8, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( 4, -12, 4, -4, -8, 0 ), PoolVector2Array( 16, -28, 20, -20, 8, -12 ), PoolVector2Array( 20, -32, 24, -24, 16, -24 ), PoolVector2Array( 28, -32, 36, -24, 32, -16 ), PoolVector2Array( 28, -16, 32, -4, 28, 0 ), PoolVector2Array( 24, -12, 32, -8, 32, 0 ), PoolVector2Array( 0, -20, -4, -8, -8, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Body:points")
@@ -801,15 +1497,269 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 0.8, 1, 2 ),
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 0.8, 1, 1.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 0, -8 ), PoolVector2Array( 4, 20, 12, 8 ), PoolVector2Array( 16, 4, 28, -4 ), PoolVector2Array( 20, 0, 36, -8 ), PoolVector2Array( 28, 0, 44, 4 ), PoolVector2Array( 28, 16, 44, 20 ), PoolVector2Array( 24, 20, 40, 12 ), PoolVector2Array( 0, 12, 0, -8 ) ]
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 4, -12, 12, -24 ), PoolVector2Array( 16, -28, 28, -36 ), PoolVector2Array( 20, -32, 36, -40 ), PoolVector2Array( 28, -32, 44, -36 ), PoolVector2Array( 28, -16, 44, -12 ), PoolVector2Array( 24, -12, 40, -20 ), PoolVector2Array( 0, -20, 0, -40 ) ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "meditate"
+length = 2.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 0, -4, -4, -20 ), PoolVector2Array( 0, -4, 0, -20 ), PoolVector2Array( 0, -4, 0, -20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Rarm:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, 4, -32, 8, -20 ), PoolVector2Array( -4, -20, 4, -16, 4, 0 ), PoolVector2Array( 0, -20, 8, -12, 4, -4 ), PoolVector2Array( 0, -20, 8, -12, 8, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Larm:points")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, -4, -32, -8, -20 ), PoolVector2Array( -4, -20, -8, -12, -12, 0 ), PoolVector2Array( 0, -20, -8, -8, -12, 0 ), PoolVector2Array( 0, -20, -8, -12, -8, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Leg:points")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, -4, -12, -8, 0 ), PoolVector2Array( 0, -4, -12, 0, -4, 0 ), PoolVector2Array( 0, -4, -8, 0, 0, 0 ), PoolVector2Array( 0, -4, -8, 0, 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Reg:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( 0, -4, 8, -12, 8, 0 ), PoolVector2Array( 0, -4, 8, 0, 0, 0 ), PoolVector2Array( 0, -4, 8, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "pullup"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( -2.85714, 5.71429, 0, -11.4286 ), PoolVector2Array( -2.85714, -5.71429, 8.57143, -17.1429 ), PoolVector2Array( 0, -14.2857, 2.85714, -28.5714 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Rarm:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -11.4286, 5.71429, -11.4286, 5.71429, 0 ), PoolVector2Array( 8.57143, -17.1429, 11.4286, -8.57143, 11.4286, 0 ), PoolVector2Array( 2.85714, -34.2857, 2.85714, -20, 2.85714, -11.4286 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Larm:points")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -11.4286, -5.71429, -14.2857, -8.57143, -5.71429 ), PoolVector2Array( 8.57143, -17.1429, -5.71429, -14.2857, -5.71429, -5.71429 ), PoolVector2Array( 2.85714, -34.2857, -5.71429, -25.7143, -5.71429, -14.2857 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Leg:points")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.8, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( -2.85714, 5.71429, -8.57143, -8.57143, -8.57143, 0 ), PoolVector2Array( -2.85714, -5.71429, -8.57143, -8.57143, -8.57143, 0 ), PoolVector2Array( 0, -17.1429, -5.71429, -11.4286, -8.57143, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Reg:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.8, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( -2.85714, 5.71429, 5.71429, -5.71429, 5.71429, 0 ), PoolVector2Array( -2.85714, -5.71429, 5.71429, -5.71429, 5.71429, 0 ), PoolVector2Array( 0, -17.1429, 2.85714, -8.57143, 5.71429, 0 ) ]
+}
+
+[sub_resource type="Animation" id=29]
+resource_name = "retreat"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Rarm:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, -4, -28, 4, -36 ), PoolVector2Array( 2.85714, -22.8571, -4, -28, 2.85714, -34.2857 ), PoolVector2Array( -8.57143, -14.2857, -8.57143, -22.8571, -5.71429, -28.5714 ), PoolVector2Array( -5.71429, -14.2857, -8.57143, -14.2857, 2.85714, -17.1429 ), PoolVector2Array( 2.85714, -22.8571, -4, -28, 8.57143, -22.8571 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Larm:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, 4, -28, 12, -32 ), PoolVector2Array( 2.85714, -34.2857, 11.4286, -22.8571, 17.1429, -25.7143 ), PoolVector2Array( -5.71429, -28.5714, 8.57143, -31.4286, 5.71429, -25.7143 ), PoolVector2Array( 2.85714, -17.1429, 14.2857, -14.2857, 8.57143, -11.4286 ), PoolVector2Array( 8.57143, -22.8571, 14.2857, -14.2857, 17.1429, -2.85714 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Reg:points")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( -2.85714, -17.1429, 8.57143, -8.57143, 2.85714, 0 ), PoolVector2Array( -2.85714, -17.1429, 8.57143, -11.4286, 17.1429, -5.71429 ), PoolVector2Array( -2.85714, -8.57143, 8.57143, -2.85714, 17.1429, 0 ), PoolVector2Array( 0, -8.57143, 8.57143, -5.71429, 17.1429, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Leg:points")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( -2.85714, -17.1429, -4, -8, -8, 0 ), PoolVector2Array( -2.85714, -17.1429, 5.71429, -17.1429, 2.85714, -8.57143 ), PoolVector2Array( -2.85714, -8.57143, -8.57143, -2.85714, -8.57143, 0 ), PoolVector2Array( 0, -8.57143, -11.4286, -8.57143, -8.57143, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( -2.85714, -17.1429, 2.85714, -34.2857 ), PoolVector2Array( -2.85714, -17.1429, -5.71429, -28.5714 ), PoolVector2Array( -2.85714, -8.57143, 2.85714, -17.1429 ), PoolVector2Array( 0, -8.57143, 8.57143, -22.8571 ) ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "right hook"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Rarm:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, -8, -32, -8, -20 ), PoolVector2Array( 8, -32, -4, -24, 0, -20 ), PoolVector2Array( 28, -28, 32, -16, 40, -20 ), PoolVector2Array( 28, -28, 44, -28, 44, -36 ), PoolVector2Array( 0, -40, -4, -28, 4, -36 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Larm:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, 4, -28, 12, -24 ), PoolVector2Array( 12, -36, 12, -32, 4, -36 ), PoolVector2Array( 24, -28, 16, -32, 8, -32 ), PoolVector2Array( 20, -20, 20, -24, 28, -28 ), PoolVector2Array( 16, -24, 20, -28, 28, -28 ), PoolVector2Array( 0, -40, 4, -28, 12, -32 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Reg:points")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( 16, -16, 12, -8, 0, 0 ), PoolVector2Array( 16, -16, 8, -8, 0, 0 ), PoolVector2Array( 16, -16, 8, -8, 0, 0 ), PoolVector2Array( 0, -20, 4, -12, 8, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Leg:points")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( 16, -16, 28, -8, 28, 0 ), PoolVector2Array( 16, -16, 28, -8, 24, 0 ), PoolVector2Array( 16, -16, 24, -8, 24, 0 ), PoolVector2Array( 0, -20, -4, -8, -8, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 16, -16, 8, -32 ), PoolVector2Array( 16, -16, 28, -28 ), PoolVector2Array( 16, -16, 28, -28 ), PoolVector2Array( 0, -20, 0, -40 ) ]
 }
 
 [sub_resource type="Animation" id=6]
-resource_name = "punch"
-loop = true
+resource_name = "right straight"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Rarm:points")
 tracks/0/interp = 1
@@ -820,7 +1770,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.3, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, -8, 0, -8, 12 ), PoolVector2Array( 8, -4, 0, -4, 4, -8 ), PoolVector2Array( 28, 4, 40, 4, 52, 4 ), PoolVector2Array( 0, -8, -4, 4, 4, -4 ) ]
+"values": [ PoolVector2Array( 0, -40, -8, -32, -8, -20 ), PoolVector2Array( 8, -36, 0, -36, 4, -40 ), PoolVector2Array( 28, -28, 40, -28, 52, -28 ), PoolVector2Array( 0, -40, -4, -28, 4, -36 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body/Larm:points")
@@ -832,7 +1782,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, 4, 4, 12, 8 ), PoolVector2Array( 12, -4, 12, 0, 4, -4 ), PoolVector2Array( 24, 0, 16, 0, 8, -4 ), PoolVector2Array( 28, 12, 20, 8, 28, 4 ), PoolVector2Array( 0, -8, 4, 4, 12, 0 ) ]
+"values": [ PoolVector2Array( 0, -40, 4, -28, 12, -24 ), PoolVector2Array( 12, -36, 12, -32, 4, -36 ), PoolVector2Array( 24, -32, 16, -32, 8, -36 ), PoolVector2Array( 28, -20, 20, -24, 28, -28 ), PoolVector2Array( 0, -40, 4, -28, 12, -32 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Body/Reg:points")
@@ -844,7 +1794,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.2, 0.3, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 4, 20, 8, 32 ), PoolVector2Array( 12, 12, 8, 20, 0, 32 ), PoolVector2Array( 16, 16, 8, 24, 0, 32 ), PoolVector2Array( 0, 12, 4, 20, 8, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( 12, -20, 8, -12, 0, 0 ), PoolVector2Array( 16, -16, 8, -8, 0, 0 ), PoolVector2Array( 0, -20, 4, -12, 8, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Body/Leg:points")
@@ -856,7 +1806,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.2, 0.3, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, -4, 24, -8, 32 ), PoolVector2Array( 12, 12, 20, 16, 20, 24 ), PoolVector2Array( 16, 16, 28, 24, 24, 32 ), PoolVector2Array( 0, 12, -4, 24, -8, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( 12, -20, 20, -16, 20, -8 ), PoolVector2Array( 16, -16, 28, -8, 24, 0 ), PoolVector2Array( 0, -20, -4, -8, -8, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Body:points")
@@ -868,7 +1818,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.2, 0.3, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 0, -8 ), PoolVector2Array( 12, 12, 8, -4 ), PoolVector2Array( 16, 16, 28, 4 ), PoolVector2Array( 0, 12, 0, -8 ) ]
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 12, -20, 8, -36 ), PoolVector2Array( 16, -16, 28, -28 ), PoolVector2Array( 0, -20, 0, -40 ) ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -883,7 +1833,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 8, 20, -4, 20, -16, 24 ), PoolVector2Array( 4, 32, 0, 28, -12, 32 ), PoolVector2Array( -4, 32, -16, 32, -8, 24 ), PoolVector2Array( 4, 32, 4, 24, 4, 16 ), PoolVector2Array( -8, 12, -4, 0, 0, -8 ) ]
+"values": [ PoolVector2Array( 8, -12, -4, -12, -16, -8 ), PoolVector2Array( 4, 0, 0, -4, -12, 0 ), PoolVector2Array( -4, 0, -16, 0, -8, -8 ), PoolVector2Array( 4, 0, 4, -8, 4, -16 ), PoolVector2Array( -8, -20, -4, -32, 0, -40 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body/Larm:points")
@@ -895,7 +1845,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( -16, 24, -20, 32, -12, 32 ), PoolVector2Array( -12, 32, -20, 24, -20, 32 ), PoolVector2Array( -8, 24, 0, 24, 8, 28 ), PoolVector2Array( 4, 16, 12, 24, 8, 32 ), PoolVector2Array( 0, -8, 4, 4, 4, 12 ) ]
+"values": [ PoolVector2Array( -16, -8, -20, 0, -12, 0 ), PoolVector2Array( -12, 0, -20, -8, -20, 0 ), PoolVector2Array( -8, -8, 0, -8, 8, -4 ), PoolVector2Array( 4, -16, 12, -8, 8, 0 ), PoolVector2Array( 0, -40, 4, -28, 4, -20 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Body/Reg:points")
@@ -907,7 +1857,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 32, 8, 20, 16, 32 ), PoolVector2Array( 4, 20, 12, 20, 16, 32 ), PoolVector2Array( -16, 12, -4, 8, 4, 16 ), PoolVector2Array( -12, 24, -4, 32, -20, 32 ), PoolVector2Array( 0, 12, -4, 24, -8, 32 ) ]
+"values": [ PoolVector2Array( 0, 0, 8, -12, 16, 0 ), PoolVector2Array( 4, -12, 12, -12, 16, 0 ), PoolVector2Array( -16, -20, -4, -24, 4, -16 ), PoolVector2Array( -12, -8, -4, 0, -20, 0 ), PoolVector2Array( 0, -20, -4, -8, -8, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Body/Leg:points")
@@ -919,7 +1869,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 32, -4, 28, 8, 32 ), PoolVector2Array( 4, 20, -4, 28, 8, 32 ), PoolVector2Array( -16, 12, -8, 16, 0, 24 ), PoolVector2Array( -12, 24, 0, 24, 0, 32 ), PoolVector2Array( 0, 12, 4, 24, 4, 32 ) ]
+"values": [ PoolVector2Array( 0, 0, -4, -4, 8, 0 ), PoolVector2Array( 4, -12, -4, -4, 8, 0 ), PoolVector2Array( -16, -20, -8, -16, 0, -8 ), PoolVector2Array( -12, -8, 0, -8, 0, 0 ), PoolVector2Array( 0, -20, 4, -8, 4, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Body:points")
@@ -931,77 +1881,12 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 32, -16, 24 ), PoolVector2Array( 4, 20, -12, 32 ), PoolVector2Array( -16, 12, -8, 24 ), PoolVector2Array( -12, 24, 4, 16 ), PoolVector2Array( 0, 12, 0, -8 ) ]
+"values": [ PoolVector2Array( 0, 0, -16, -8 ), PoolVector2Array( 4, -12, -12, 0 ), PoolVector2Array( -16, -20, -8, -8 ), PoolVector2Array( -12, -8, 4, -16 ), PoolVector2Array( 0, -20, 0, -40 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "stand"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body:points")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ PoolVector2Array( 0, 12, 0, -8 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Body/Rarm:points")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ PoolVector2Array( 0, -8, 4, 0, 8, 12 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Body/Larm:points")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ PoolVector2Array( 0, -8, -4, 0, -8, 12 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Body/Leg:points")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ PoolVector2Array( 0, 12, -4, 20, -8, 32 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Body/Reg:points")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ PoolVector2Array( 0, 12, 4, 20, 8, 32 ) ]
-}
-
-[sub_resource type="Animation" id=1]
-resource_name = "walk"
-length = 1.2
-loop = true
+[sub_resource type="Animation" id=31]
+resource_name = "takedown_1"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Rarm:points")
 tracks/0/interp = 1
@@ -1009,10 +1894,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.8, 1, 1.2 ),
+"times": PoolRealArray( 0, 0.5, 0.8, 1.1, 1.2, 1.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, -8, 0, -8, 12 ), PoolVector2Array( 4, -8, 0, 4, 8, 12 ), PoolVector2Array( 0, -8, 4, 4, 12, 8 ), PoolVector2Array( 4, -8, 4, 4, 8, 12 ), PoolVector2Array( 0, -8, 0, 4, 4, 12 ), PoolVector2Array( 0, -8, -8, 0, -8, 12 ) ]
+"values": [ PoolVector2Array( 0, -40, -8, -32, -8, -20 ), PoolVector2Array( 2.85714, -28.5714, -5.71429, -22.8571, -8.57143, -14.2857 ), PoolVector2Array( 0, -48.5714, -11.4286, -51.4286, -5.71429, -57.1429 ), PoolVector2Array( -2.85714, -25.7143, -8.57143, -34.2857, -8.57143, -42.8571 ), PoolVector2Array( 0, -28.5714, -5.71429, -17.1429, -8.57143, -8.57143 ), PoolVector2Array( 0, -40, -8, -32, -8, -20 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body/Larm:points")
@@ -1021,10 +1906,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.8, 1, 1.2 ),
+"times": PoolRealArray( 0, 0.5, 0.8, 1.1, 1.2, 1.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, -8, 4, 4, 12, 8 ), PoolVector2Array( 4, -8, -4, 0, 0, 12 ), PoolVector2Array( 0, -8, -8, 0, -8, 8 ), PoolVector2Array( 4, -8, -4, 4, 0, 12 ), PoolVector2Array( 0, -8, 0, 4, 8, 8 ), PoolVector2Array( 0, -8, 4, 4, 12, 8 ) ]
+"values": [ PoolVector2Array( 0, -40, 4, -28, 12, -24 ), PoolVector2Array( 2.85714, -28.5714, 11.4286, -22.8571, 17.1429, -17.1429 ), PoolVector2Array( 0, -48.5714, 14.2857, -57.1429, 8.57143, -60 ), PoolVector2Array( -2.85714, -25.7143, 5.71429, -34.2857, 5.71429, -40 ), PoolVector2Array( 0, -28.5714, 2.85714, -20, 2.85714, -8.57143 ), PoolVector2Array( 0, -40, 8.57143, -31.4286, 12, -24 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Body/Reg:points")
@@ -1033,10 +1918,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 0.8, 1.1, 1.2, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 4, 20, 8, 32 ), PoolVector2Array( 0, 12, 4, 24, 0, 32 ), PoolVector2Array( 0, 12, 0, 20, -4, 32 ), PoolVector2Array( 0, 12, -4, 24, -12, 32 ), PoolVector2Array( 0, 12, 0, 24, -4, 32 ), PoolVector2Array( 0, 12, 8, 20, 4, 28 ), PoolVector2Array( 0, 12, 4, 20, 8, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( 0, -11.4286, 8.57143, -14.2857, 5.71429, 0 ), PoolVector2Array( 2.85714, -31.4286, 5.71429, -22.8571, 5.71429, -17.1429 ), PoolVector2Array( 0, -14.2857, 11.4286, -5.71429, 5.71429, -11.4286 ), PoolVector2Array( 2.85714, -22.8571, 8.57143, -14.2857, 14.2857, -22.8571 ), PoolVector2Array( 0, -20, 4, -12, 8, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Body/Leg:points")
@@ -1045,10 +1930,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 0.8, 1.1, 1.2, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, -4, 24, -8, 32 ), PoolVector2Array( 0, 12, 0, 24, -4, 28 ), PoolVector2Array( 0, 12, 8, 20, 4, 28 ), PoolVector2Array( 0, 12, 8, 24, 12, 32 ), PoolVector2Array( 0, 12, 0, 20, 0, 32 ), PoolVector2Array( 0, 12, 0, 24, -4, 32 ), PoolVector2Array( 0, 12, -4, 24, -8, 32 ) ]
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( 0, -11.4286, -8.57143, -8.57143, -5.71429, 0 ), PoolVector2Array( 2.85714, -31.4286, 0, -20, 0, -11.4286 ), PoolVector2Array( 0, -14.2857, -8.57143, -5.71429, -2.85714, -5.71429 ), PoolVector2Array( 2.85714, -22.8571, 0, -11.4286, 0, 0 ), PoolVector2Array( 0, -20, -2.85714, -8.57143, -2.85714, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Body:points")
@@ -1057,78 +1942,290 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2, 0.6, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 0.8, 1.1, 1.2, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( 0, 12, 0, -8 ), PoolVector2Array( 0, 12, 4, -6 ), PoolVector2Array( 0, 12, 0, -8 ), PoolVector2Array( 0, 12, 0, -8 ) ]
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 0, -11.4286, 2.85714, -28.5714 ), PoolVector2Array( 2.85714, -31.4286, 0, -48.5714 ), PoolVector2Array( 0, -14.2857, -2.85714, -25.7143 ), PoolVector2Array( 2.85714, -22.8571, 0, -28.5714 ), PoolVector2Array( 0, -20, 0, -40 ) ]
+}
+
+[sub_resource type="Animation" id=32]
+resource_name = "takedown_2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Rarm:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 0.8, 0.9, 1.2, 1.5, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 8.57143, -20, 5.71429, -28.5714, 0, -34.2857 ), PoolVector2Array( 8.57143, -2.85714, 5.71429, -8.57143, 2.85714, -20 ), PoolVector2Array( 2.85714, -5.71429, 8.57143, -14.2857, 2.85714, -20 ), PoolVector2Array( 8.57143, -25.7143, 8.57143, -34.2857, 5.71429, -40 ), PoolVector2Array( 11.4286, -34.2857, 8.57143, -40, 2.85714, -48.5714 ), PoolVector2Array( 14.2857, -25.7143, 5.71429, -28.5714, -2.85714, -22.8571 ), PoolVector2Array( 8.57143, -20, 5.71429, -28.5714, 0, -34.2857 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Larm:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 0.8, 0.9, 1.2, 1.5, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -34.2857, -5.71429, -25.7143, -8.57143, -17.1429 ), PoolVector2Array( 2.85714, -20, -5.71429, -8.57143, -5.71429, -17.1429 ), PoolVector2Array( 2.85714, -20, -5.71429, -14.2857, -5.71429, -8.57143 ), PoolVector2Array( 5.71429, -40, 5.71429, -51.4286, 5.71429, -62.8571 ), PoolVector2Array( 2.85714, -48.5714, 0, -57.1428, 5.71429, -65.7143 ), PoolVector2Array( -2.85714, -22.8571, -11.4286, -25.7143, -17.1429, -22.8571 ), PoolVector2Array( 0, -34.2857, -5.71429, -25.7143, -8.57143, -17.1429 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Reg:points")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6, 0.8, 0.9, 1.2, 1.5, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -17.1429, 5.71429, -8.57143, 5.71429, 0 ), PoolVector2Array( -2.85714, -2.85714, 8.57143, 0, 0, 0 ), PoolVector2Array( -2.85714, -8.57143, 2.85714, -5.71429, 5.71429, 0 ), PoolVector2Array( 2.85714, -25.7143, 5.71429, -14.2857, 2.85714, -5.71429 ), PoolVector2Array( 2.85714, -34.2857, 8.57143, -28.5714, 5.71429, -22.8571 ), PoolVector2Array( 2.85714, -8.57143, 8.57143, -14.2857, 8.57143, 0 ), PoolVector2Array( 0, -17.1429, 5.71429, -8.57143, 5.71429, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Leg:points")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6, 0.8, 0.9, 1.2, 1.5, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -17.1429, -2.85714, -8.57143, -5.71429, 0 ), PoolVector2Array( -2.85714, -2.85714, -5.71429, -5.71429, -12, 0 ), PoolVector2Array( -2.85714, -8.57143, -5.71429, -5.71429, -8.57143, 0 ), PoolVector2Array( 2.85714, -25.7143, -2.85714, -25.7143, 0, -14.2857 ), PoolVector2Array( 2.85714, -34.2857, 0, -28.5714, 2.85714, -17.1429 ), PoolVector2Array( 2.85714, -8.57143, -8.57143, -11.4286, -5.71429, 0 ), PoolVector2Array( 0, -17.1429, -2.85714, -8.57143, -5.71429, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.6, 0.8, 0.9, 1.2, 1.5, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -17.1429, 0, -34.2857 ), PoolVector2Array( -2.85714, -2.85714, 2.85714, -20 ), PoolVector2Array( -2.85714, -8.57143, 2.85714, -20 ), PoolVector2Array( 2.85714, -25.7143, 5.71429, -40 ), PoolVector2Array( 2.85714, -34.2857, 2.85714, -48.5714 ), PoolVector2Array( 2.85714, -8.57143, -2.85714, -22.8571 ), PoolVector2Array( 0, -17.1429, 0, -34.2857 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "walk"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Rarm:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, 5.71429, -28.5714, 11.4286, -22.8571 ), PoolVector2Array( 4, -40, 5.71429, -28.5714, 8, -20 ), PoolVector2Array( 0, -40, -5.71429, -28.5714, -8.57143, -22.8571 ), PoolVector2Array( 2.85714, -40, 4, -28, 8, -20 ), PoolVector2Array( 0, -40, 5.71429, -28.5714, 8.57143, -22.8571 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Larm:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, -5.71429, -31.4286, -8.57143, -22.8571 ), PoolVector2Array( 4, -40, -2.85714, -28.5714, -2.85714, -22.8571 ), PoolVector2Array( 0, -40, 5.71429, -28.5714, 8.57143, -22.8571 ), PoolVector2Array( 2.85714, -40, -4, -28, 0, -20 ), PoolVector2Array( 0, -40, -5.71429, -28.5714, -8.57143, -22.8571 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Reg:points")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 4, -12, 8, 0 ), PoolVector2Array( 0, -20, 4, -8, 0, 0 ), PoolVector2Array( 0, -20, -4, -8, -12, 0 ), PoolVector2Array( 0, -20, 5.71429, -11.4286, -2.85714, -5.71429 ), PoolVector2Array( 0, -20, 4, -12, 8, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Leg:points")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, -4, -8, -8, 0 ), PoolVector2Array( 0, -20, 0, -11.4286, -5.71429, -8.57143 ), PoolVector2Array( 0, -20, 8, -8, 12, 0 ), PoolVector2Array( 0, -20, 0, -12, -2.85714, 0 ), PoolVector2Array( 0, -20, -4, -8, -8, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 0, -20, 4, -38 ), PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 0, -20, 2.85714, -40 ), PoolVector2Array( 0, -20, 0, -40 ) ]
+}
+
+[sub_resource type="Animation" id=33]
+resource_name = "walk_flip"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Rarm:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, 5.71429, -28.5714, 3.07692, -21.5385 ), PoolVector2Array( 0, -40, 0, -27.6923, 3.07692, -21.5385 ), PoolVector2Array( 4, -40, 5.71429, -28.5714, 8, -20 ), PoolVector2Array( 0, -40, -5.71429, -28.5714, -8.57143, -22.8571 ), PoolVector2Array( 2.85714, -40, 4, -28, 8, -20 ), PoolVector2Array( 0, -40, 5.71429, -28.5714, 8.57143, -22.8571 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Larm:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -40, -3.07692, -27.6923, -8.57143, -22.8571 ), PoolVector2Array( 0, -40, 3.07692, -30.7692, 0, -21.5385 ), PoolVector2Array( 4, -40, -2.85714, -28.5714, -2.85714, -22.8571 ), PoolVector2Array( 0, -40, 5.71429, -28.5714, 8.57143, -22.8571 ), PoolVector2Array( 2.85714, -40, -4, -28, 0, -20 ), PoolVector2Array( 0, -40, -5.71429, -28.5714, -8.57143, -22.8571 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Reg:points")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 3.07692, -6.15385, 8, 0 ), PoolVector2Array( 0, -20, 3.07692, -9.23077, 0, 0 ), PoolVector2Array( 0, -20, 4, -8, 0, 0 ), PoolVector2Array( 0, -20, -4, -8, -12, 0 ), PoolVector2Array( 0, -20, 5.71429, -11.4286, -2.85714, -5.71429 ), PoolVector2Array( 0, -20, 4, -12, 8, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Leg:points")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, -6.15385, -9.23077, -8, 0 ), PoolVector2Array( 0, -20, 0, -9.23077, 0, 0 ), PoolVector2Array( 0, -20, 0, -11.4286, -5.71429, -8.57143 ), PoolVector2Array( 0, -20, 8, -8, 12, 0 ), PoolVector2Array( 0, -20, 0, -12, -2.85714, 0 ), PoolVector2Array( 0, -20, -4, -8, -8, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 0, -20, 4, -38 ), PoolVector2Array( 0, -20, 0, -40 ), PoolVector2Array( 0, -20, 2.85714, -40 ), PoolVector2Array( 0, -20, 0, -40 ) ]
 }
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Body" type="Line2D" parent="."]
-points = PoolVector2Array( 0, 12, 0, -8 )
+scale = Vector2( 1.3, 1.3 )
+points = PoolVector2Array( 0, -20, 0, -40 )
 width = 5.0
-default_color = Color( 0, 0, 0, 1 )
+default_color = Color( 1, 1, 1, 1 )
 begin_cap_mode = 2
 end_cap_mode = 2
+round_precision = 16
 antialiased = true
 
 [node name="Rarm" type="Line2D" parent="Body"]
-points = PoolVector2Array( 0, -8, 4, 0, 8, 12 )
+points = PoolVector2Array( 0, -40, 4, -32, 8, -20 )
 width = 5.0
-default_color = Color( 0, 0, 0, 1 )
+default_color = Color( 1, 1, 1, 1 )
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 antialiased = true
 
 [node name="Larm" type="Line2D" parent="Body"]
-points = PoolVector2Array( 0, -8, -4, 0, -8, 12 )
+points = PoolVector2Array( 0, -40, -4, -32, -8, -20 )
 width = 5.0
-default_color = Color( 0, 0, 0, 1 )
+default_color = Color( 1, 1, 1, 1 )
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 antialiased = true
 
 [node name="Leg" type="Line2D" parent="Body"]
-points = PoolVector2Array( 0, 12, -4, 20, -8, 32 )
+points = PoolVector2Array( 0, -20, -4, -12, -8, 0 )
 width = 5.0
-default_color = Color( 0, 0, 0, 1 )
+default_color = Color( 1, 1, 1, 1 )
 joint_mode = 2
 end_cap_mode = 2
 antialiased = true
 
 [node name="Reg" type="Line2D" parent="Body"]
-points = PoolVector2Array( 0, 12, 4, 20, 8, 32 )
+points = PoolVector2Array( 0, -20, 4, -12, 8, 0 )
 width = 5.0
-default_color = Color( 0, 0, 0, 1 )
+default_color = Color( 1, 1, 1, 1 )
 joint_mode = 2
 end_cap_mode = 2
 antialiased = true
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
-position = Vector2( 0, -8 )
 texture = ExtResource( 1 )
-offset = Vector2( 0, -12 )
+offset = Vector2( 0, -28 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 playback_default_blend_time = 0.2
 anims/RESET = SubResource( 2 )
+anims/block_1 = SubResource( 20 )
+anims/block_2 = SubResource( 8 )
+anims/climb = SubResource( 25 )
+anims/crush = SubResource( 15 )
 anims/dodge = SubResource( 13 )
-anims/fall = SubResource( 5 )
+anims/fadeout = SubResource( 24 )
+anims/fall = SubResource( 18 )
 anims/flurry = SubResource( 10 )
-anims/focus1 = SubResource( 12 )
-anims/hit = SubResource( 8 )
+anims/focus_1 = SubResource( 28 )
+anims/focus_2 = SubResource( 27 )
+anims/focus_3 = SubResource( 12 )
+anims/hit_heavy = SubResource( 9 )
+anims/idle_1 = SubResource( 3 )
 anims/jump = SubResource( 4 )
 anims/kick = SubResource( 7 )
-anims/knockback = SubResource( 9 )
-anims/knockdown = SubResource( 15 )
-anims/knockout = SubResource( 16 )
+anims/ko_1 = SubResource( 30 )
+anims/ko_2 = SubResource( 19 )
+anims/ko_3 = SubResource( 16 )
+anims/land = SubResource( 5 )
+"anims/left hook" = SubResource( 23 )
+"anims/left straight" = SubResource( 22 )
 anims/lunge = SubResource( 11 )
-anims/punch = SubResource( 6 )
+anims/meditate = SubResource( 17 )
+anims/pullup = SubResource( 26 )
+anims/retreat = SubResource( 29 )
+"anims/right hook" = SubResource( 21 )
+"anims/right straight" = SubResource( 6 )
 anims/roll = SubResource( 14 )
-anims/stand = SubResource( 3 )
+anims/takedown_1 = SubResource( 31 )
+anims/takedown_2 = SubResource( 32 )
 anims/walk = SubResource( 1 )
+anims/walk_flip = SubResource( 33 )
+
+[connection signal="animation_finished" from="Animation" to="." method="_on_animation_finished"]

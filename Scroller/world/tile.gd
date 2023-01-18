@@ -63,7 +63,7 @@ func set_terrain(val):
 	G.world.tilemap.set_cell(x, y, tid)
 
 func set_state(p, from):
-	state = [p, G.world.turn.turns+1, G.get_face(from, x)]
+	state = [p, G.world.turn.turns+1, G.get_face(x, from)]
 
 func add_item(item):
 	if item.get_parent() == null:
@@ -92,6 +92,12 @@ func update_tile():
 
 func is_col(bit):
 	return col & bit > 0
+
+func is_land():
+	if is_col(8):
+		return false
+	var down = get_neighbor(0, 1)
+	return down != self and down.is_col(12)
 
 func get_adjacent(dir, val=1):
 	if dir == -1:
@@ -140,6 +146,31 @@ func get_rand_offset(_x, _y):
 	var ry = G.rng.ir(-_y, _y)
 	return G.world.get_tile(x + rx, y + ry)
 
+func get_routes():
+	if !is_land():
+		return [G.DIRS[4]]
+	var r = []
+	if is_col(4):
+		r.append(G.DIRS[0])
+	var left = get_neighbor(-1, 0)
+	if left.is_land():
+		r.append(G.DIRS[6])
+	elif !left.is_col(8) and get_neighbor(-1, 1).is_land():
+		r.append(G.DIRS[5])
+	var right = get_neighbor(1, 0)
+	if right.is_land():
+		r.append(G.DIRS[2])
+	elif !right.is_col(8) and get_neighbor(1, 1).is_land():
+		r.append(G.DIRS[3])
+	if get_neighbor(0, 1).is_col(4):
+		r.append(G.DIRS[4])
+	if !get_neighbor(0, -1).is_col(8):
+		if get_neighbor(1, -1).is_land():
+			r.append(G.DIRS[1])
+		if get_neighbor(-1, -1).is_land():
+			r.append(G.DIRS[7])
+	return r
+
 func get_beam_to(dest, col_mask, distance=-1):
 	var diffx = dest.x - x
 	var diffy = dest.y - y
@@ -159,15 +190,6 @@ func get_beam_to(dest, col_mask, distance=-1):
 		prev = current
 	return [prev, current]
 
-func get_routes(cols):
-	var r = []
-	for i in range(0, 8, 2):
-		var tile = get_adjacent(i)
-		if tile != self:
-			if !tile.is_col(cols):
-				r.append(G.DIRS[i])
-	return r
-
 func direction_to(to):
 	var tx = to.x - x
 	var ty = to.y - y
@@ -179,6 +201,6 @@ func set_light(p):
 func get_items_by_type(p):
 	var r = []
 	for i in items:
-		if i.item_type == p:
+		if i.get_type() == p:
 			r.append(i)
 	return r

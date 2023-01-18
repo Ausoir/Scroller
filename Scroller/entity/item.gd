@@ -1,5 +1,7 @@
 extends Node2D
 
+onready var sprite = $Sprite
+var offset = Vector2()
 var item_name
 var position_speed = 4
 var col: int = 0
@@ -27,9 +29,13 @@ func get_default_team():
 func update_z():
 	set_z_index(pos.screen_y * 10 + zlayer)
 
+func set_col(p):
+	col = p
+	pos.update_tile()
+
 func face(_dir):
 	dir = _dir
-	if dir != scale.x:
+	if (dir > 0) != (scale.x > 0):
 		scale.x *= -1
 
 func face_toward(p):
@@ -44,7 +50,6 @@ func remove():
 	if light > 0:
 		G.you.view_dirty = light
 		G.world.turn.light_sources.erase(self)
-	G.healthbars.on_remove(self)
 	pos.remove_item(self)
 	G.world.turn.remove(self)
 	if pos.visible:
@@ -58,10 +63,12 @@ func die():
 	remove()
 
 func on_turn():
-	if !beneath.is_col(4):
+	if !beneath.is_col(12):
 		fall_height += 1
 		position_speed = -1
 		relocate(beneath)
+		if pos.y == G.world.size.y-1:
+			die()
 	elif fall_height > 0:
 		on_land()
 		fall_height = 0
@@ -70,7 +77,7 @@ func on_land():
 	pass
 
 func hit(_force, _dir):
-	pass
+	pos.state = null
 
 func relocate(to, force=false):
 	if force:
@@ -94,11 +101,11 @@ func relocate(to, force=false):
 
 func _physics_process(_delta):
 	if position_speed > 0:
-		var diff = pos.position - position
-		position += diff * position_speed * 0.003
+		var diff = pos.position + offset - position
+		position += diff * position_speed * 0.002
 		position_speed = min(16, position_speed+1)
 	else:
-		var diff = pos.position - position
+		var diff = pos.position + offset - position
 		position += diff * -position_speed * 0.01
 		position_speed = max(-16, position_speed-0.5)
 
@@ -127,12 +134,10 @@ func flash(c, dur):
 
 func set_texture_from_path(path):
 	if path != null:
-		G.data.set_sprite_texture(self, path, 0)
-		if self.texture != null:
-			if !self.region_enabled:
-				var img_size = self.texture.get_size()
-				if img_size.y > G.H:
-					self.offset.y = -int((img_size.y - G.H) / 2)
+		G.data.set_sprite_texture(sprite, path, 0)
+		var img_size = sprite.texture.get_size()
+		if img_size.y > G.H:
+			sprite.offset.y = -int((img_size.y - G.H) / 2)
 
 func cast_light(mag, row, start, end, flips):
 	if start < end:
