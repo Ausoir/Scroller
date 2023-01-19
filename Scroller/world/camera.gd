@@ -6,6 +6,7 @@ const OCTANT_FLIP = [[1, 0, 0, 1], [0, 1, 1, 0], [0, -1, 1, 0], [-1, 0, 0, 1], [
 const SHADES = [Color(0, 0, 0, .6), Color(0, 0, 0, .45), Color(0, 0, 0, .3), Color.transparent]
 const MAX_SIGHT = 15
 
+var camera_offset = Vector2(0, -32)
 var processing_frame: int = 0
 var sight_range = [-1,-1,-1,-1]
 var max_sight_x = -1
@@ -30,10 +31,10 @@ func start_process():
 func _process(_delta):
 	if is_instance_valid(target):
 		if G.vars.setting.smoothcam:
-			var diff = target.global_position - position
+			var diff = target.global_position + camera_offset - position
 			position += diff * _delta * 2
 		else:
-			position = target.global_position
+			position = target.global_position + camera_offset
 	if processing_frame > 0:
 		if processing_frame == 1:
 			target.pos.sight_frame = sight_frame
@@ -97,7 +98,7 @@ func get_visible_distance(_light, dist):
 	return r
 
 func set_sight():
-	var p = G.vars.get("sight_r", 6)
+	var p = G.vars.get("sight_r", 5)
 	var p_col = G.vars.get("sight_c", 1)
 	var is_different = p_col != sight_bits
 	var new_max_sight_x = -1

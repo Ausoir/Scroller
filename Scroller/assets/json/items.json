@@ -1,6 +1,28 @@
 {
+	"door": {
+		"class": "door",
+		"col": 15,
+		"width": 16,
+		"color": "#6e4",
+	},
+	"metal door": {
+		"class": "door",
+		"col": 15,
+		"width": 24,
+		"color": "#666",
+	},
+	"window": {
+		"class": "door",
+		"col": 14,
+		"color": "#6FD",
+		"width": 10,
+	},
 	"ladder": {
 		"img": "tile/ladder",
 		"col": 4,
+	},
+	"box": {
+		"img": "tile/box",
+		"col": 5,
 	},
 }

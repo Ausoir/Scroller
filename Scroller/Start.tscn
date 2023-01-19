@@ -83,19 +83,18 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 320, 240 )
 
-[node name="Label" type="RichTextLabel" parent="."]
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 40.0
-margin_top = -30.0
+margin_left = -40.0
+margin_top = -24.0
+margin_right = 40.0
 grow_horizontal = 2
-bbcode_enabled = true
-bbcode_text = "[url=editor][EDITOR][/url]						[url=start][START][/url]						[url=exit][EXIT][/url]"
-meta_underlined = false
-text = "[EDITOR]						[START]						[EXIT]"
-fit_content_height = true
-scroll_active = false
+size_flags_horizontal = 3
+text = "[START]"
+align = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/FadeIn = SubResource( 6 )
@@ -103,11 +102,3 @@ anims/FadeOut = SubResource( 2 )
 anims/RESET = SubResource( 4 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-
-[node name="Settings" type="RichTextLabel" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 640, 400 )
-bbcode_enabled = true
-
-[connection signal="meta_clicked" from="Label" to="." method="_on_meta_clicked"]

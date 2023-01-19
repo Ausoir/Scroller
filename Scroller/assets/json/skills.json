@@ -5,7 +5,7 @@
 	},
 	"uppercut": {
 		"type": "grab",
-		"run": [[0, "dod", "takedown_2"],[0, "pop", "uppercut"],[4, "col", 0], [4, "grab"], [5, "col", 2]],
+		"run": [[0, "dod", "takedown_2"],[0, "pop", "uppercut"],[5, "col", 0], [5, "grab"], [6, "col", 2]],
 	},
 	"right straight": {
 		"type": "melee",
@@ -37,7 +37,7 @@
 	},
 	"kick": {
 		"type": "lunge",
-		"run": [[0, "dod", "kick"],[0, "pop", "kick"],[0, "toward", 1, 4],[1, "attack", "heavy"]],
+		"run": [[0, "dod", "kick"],[0, "pop", "kick"],[0, "toward", 1, 4],[0, "attack", "heavy"]],
 	},
 	"lunge": {
 		"type": "lunge",

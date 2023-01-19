@@ -3,20 +3,23 @@
         1.0,
         " ase",
         [
-            "             L   ",
-            "             L   ",
-            "             L   ",
-            "    @        L   ",
-            " BBBBBBBBBBBBL   ",
-            "             L   ",
-            "             L   ",
-            "             L   ",
-            "             L   ",
-            "      WW     L   ",
-            ".....WWBBBB......",
+            "  MMMMMMM    L                 ",
+            "  M.....M    L                 ",
+            "   ... .- #  LWWWWWWWWL        ",
+            "  M.@...= ## L        L        ",
+            " mmmmmmmmmmmmL MM     L        ",
+            "             L MM     L        ",
+            "             L MM     L        ",
+            "             L MM     WWWW     ",
+            "             L MMDDDDDDDDDDDDDD",
+            "      WW     L MMDDDDDDDDDDDDDD",
+            "DDDDDWWBBBBDDDDDDDDDDDDDDDDDDDD",
         ],
         {
-            "L": [" ", "ladder"]
+            "L": [" ", "ladder"],
+            "#": [" ", "box"],
+            "=": [" ", "metal door"],
+            "-": [" ", "window"],
         }
     ]
 ]

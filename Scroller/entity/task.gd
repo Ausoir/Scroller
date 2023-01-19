@@ -101,12 +101,12 @@ class Pathing extends TileTask:
 		if !result.empty():
 			var pos = pilot.host.pos
 			var to = result.pop_front()
+			var dir = G.get_face(pilot.host.pos.x, to.x)
 			if pos.y > to.y:
-				pilot.host.action.next_action = ["jump"]
+				pilot.host.action.next_action = ["jump", dir]
 			elif pos.y < to.y and pos.x == to.x:
 				pilot.host.action.next_action = ["down"]
 			else:
-				var dir = G.get_face(pilot.host.pos.x, to.x)
 				pilot.host.action.next_action = ["walk", dir]
 			result = []
 
@@ -160,14 +160,23 @@ class Pathing extends TileTask:
 
 
 class Wander extends Idle:
+	var dir
+
 	func on_set():
 		.on_set()
-		pilot.lifetime = 100
+		pilot.lifetime = G.rng.ir(1, 50)
 		pilot.priority = 4
+		dir = G.rng.ir(-1, 1)
 
 	func random_state():
-		pilot.lifetime = G.rng.ir(50, 200)
-		pilot.host.action.next_action = ["walk", G.rng.dr()]
+		if dir == 0:
+			pilot.host.action.next_action = ["stand"]
+		else:
+			var neighbor = pilot.host.pos.get_neighbor(dir, 0)
+			if neighbor != pilot.host.pos and neighbor.is_land():
+				pilot.host.action.next_action = ["walk", dir]
+			else:
+				dir *= -1
 
 	func on_turn():
 		if .on_turn():
@@ -197,7 +206,7 @@ class Attack extends TargetTask:
 					if target.pos.x != pilot.host.pos.x:
 						pilot.host.action.next_action = ["attack", G.get_face(pilot.host.pos.x, target.pos.x)]
 					elif target.pos.y < pilot.host.pos.y:
-						pilot.host.action.next_action = ["jump"]
+						pilot.host.action.next_action = ["jump", G.get_face(pilot.host.pos.x, target.pos.x)]
 					else:
 						pilot.host.action.next_action = ["down"]
 				else:

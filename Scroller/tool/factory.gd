@@ -1,4 +1,5 @@
 const Item = preload("res://entity/Item.tscn")
+const Door = preload("res://entity/Door.tscn")
 const Unit = preload("res://entity/Unit.tscn")
 
 func make_any(name, pos=null):
@@ -18,23 +19,27 @@ func make_unit(name, pos):
 		G.world.team[r.team].append(r)
 		for i in r.dat.get("skills", []):
 			r.action.skills.append(i)
-		r.color(Color(r.dat.get("color", "#000")))
+		r.set_color(Color(r.dat.get("color", "#000")))
 		if r.team != 1:
 			r.possess()
 		return r
 
 func make_item(name, pos):
+	var r
 	var json = G.data.item_data.get(name)
 	if json != null:
-		var r = Item.instance()
+		if json.get("class") == "door":
+			r = Door.instance()
+		else:
+			r = Item.instance()
 		assign_dat(r, json, pos)
-		return r
+	return r
 
 func assign_dat(item, json, pos):
 	item.dat = json.duplicate()
 	if pos != null:
 		item.relocate(pos, true)
-	item.col = int(item.dat.get("col", 0)) | item.col
+	item.set_col(int(item.dat.get("col", 0)))
 	item.set_texture_from_path(item.dat.get("img"))
 
 func make_group(arg, pos):

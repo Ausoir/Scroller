@@ -5,3 +5,5 @@
 [resource]
 background_mode = 2
 background_sky = SubResource( 1 )
+background_color = Color( 0.74902, 0.313726, 0.313726, 1 )
+glow_intensity = 3.23

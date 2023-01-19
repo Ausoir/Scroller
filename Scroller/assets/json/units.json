@@ -8,9 +8,16 @@
 		"img": "face/face",
 		"color": "#276",
 		"team": 1,
+		"sight_r": 5,
+		"sight_c": 1,
 		"skills": ["crush", "flurry", "kick", "uppercut", "right straight", "left straight", "lunge"],
 	},
 	"man": {
+		"img": "face/bandana",
+		"team": 2,
+		"skills": ["takedown", "left hook", "right straight"],
+	},
+	"fighter": {
 		"img": "face/bandana",
 		"team": 2,
 		"skills": ["takedown", "left hook", "right straight", "retreat", "roll"],

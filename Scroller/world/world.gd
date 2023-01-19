@@ -43,14 +43,22 @@ func _ready():
 	G.you.unserialize()
 	G.get_tree().set_pause(false)
 	spawn_mob()
+	spawn_mob()
+	spawn_mob()
+	spawn_mob()
 
 func create(_name):
 	mapname = _name
 	if !unload(_name):
 		generator.generate(_name)
 		unserialize(generator.terrains, generator.objects)
-	for y in range(-1, size.y+1):
-		for x in range(-1, size.x+1):
+	for y in range(-15, size.y+1):
+		for x in range(size.x, size.x+10):
+			shadowmap.set_cell(x, y, 1)
+		for x in range(-10, 0):
+			shadowmap.set_cell(x, y, 1)
+	for y in range(size.y+1):
+		for x in range(size.x):
 			shadowmap.set_cell(x, y, 0)
 			if x >= 0 and y >= 0 and x < size.x and y < size.y:
 				var tile = tiles[y][x]
@@ -59,11 +67,8 @@ func create(_name):
 					shademap.set_cell(x, y, 0)
 	tilemap.update_bitmask_region(Vector2(), size)
 	shademap.update_bitmask_region(Vector2(), size)
-	$Borders.position = Vector2(size.x * G.HW, size.y * G.HH)
-	$Borders/Left.position = Vector2(size.x * -G.HW - G.W, 0)
-	$Borders/Right.position = Vector2(size.x * G.HW + G.W, 0)
-	$Borders/Top.position = Vector2(0, size.y * -G.HH - G.H)
-	$Borders/Bottom.position = Vector2(0, size.y * G.HH + G.H)
+	$Background.position = Vector2(size.x * G.HW, size.y * G.HH - G.ui.screen_size.y/2)
+	$Background.scale = Vector2(size.y * G.W + G.ui.screen_size.y, size.x * G.H + G.ui.screen_size.x)
 
 func spawn_mob():
 	var mob = G.data.vars.habitat.get(mapname)
@@ -122,7 +127,6 @@ func fit_bound(x, y):
 
 func get_spawn_point():
 	var pt = G.rng.r_arr(generator.special_points)
-	generator.special_points.erase(pt)
 	var r = G.world.get_tile(pt[0], pt[1])
 	for i in r.items:
 		i.remove()

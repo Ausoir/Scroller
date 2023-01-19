@@ -26,7 +26,7 @@ func on_kill(_victim):
 		make_money(money)
 
 func on_die():
-	var unit = G.factory.make_unit("player", host.pos)
+	var unit = G.factory.make_unit("player", G.world.get_spawn_point())
 	unit.possess(self)
 
 func make_money(p):
@@ -84,7 +84,7 @@ func _physics_process(_delta):
 	last_touch_time += _delta
 	if host.action.delay == 0:
 		if Input.is_action_pressed("ui_up"):
-			host.action.next_action = ["jump"]
+			host.action.next_action = ["jump", host.dir]
 		elif Input.is_action_pressed("ui_down"):
 			host.action.next_action = ["down"]
 		elif Input.is_action_pressed("ui_right"):
@@ -99,7 +99,7 @@ func get_face():
 
 func on_turn():
 	perceive()
-	if G.camera.prev_pos != host.pos:
+	if G.camera.prev_pos != host.pos or view_dirty > 0:
 		view_dirty -= 1
 		G.camera.start_process()
 		G.world.turn.process_light()
@@ -124,8 +124,8 @@ func perceive():
 		var foe = foe_list[perceive_idx]
 		perceive_idx += 1
 		if is_instance_valid(foe):
-			var dist = max(0, host.pos.distance_to(foe.pos))
-			if dist <= G.C:
+			var dist = abs(host.pos.x - foe.pos.x) + abs(host.pos.y - foe.pos.y)*3
+			if dist <= 6:
 				_i += 4
 				if host.pos.get_beam_to(foe.pos, 1)[1] == foe.pos:
 					if dist <= max(1, G.camera.get_visible_distance(host.pos.light, 6)):

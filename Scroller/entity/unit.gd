@@ -18,14 +18,15 @@ func _ready():
 	col = 2
 	sprite.show()
 	offset.y = 32
+	G.world.turn.add(self)
 
 func get_type():
 	return 2
 
-func color(p):
-	body.default_color = p
+func set_color(p):
+	body.set_default_color(p)
 	for i in body.get_children():
-		i.default_color = p
+		i.set_default_color(p)
 
 func _physics_process(delta):
 	._physics_process(delta)

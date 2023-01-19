@@ -18,7 +18,6 @@ var fall_height = 0
 func _ready():
 	hide()
 	set_process(false)
-	G.world.turn.add(self)
 
 func get_type():
 	return 1
@@ -30,6 +29,11 @@ func update_z():
 	set_z_index(pos.screen_y * 10 + zlayer)
 
 func set_col(p):
+	if pos.visible:
+		if p & 1 == 0 and pos.is_col(1):
+			G.you.view_dirty = 1
+		elif p & 1 > 0 and !pos.is_col(1):
+			G.you.view_dirty = max(1, pos.light - G.time.ambient_light)
 	col = p
 	pos.update_tile()
 

@@ -77,12 +77,16 @@ func refresh_skills(p=null):
 
 func stand():
 	host.set_col(2)
-	host.set_animation("idle_1")
+	if host.injury:
+		host.set_animation("idle_injured")
+	else:
+		host.set_animation("idle_1")
 
 func land():
-	if !pop_moveset("plunge"):
-		host.set_animation("land")
-		delay = 4
+	host.set_animation("land")
+	delay = 4
+	if host.fall_height > 2:
+		host.pos.set_state("fall", host.pos.x)
 
 func attack(dir):
 	for item in host.pos.items:
@@ -102,12 +106,11 @@ func attack(dir):
 func focus():
 	if !skills_spent.empty() and !host.animation.get_assigned_animation().begins_with("focus"):
 		host.set_animation("focus_" + str(G.rng.ir(1, 3)))
-		delay = 1
 
 func hit(type):
 	if host.col & 2 == 0:
 		return
-	if delay == 0 and type == "light":
+	if delay == 0 and type == "light" and !host.injury:
 		host.set_animation("block_" + str(G.rng.ir(1, 2)))
 		delay = 4
 	else:
@@ -128,20 +131,22 @@ func down():
 		host.position_speed = 1
 		var targetpos = host.pos.get_neighbor(0, 1)
 		host.relocate(targetpos)
-		host.set_animation("climb", 2)
+		host.set_animation("climb", 1.5)
 		delay = 3
 
-func jump():
+func jump(dir):
+	host.face(dir)
 	if host.pos.is_col(4):
 		var targetpos = host.pos.get_neighbor(0, -1)
 		if !targetpos.is_col(4):
 			host.position_speed = -1
 			host.set_animation("pullup")
+			delay = 6
 		else:
 			host.position_speed = 1
-			host.set_animation("climb", 2)
+			host.set_animation("climb", 1.5)
 		host.relocate(targetpos)
-		delay = 3
+		delay = 4
 	else:
 		host.set_animation("jump")
 		delay = 4
@@ -149,11 +154,11 @@ func jump():
 func jump_1():
 	host.position_speed = -3
 	var targetpos = host.pos.get_neighbor(host.dir, -1)
-	host.relocate(targetpos)
+	if !targetpos.is_col(10):
+		host.relocate(targetpos)
 	delay = 4
 
 func walk(dir):
-	var faced = host.dir == dir
 	host.face(dir)
 	var targetpos = host.pos.get_neighbor(host.dir, 0)
 	if targetpos.is_col(2):
@@ -163,14 +168,15 @@ func walk(dir):
 				return
 	if !targetpos.is_col(host.col_mask):
 		host.position_speed = 4
-		if faced:
-			host.set_animation("walk", 1.5)
+		if host.injury:
+			host.set_animation("walk_injured", 1)
+			delay = 3
 		else:
-			host.set_animation("walk_flip", 1.5)
+			host.set_animation("walk", 1.5)
+			delay = 2
 		host.relocate(targetpos)
-		delay = 2
 	else:
-		host.set_animation("idle_1")
+		stand()
 
 func die():
 	host.set_animation("fadeout")
@@ -198,7 +204,7 @@ func process_commands():
 		if !to.is_col(10):
 			host.relocate(to)
 	elif cmd[1] == "col":
-		host.set_col(cmd[2])
+		host.set_col(int(cmd[2]))
 	elif cmd[1] == "refresh":
 		refresh_skills(cmd[2])
 	elif cmd[1] == "pop":
