@@ -1,11 +1,15 @@
 {
+	"O": {"name": "dark", "img": "tile/void", "col": 0},
 	" ": {"name": "background", "img": "blank", "col": 0},
-	".": {"name": "white wall", "img": "tile/white", "col": 0},
+	"-": {"name": "window", "img": "tile/window", "col": 8, "height": 1},
+	"=": {"name": "door", "img": "tile/door", "col": 1},
+	"#": {"name": "box", "img": "tile/box", "col": 5},
 	"D": {"name": "dirt", "img": "tile/dirt", "col": 11, "height": 1},
 	"B": {"name": "brick", "img": "tile/brick", "col": 11, "height": 1},
 	"b": {"name": "brick wall", "img": "tile/brick_bg", "col": 0},
 	"W": {"name": "wood", "img": "tile/wood", "col": 11, "height": 1},
-	"R": {"name": "rock", "img": "tile/rock", "col": 11, "height": 1},
+	"w": {"name": "wood wall", "img": "tile/wood_bg", "col": 0},
 	"M": {"name": "metal", "img": "tile/metal", "col": 11, "height": 1},
-	"m": {"name": "metal floor", "img": "tile/metal_floor", "col": 11, "height": 1},
+	"m": {"name": "metal wall", "img": "tile/white", "autotile": 2, "col": 0},
+	"R": {"name": "rock", "img": "tile/rock", "col": 11, "height": 1},
 }

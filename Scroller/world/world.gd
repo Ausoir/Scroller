@@ -15,6 +15,7 @@ onready var shademap = $Shademap
 onready var shadowmap = $Shadowmap
 onready var items = $Items
 onready var overlay = $Overlay
+onready var background = $Background
 var team = [[], [], []]
 
 func _ready():
@@ -37,21 +38,20 @@ func _ready():
 			count += 1
 	G.world = self
 
-	create("base")
+	create(G.vars.map)
 	add_child(G.sfx)
 	overlay.add_child(G.you)
 	G.you.unserialize()
 	G.get_tree().set_pause(false)
-	spawn_mob()
-	spawn_mob()
-	spawn_mob()
-	spawn_mob()
 
 func create(_name):
+	remove()
 	mapname = _name
-	if !unload(_name):
-		generator.generate(_name)
-		unserialize(generator.terrains, generator.objects)
+	var metadata = generator.generate(_name)[0][0]
+	if 'color' in metadata:
+		background.texture.gradient.set_color(0, Color(metadata.color[0]))
+		background.texture.gradient.set_color(1, Color(metadata.color[1]))
+	unserialize(generator.terrains, generator.objects)
 	for y in range(-15, size.y+1):
 		for x in range(size.x, size.x+10):
 			shadowmap.set_cell(x, y, 1)
@@ -100,9 +100,16 @@ func create_map(sx, sy):
 		tiles.append(row)
 
 func remove():
-	for row in tiles:
-		for cell in row:
-			cell.queue_free()
+	if tiles != null:
+		for row in tiles:
+			for cell in row:
+				for item in cell.items:
+					if item != G.you.host:
+						item.remove()
+				cell.queue_free()
+	tilemap.clear()
+	shademap.clear()
+	shadowmap.clear()
 
 func get_tile(x, y):
 	if is_inbound(x, y):
@@ -128,21 +135,7 @@ func fit_bound(x, y):
 func get_spawn_point():
 	var pt = G.rng.r_arr(generator.special_points)
 	var r = G.world.get_tile(pt[0], pt[1])
-	for i in r.items:
-		i.remove()
-	G.factory.make_any("entrance", r)
 	return r
-
-func get_exit_point():
-	var pt = G.rng.r_arr(generator.special_points)
-	if pt != null:
-		generator.special_points.erase(pt)
-		var r = G.world.get_tile(pt[0], pt[1])
-		for i in r.items:
-			i.remove()
-		r.set_terrain(G.data.level_data.get(mapname).default)
-		G.factory.make_any("exit", r)
-		return r
 
 func unserialize(line_terrains, line_objects):
 	if line_terrains[0] is Array:
@@ -158,9 +151,3 @@ func unserialize(line_terrains, line_objects):
 			var obj = line_objects[y][x]
 			if obj != null:
 				G.factory.make_any(obj, tile)
-
-func unload(_name):
-	var map_data = G.data.get_json_from_dir("user://current.map")
-	if map_data != null:
-		unserialize(map_data[1], map_data[2])
-		return true

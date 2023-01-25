@@ -199,12 +199,20 @@ class Attack extends TargetTask:
 	func perform():
 		if target != null:
 			var diff = target.pos.difference_to(pilot.host.pos)
-			if !pilot.host.animation.current_animation.begins_with("focus"):
+			if !pilot.host.action.focusing:
 				if diff == 0:
-					pilot.host.action.next_action = ["attack", 0]
+					if target.is_col(2):
+						pilot.host.action.next_action = ["attack", 0]
+					else:
+						pilot.host.action.next_action = ["walk", G.rng.dr()]
+				elif diff == 2 and target.pos.y == pilot.host.pos.y and target.is_col(2):
+					pilot.host.action.next_action = ["lunge", G.get_face(pilot.host.pos.x, target.pos.x)]
 				elif diff == 1:
 					if target.pos.x != pilot.host.pos.x:
-						pilot.host.action.next_action = ["attack", G.get_face(pilot.host.pos.x, target.pos.x)]
+						if target.is_col(2):
+							pilot.host.action.next_action = ["attack", G.get_face(pilot.host.pos.x, target.pos.x)]
+						else:
+							pilot.host.action.next_action = ["focus"]
 					elif target.pos.y < pilot.host.pos.y:
 						pilot.host.action.next_action = ["jump", G.get_face(pilot.host.pos.x, target.pos.x)]
 					else:
@@ -253,3 +261,27 @@ class Guard extends Pathing:
 				tile = pilot.host.pos
 			target = tile
 		return .on_turn()
+
+
+class Talk extends Idle:
+	func on_set():
+		.on_set()
+		pilot.lifetime = -1
+		pilot.priority = 3
+
+	func on_turn():
+		if .on_turn():
+			pilot.move.target = G.you.host.pos
+			pilot.move.on_turn()
+			return true
+
+	func perform():
+		var diff = G.you.host.pos.difference_to(pilot.host.pos)
+		if diff == 0:
+			pilot.host.action.next_action = ["walk", G.rng.dr()]
+		elif diff <= 2:
+			pilot.host.face_toward(G.you.host.pos.x)
+			pilot.host.action.next_action = ["talk"]
+		else:
+			pilot.move.target = G.you.host.pos
+			pilot.move.perform()

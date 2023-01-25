@@ -16,17 +16,11 @@ func _ready():
 		node.connect("finished", self, "on_finished", [i])
 
 func adjust_sound():
-	var db = 0
-	if G.vars.setting.sound == "low":
-		db = -16
-	elif G.vars.setting.sound == "high":
-		db = 16
+	var db = G.vars.setting.volume - 50
 	for player in nodes:
 		player.set_volume_db(db)
 
 func play(sound, ppos):
-	if G.vars.setting.sound == "off":
-		return
 	if G.camera.is_pos_in_range(ppos):
 		var index = find_player()
 		if index != -1:

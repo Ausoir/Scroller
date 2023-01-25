@@ -46,6 +46,8 @@ func str_to_task(p):
 		return Task.Pathing
 	elif p == "attack":
 		return Task.Attack
+	elif p == "talk":
+		return Task.Talk
 	elif p == "idle":
 		return Task.Idle
 

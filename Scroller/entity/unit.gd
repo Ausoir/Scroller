@@ -5,23 +5,33 @@ const Action = preload("res://entity/action.gd")
 
 onready var animation = $Animation
 onready var body = $Body
+onready var chat = $Chat
 
 var delay = 0
 
-var team = 2
+var team = -1
 var col_mask = 8
 var pilot
 var injury = false
+var gene = -1
 var action = Action.new(self)
 
 func _ready():
 	col = 2
 	sprite.show()
 	offset.y = 32
+	chat.host = self
 	G.world.turn.add(self)
 
 func get_type():
 	return 2
+
+func set_seed(p):
+	gene = p
+	if gene == -1:
+		gene = G.rng.ir(0, 999999)
+	var size = 1 + gene % 26 * .01
+	set_scale(Vector2(size, size))
 
 func set_color(p):
 	body.set_default_color(p)
@@ -40,7 +50,7 @@ func possess(_ctlr = null):
 	if _ctlr == null:
 		_ctlr = Pilot.new()
 		_ctlr.host = self
-		_ctlr.set_ai([])
+		_ctlr.set_ai(dat.get("ai", []))
 	else:
 		_ctlr.unassign()
 		_ctlr.host = self
@@ -53,8 +63,16 @@ func possess(_ctlr = null):
 func on_kill(_victim):
 	pass
 
+func face(_dir):
+	.face(_dir)
+	if scale.x < 0:
+		chat.scale.x = -.5
+	else:
+		chat.scale.x = .5
+
 func on_turn():
 	.on_turn()
+	chat._on_turn()
 	if pos.state != null and pos.state[1] >= G.world.turn.turns:
 		hit(pos.state[0], pos.state[2])
 	elif fall_height > 0:
@@ -63,14 +81,15 @@ func on_turn():
 		pilot.on_turn()
 		action.on_turn()
 
-func hit(state, dir):
+func hit(state, from):
 	if col & 2 > 0:
-		face(dir)
+		face_toward(from)
 		action.set_action(["hit", state])
-		.hit(state, dir)
+		.hit(state, from)
 
 func on_land():
-	action.set_action(["land"])
+	action.set_action(["land", fall_height])
+	.on_land()
 
 func set_texture_from_path(path):
 	if path != null:
@@ -81,6 +100,7 @@ func set_texture_from_path(path):
 				sprite.offset.y = -int((img_size.y - G.H) / 2)
 
 func die():
+	drop_loot()
 	pilot.on_die()
 	.die()
 
@@ -92,7 +112,7 @@ func remove():
 	.remove()
 
 func relocate(p, force=false):
-	if check_overlap(p):
+	if !p.get_items_by_type(2).empty():
 		if G.rng.b():
 			offset.x += G.rng.ir(3, 7)
 		else:
@@ -100,8 +120,6 @@ func relocate(p, force=false):
 	else:
 		offset.x = 0
 	.relocate(p, force)
-	if pos.visible:
-		update_z()
 
 func set_animation(p, speed=1):
 	if speed != 1:
@@ -116,9 +134,16 @@ func callback_animation(p):
 func _on_animation_finished(anim_name):
 	action.on_animation_done(anim_name)
 
-func check_overlap(targetpos):
-	for item in targetpos.items:
-		if is_instance_valid(item):
-			if item.get_type() == 2:
-				return true
-	return false
+func drop_skill(skill):
+	dat.get("skills", []).erase(skill)
+	var r = G.factory.make_item("skill", pos)
+	r.set_skill(skill)
+	return r
+
+func drop_loot():
+	var skills = dat.get("skills", [])
+	if G.rng.r_percent(0.2):
+		drop_skill(G.rng.r_arr(skills))
+	elif G.rng.r_percent(0.01):
+		var rskill = G.rng.r_arr(G.data.skill_data.keys())
+		drop_skill(rskill)

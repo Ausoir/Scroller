@@ -8,8 +8,8 @@ var speed_mod = 800
 var position = rect_position
 
 func _ready():
-	vel = Vector2(G.rng.ir(-48, 48), G.rng.ir(-48, 0))
-	vel_angle = G.rng.fr(-1, 1)
+	vel = Vector2(G.rng.ir(-24, 24), G.rng.ir(-48, 0))
+	vel_angle = G.rng.fr(-.5, .5)
 
 func set_damage(dmg, color, _scale, _speed):
 	set_text(str(dmg))
@@ -23,11 +23,11 @@ func _physics_process(delta):
 	position.y += delta * vel.y
 	rect_position = position
 	vel.x *= .99
-	vel.y += delta * speed_mod
+	vel.y -= delta * speed_mod
 	set_rotation_degrees(rect_rotation + vel_angle)
 	lifetime -= delta * speed_mod
 	if lifetime < 0:
-		G.world.others.remove_child(self)
+		G.world.overlay.remove_child(self)
 		queue_free()
 	else:
 		var process = min(1, lifetime * .03)

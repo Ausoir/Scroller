@@ -30,11 +30,8 @@ func start_process():
 
 func _process(_delta):
 	if is_instance_valid(target):
-		if G.vars.setting.smoothcam:
-			var diff = target.global_position + camera_offset - position
-			position += diff * _delta * 2
-		else:
-			position = target.global_position + camera_offset
+		var diff = target.global_position + camera_offset - position
+		position += diff * _delta * 2
 	if processing_frame > 0:
 		if processing_frame == 1:
 			target.pos.sight_frame = sight_frame

@@ -13,12 +13,13 @@ func make_vault(ssd, room):
 	var fromx = room[0]
 	var fromy = room[1]
 	for vault_data in data:
-		if ssd < vault_data[0]:
-			var vault = vault_data[2]
+		if ssd < vault_data[0].chance:
+			var vault = vault_data[1]
 			var rotvault = rotate(vault, rot)
 			var sx = rotvault[0].length()
 			var sy = rotvault.size()
-			return place_vault(rotvault, vault_data[3], fromx, fromy, sx, sy)
+			var v = place_vault(rotvault, vault_data[2], fromx, fromy, sx, sy)
+			return [vault_data, v[0], v[1]]
 
 func place_vault(vault, vault_palette, startX, startY, sizeX, sizeY):
 	var terrains = make_base(sizeX, sizeY, ' ')

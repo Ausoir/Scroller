@@ -23,7 +23,7 @@ mesh = SubResource( 3 )
 texture = SubResource( 5 )
 
 [node name="Tilemap" type="TileMap" parent="."]
-z_index = -800
+z_index = -100
 cell_quadrant_size = 32
 cell_custom_transform = Transform2D( 48, 0, 0, 48, 0, 0 )
 collision_layer = 14

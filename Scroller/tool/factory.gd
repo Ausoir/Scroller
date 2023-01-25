@@ -1,6 +1,7 @@
+const Unit = preload("res://entity/Unit.tscn")
 const Item = preload("res://entity/Item.tscn")
 const Door = preload("res://entity/Door.tscn")
-const Unit = preload("res://entity/Unit.tscn")
+const Text = preload("res://entity/Text.tscn")
 
 func make_any(name, pos=null):
 	if name[0] == "#":
@@ -10,17 +11,18 @@ func make_any(name, pos=null):
 		r = make_unit(name, pos)
 	return r
 
-func make_unit(name, pos):
+func make_unit(name, pos, data={}):
 	var json = G.data.unit_data.get(name)
 	if json != null:
 		var r = Unit.instance()
-		assign_dat(r, json, pos)
-		r.team = r.dat.get("team", 2)
+		assign_dat(r, combine_data(json, data), pos)
+		r.team = r.dat.get("team", -1)
+		r.set_seed(r.dat.get("seed", -1))
 		G.world.team[r.team].append(r)
 		for i in r.dat.get("skills", []):
 			r.action.skills.append(i)
 		r.set_color(Color(r.dat.get("color", "#000")))
-		if r.team != 1:
+		if "ai" in r.dat and r.dat.ai != null:
 			r.possess()
 		return r
 
@@ -30,17 +32,33 @@ func make_item(name, pos):
 	if json != null:
 		if json.get("class") == "door":
 			r = Door.instance()
+		elif json.get("class") == "text":
+			r = Text.instance()
 		else:
 			r = Item.instance()
 		assign_dat(r, json, pos)
 	return r
 
+func combine_data(orig, add):
+	var v = {}
+	for key in orig:
+		if key in add:
+			v[key] = add[key]
+		else:
+			var value = orig[key]
+			if value is Dictionary or value is Array:
+				v[key] = value.duplicate()
+			else:
+				v[key] = value
+	return v
+
 func assign_dat(item, json, pos):
-	item.dat = json.duplicate()
+	item.dat = json
 	if pos != null:
 		item.relocate(pos, true)
 	item.set_col(int(item.dat.get("col", 0)))
 	item.set_texture_from_path(item.dat.get("img"))
+	item.z_index = item.dat.get("z", 0)
 
 func make_group(arg, pos):
 	var groups = G.data.get_group(arg)

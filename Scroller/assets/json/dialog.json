@@ -1,0 +1,6 @@
+{
+	"block": [null, "You cannot best me!", "Tickles."],
+	"hit": [null, "Oof!", "Nani?!"],
+	"die": [null, "Ah......", "Noooo.....", "You have defeated me..."],
+	"dodge": [null, "Hmph!", "Not fast enough!"],
+}

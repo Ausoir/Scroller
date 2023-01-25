@@ -10,8 +10,8 @@ func generate(biome):
 	height = 42
 	G.rng.set_seed(G.vars.seed + 3456789)
 	var v = place_vault(Vector2(), biome, [0], G.rng.f())
-	terrains = v[0]
-	objects = v[1]
+	terrains = v[1]
+	objects = v[2]
 	width = terrains[0].size()
 	height = terrains.size()
 	special_points = []
@@ -20,6 +20,7 @@ func generate(biome):
 			if terrains[y][x] == "@":
 				special_points.append([x, y])
 				terrains[y][x] = "O"
+	return v
 
 func place_vault(pos, structure, dirs, sd, flip=0):
 	if vaults.load_vault(structure):

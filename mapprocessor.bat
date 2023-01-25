@@ -1,3 +1,3 @@
 ECHO ON
-python mapprocessor.py "dungeon"
+python mapprocessor.py "all"
 PAUSE

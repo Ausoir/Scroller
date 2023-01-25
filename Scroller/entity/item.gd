@@ -1,15 +1,11 @@
-extends Node2D
+extends "res://entity/object.gd"
 
 onready var sprite = $Sprite
 var offset = Vector2()
-var item_name
 var position_speed = 4
-var col: int = 0
-var zlayer = 0
 var dir = 1
 var tags = []
 var light = 0
-var dat = {}
 var pos
 var flash_state = [0, 0, 0, 0]
 var beneath
@@ -24,9 +20,6 @@ func get_type():
 
 func get_default_team():
 	return 0
-
-func update_z():
-	set_z_index(pos.screen_y * 10 + zlayer)
 
 func set_col(p):
 	if pos.visible:
@@ -44,13 +37,15 @@ func face(_dir):
 
 func face_toward(p):
 	if p != null:
-		var diffx = (p.x-pos.x)
+		var diffx = (p - pos.x)
 		if diffx > 0:
-			face(G.RIGHT)
+			face(1)
 		elif diffx < 0:
-			face(G.LEFT)
+			face(-1)
 
 func remove():
+	set_process(false)
+	set_physics_process(false)
 	if light > 0:
 		G.you.view_dirty = light
 		G.world.turn.light_sources.erase(self)
@@ -75,10 +70,9 @@ func on_turn():
 			die()
 	elif fall_height > 0:
 		on_land()
-		fall_height = 0
 
 func on_land():
-	pass
+	fall_height = 0
 
 func hit(_force, _dir):
 	pos.state = null

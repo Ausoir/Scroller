@@ -3,10 +3,10 @@ extends Node
 var player_name = "Player"
 
 func travel(args):
-	G.data.save("current.map", "")
+	G.get_tree().set_pause(true)
 	G.world.create(args)
 	G.you.host.relocate(G.world.get_spawn_point(), true)
-	G.world.get_exit_point()
+	G.get_tree().set_pause(false)
 
 func end_game():
 	G.ui.clear()
@@ -37,8 +37,7 @@ func clean_up():
 	G.get_tree().set_pause(false)
 
 func start_game():
-	var data = load_game()
-	G.vars = data
+	load_game()
 	G.time.set_process(true)
 	G.get_tree().set_pause(true)
 	G.time.reset()
@@ -62,26 +61,21 @@ func save_game(end=false):
 		save_game.close()
 
 func load_game():
-	var r
 	var save_game = File.new()
 	var line
-	save_game.open("user://savegame.save", File.READ)
+	save_game.open("user://current.save", File.READ)
 	var is_open = save_game.is_open()
 	if is_open:
 		line = save_game.get_line()
-		r = parse_json(line)
+		G.vars = parse_json(line)
 	if !is_open or line.empty():
 		save_game.close()
 		save_game = File.new()
 		save_game.open("res://assets/template.save", File.READ)
 		line = save_game.get_line()
-		r = parse_json(line)
+		G.vars = parse_json(line)
+	G.vars["load_data"] = parse_json(save_game.get_line())
 	save_game.close()
-	return r
-
-func start_editor():
-	clean_up()
-	G.get_tree().change_scene_to(load("res://editor/Editor.tscn"))
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:

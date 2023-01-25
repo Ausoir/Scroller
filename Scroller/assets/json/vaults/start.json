@@ -1,0 +1,36 @@
+[
+    [
+        {
+            "name": "start",
+            "chance": 1.0,
+            "color":
+            [
+                "#000",
+                "#000"
+            ],
+            "foes": 0
+        },
+        [
+            "WWWWWWWWWWWWWWWW",
+            "WwwwwwwwwwwwWWWW",
+            "WwwwwwwwwwwwWWWW",
+            "WwwwwwwwwwwwWWWW",
+            "WwwwwwwwwwwwWWWW",
+            "W#wwwwwwwwwwwwwW",
+            "W##ww@wwwwwwwwwW",
+            "W##wWWWWwwwwwwwW",
+            "W###WWWWWwwwIwww",
+            "WWWWWWWWWWWWWWWW"
+        ],
+        {
+            "H":
+            [
+                " ", "ladder"
+            ],
+            "I":
+            [
+                "w", "boss"
+            ],
+        }
+    ]
+]

@@ -1,17 +1,14 @@
-var item_name
-var visible = false
+extends "res://entity/object.gd"
+
 var x
 var y
-var dat
 var icon = '?'
 var items = []
 var img
 var height = 0
 var light = 0
-var col: int
 var sight_frame = -1
 var screen_y = 0
-var position
 var state
 var state_time = 0
 
@@ -63,7 +60,7 @@ func set_terrain(val):
 	G.world.tilemap.set_cell(x, y, tid)
 
 func set_state(p, from):
-	state = [p, G.world.turn.turns+1, G.get_face(x, from)]
+	state = [p, G.world.turn.turns+1, from]
 
 func add_item(item):
 	if item.get_parent() == null:
@@ -89,9 +86,6 @@ func update_tile():
 	col = dat.col
 	for item in items:
 		col = col | item.col
-
-func is_col(bit):
-	return col & bit > 0
 
 func is_land():
 	if is_col(8):
@@ -202,5 +196,12 @@ func get_items_by_type(p):
 	var r = []
 	for i in items:
 		if i.get_type() == p:
+			r.append(i)
+	return r
+
+func get_items_by_team(p):
+	var r = []
+	for i in items:
+		if i.get_type() == 2 and i.team == p and i.is_col(2):
 			r.append(i)
 	return r

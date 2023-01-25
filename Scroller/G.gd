@@ -90,13 +90,12 @@ func make_particle(arg, pos, args=null, force=false):
 			r.run_details(args)
 		return r
 
-func display_damage(val, pos, color=Color.white, _scale=1, _speed=800, lifetime=200):
+func display_damage(val, pos, color=Color.white, _scale=1, _speed=800):
 	if pos.visible:
 		var r = Damage_Label.instance()
-		r.lifetime = lifetime
 		r.position = pos.position
-		r.position.y -= HH
-		world.others.add_child(r)
+		r.position.y -= H
+		world.overlay.add_child(r)
 		r.set_damage(str(val), color, _scale, _speed)
 
 func run(p, param):
@@ -104,15 +103,3 @@ func run(p, param):
 
 func add_event(countdown, newevent, params=[]):
 	events.append([countdown, newevent, params])
-
-func diff_to_dir(diffx, diffy):
-	if abs(diffx) > abs(diffy):
-		if diffx < 0:
-			return 6
-		elif diffx > 0:
-			return 2
-	elif diffy < 0:
-		return 0
-	elif diffy > 0:
-		return 4
-	return -1

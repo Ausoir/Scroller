@@ -7,19 +7,36 @@
 	"player": {
 		"img": "face/face",
 		"color": "#276",
+		"level": 3,
 		"team": 1,
 		"sight_r": 5,
 		"sight_c": 1,
-		"skills": ["crush", "flurry", "kick", "uppercut", "right straight", "left straight", "lunge"],
+		"ai": null,
+		"skills": ["uppercut", "flurry", "plunge", "kick"],
+	},
+	"ally": {
+		"img": "face/face",
+		"team": 1,
+		"value": 200,
+		"skills": ["lunge", "takedown", "left hook", "right straight", "meditate"],
 	},
 	"man": {
 		"img": "face/bandana",
-		"team": 2,
-		"skills": ["takedown", "left hook", "right straight"],
+		"team": -1,
+		"value": 200,
+		"skills": ["lunge", "takedown", "left hook", "right straight", "meditate"],
 	},
-	"fighter": {
+	"boss": {
 		"img": "face/bandana",
-		"team": 2,
-		"skills": ["takedown", "left hook", "right straight", "retreat", "roll"],
+		"team": 1,
+		"col": 0,
+		"skills": ["takedown", "kick", "flurry", "flurry", "flurry", "flurry", "crush", "retreat", "roll"],
+		"ai": ["talk", "idle"],
+		"dialog": [
+			[0,"say","Tap and drag sideways to move."],
+			[8,"say","Drag upward to jump, downward to attack."],
+			[16,"say","Stand still to block."],
+			[32,"say","Double tap to open the skill menu."],
+		],
 	},
 }

@@ -14,9 +14,7 @@ sx = 1
 sy = 1
 
 def run(args):
-    run_file(args+"_s")
-    run_file(args+"_c")
-    run_file(args+"_f")
+    run_file(args)
 
 def run_file(args):
     global img
@@ -24,16 +22,18 @@ def run_file(args):
     global sy
     global lines
     global objs
-    mapdata = []
     filenames = []
     for filename in os.listdir("./rawmaps/"):
-        if filename.startswith(args) and filename.endswith(".png") and filename != "template.png":
-            filenames.append(filename)
-    count = 1
+        if (args == "all" or filename.startswith(args)) and filename.endswith(".png") and filename != "template.png":
+            filenames.append(filename[:-4])
+    writedata = []
+    objs = {'H': [' ', 'ladder']}
     for filename in filenames:
+        filename_split = filename.split('_')
+        if filename_split.__len__() == 1 or int(filename_split[1]) == 1:
+            writedata = []
         lines = []
-        objs = {}
-        img = Image.open("./rawmaps/"+filename).convert('RGB')
+        img = Image.open("./rawmaps/"+filename+".png").convert('RGB')
         sx, sy = img.size
         process()
         text = ""
@@ -44,12 +44,12 @@ def run_file(args):
                 row += cell
             terrain.append(row)
             text += row + "\n"
-        mapdata.append([count/filenames.__len__(), filename[:-4], terrain, objs])
-        count += 1
         #print(text)
-    fwrite = open("./Crawler/assets/json/vaults/"+args+".json", "w+")
-    fwrite.write(json.dumps(mapdata))
-    fwrite.close()
+        meta = {'name': filename, 'chance': 1/(writedata.__len__()+1), 'color': ['#000','#000'], 'foes': 0}
+        writedata.insert(0, [meta, terrain, objs])
+        fwrite = open("./Scroller/assets/json/vaults/"+filename_split[0]+".json", "w+")
+        fwrite.write(json.dumps(writedata))
+        fwrite.close()
 
 def process():
     for y in range(sy):
@@ -58,7 +58,7 @@ def process():
             cell = pixel_to_char((x, y))
             line.append(cell)
         lines.append(line)
-    process_furniture()
+    #process_furniture()
     return lines
 
 def pixel_to_char(at):
@@ -66,23 +66,27 @@ def pixel_to_char(at):
     cell = ' '
     if pixel[0] == pixel[1] == pixel[2]:
         if pixel[0] == 0:
-            cell = 'X'
-        elif pixel[0] == 48:
-            cell = 'H'
+            cell = 'D'
+        elif pixel[0] == 64:
+            cell = '#'
         elif pixel[0] == 128:
-            cell = '*'
-    elif pixel == (185, 122, 87):
-        cell = '.'
-    elif pixel == (0, 38, 255):
-        cell = '~'
-    elif pixel == (255, 106, 0):
-        cell = 'v'
-    elif pixel == (255, 216, 0):
-        cell = '?'
-    elif pixel == (126, 66, 255):
-        cell = 'I'
-    elif pixel == (127, 0, 0):
+            cell = 'H'
+    elif pixel == (255, 0, 0): # Red
         cell = '@'
+    elif pixel == (127, 0, 0): # Dark Red
+        cell = '@'
+    elif pixel == (255, 106, 0): # Orange
+        cell = 'B'
+    elif pixel == (127, 51, 0): # Dark Orange
+        cell = 'b'
+    elif pixel == (255, 216, 0): # Yellow
+        cell = 'M'
+    elif pixel == (127, 106, 0): # Dark Yellow
+        cell = 'm'
+    elif pixel == (182, 255, 0): # Green
+        cell = 'W'
+    elif pixel == (91, 127, 0): # Dark Green
+        cell = 'w'
     return cell
 
 def process_furniture():

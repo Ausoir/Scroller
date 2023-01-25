@@ -1,1 +1,2 @@
-{"money":150,"seed":-1,"time":0,"setting":{"sound":"normal","smoothcam":true,"showfps":false,"landscape":true}}
+{"map":"start","seed":-1,"time":0,"setting":{"volume":50,"showfps":false}}
+{"name": "player"}

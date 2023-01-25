@@ -11,6 +11,7 @@ var item_data
 var unit_data
 var skill_data
 var group_data
+var dialog_data
 
 func _init():
 	file = File.new()
@@ -23,6 +24,7 @@ func _init():
 	unit_data = get_json_from_dir("res://assets/json/units.json")
 	attach_meta(item_data)
 	group_data = get_json_from_dir("res://assets/json/groups.json")
+	dialog_data = get_json_from_dir("res://assets/json/dialog.json")
 
 func get_combo(dat):
 	var r = []
