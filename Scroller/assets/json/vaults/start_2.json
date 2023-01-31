@@ -1,0 +1,49 @@
+[
+    [
+        {
+            "name": "start_2",
+            "chance": 1.0,
+            "color":
+            [
+                "#000",
+                "#000"
+            ],
+            "right": "city_lower",
+            "save": true,
+        },
+        [
+            "WWWWWWWWWWWWWWWWWWWWWWWWWW",
+            "WwwwwwwwwwwwwwwwwwwWWWWWWW",
+            "WwwwwwwwwwwwwwwwwwwwWWWWWW",
+            "Www@wwwwwwwwwwwww!wwWWWWWW",
+            "WWwWWWWWWWWWWWWWHWWWWWWWWW",
+            "Wwwwwwwwwwww!wwwHwwwWWWWWW",
+            "WwwwwwHWWWWWWWWWWWWwWWWWWW",
+            "WwwwwwHwwwwwwwwwwwwwwwwWWW",
+            "WwwwwwHwwwwwwwwwwwwwwwwWWW",
+            "WwwwwwHwwwww!wwwwwwwwwwWWW",
+            "WwwwwwHwwwWWWWWwwwwwwwwWWW",
+            "WwwwwwHwwWWWWWWwwwwwwwwWWW",
+            "WwwWWWWWWWWWWWWWwwww!wwwww",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWW",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWW"
+        ],
+        {
+            "H":
+            [
+                "w",
+                "ladder"
+            ],
+            "_":
+            [
+                "w",
+                "platform"
+            ],
+            "!":
+            [
+                "w",
+                "punk"
+            ]
+        }
+    ]
+]

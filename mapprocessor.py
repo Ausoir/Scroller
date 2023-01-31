@@ -27,9 +27,9 @@ def run_file(args):
         if (args == "all" or filename.startswith(args)) and filename.endswith(".png") and filename != "template.png":
             filenames.append(filename[:-4])
     writedata = []
-    objs = {'H': [' ', 'ladder']}
+    objs = {'H': [' ', 'ladder'], '_': [' ', 'platform']}
     for filename in filenames:
-        filename_split = filename.split('_')
+        filename_split = filename.split('-')
         if filename_split.__len__() == 1 or int(filename_split[1]) == 1:
             writedata = []
         lines = []
@@ -45,7 +45,7 @@ def run_file(args):
             terrain.append(row)
             text += row + "\n"
         #print(text)
-        meta = {'name': filename, 'chance': 1/(writedata.__len__()+1), 'color': ['#000','#000'], 'foes': 0}
+        meta = {'name': filename, 'chance': 1/(writedata.__len__()+1), 'color': ['#000','#000'], 'foe': '#none'}
         writedata.insert(0, [meta, terrain, objs])
         fwrite = open("./Scroller/assets/json/vaults/"+filename_split[0]+".json", "w+")
         fwrite.write(json.dumps(writedata))
@@ -74,7 +74,7 @@ def pixel_to_char(at):
     elif pixel == (255, 0, 0): # Red
         cell = '@'
     elif pixel == (127, 0, 0): # Dark Red
-        cell = '@'
+        cell = 'X'
     elif pixel == (255, 106, 0): # Orange
         cell = 'B'
     elif pixel == (127, 51, 0): # Dark Orange
@@ -87,6 +87,12 @@ def pixel_to_char(at):
         cell = 'W'
     elif pixel == (91, 127, 0): # Dark Green
         cell = 'w'
+    elif pixel == (0, 38, 255): # Blue
+        cell = '-'
+    elif pixel == (0, 19, 127): # Dark Blue
+        cell = '='
+    elif pixel == (0, 255, 33): # Teal
+        cell = '_'
     return cell
 
 def process_furniture():

@@ -3,7 +3,6 @@ extends "res://entity/pilot.gd"
 onready var n_movement = $Movement
 
 var view_dirty = 0
-var on_point
 var touch_position = Vector2()
 var drag_position = Vector2()
 var last_touch_time = 0
@@ -20,12 +19,21 @@ func on_assign():
 	G.camera.set_process(true)
 
 func on_kill(_victim):
-	if G.rng.ir(0, G.world.team[2].size()) != -1:
-		G.display_damage("LEVEL UP", host.pos, Color.blueviolet, 1, 150)
+	gain_xp(1)
+	G.event.run(_victim.dat.get("onkill"))
 
 func on_die():
-	var unit = G.factory.make_unit("player", G.world.get_spawn_point())
-	unit.possess(self)
+	G.game.load_game()
+	unserialize()
+	G.game.travel(G.vars.map)
+
+func gain_xp(p):
+	G.vars.xp += p
+	var lvl = int(G.vars.xp / 100)
+	var xp = int(G.vars.xp) % 100
+	if xp > lvl * lvl:
+		G.vars.xp = (lvl+1) * 100
+		G.display_damage("LEVEL UP", host.pos, Color.blueviolet, 1, 150)
 
 func get_mouse():
 	var screen_mouse = G.ui.mouse_pos
@@ -89,7 +97,10 @@ func diff_to_dir(diffx, diffy):
 		elif diffx > 0:
 			return ["walk", 1]
 	elif diffy < 0:
-		return ["jump", 2]
+		if diffx < 0:
+			return ["jump", -1]
+		elif diffx > 0:
+			return ["jump", 1]
 	elif diffy > 0:
 		return ["down"]
 
@@ -97,16 +108,17 @@ func on_turn():
 	perceive()
 	var moved = G.camera.prev_pos != host.pos
 	if moved or view_dirty > 0:
-		if moved and host.delay == 0:
-			pickup()
-			if host.pos.x == G.world.size.x-1:
-				G.game.travel("test")
-				return
 		view_dirty -= 1
 		G.camera.start_process()
-		G.world.turn.process_light()
 		G.camera.prev_pos = host.pos
 		make_noise(1)
+	elif host.action.delay == 0:
+		if host.pos.x == 0:
+			G.sfx.play("open", host.pos)
+			G.game.travel(G.world.mapdata.get("left"))
+		elif host.pos.x == G.world.size.x-1:
+			G.sfx.play("open", host.pos)
+			G.game.travel(G.world.mapdata.get("right"))
 
 func perceive():
 	var foe_list = G.world.team[2]
@@ -119,9 +131,9 @@ func perceive():
 		if is_instance_valid(foe):
 			var distx = abs(host.pos.x - foe.pos.x)
 			var disty = abs(host.pos.y - foe.pos.y)
-			if distx + disty*3 <= 6:
+			if distx + disty*2 <= 5:
 				_i += 4
-				if host.pos.get_beam_to(foe.pos, 1)[1] == foe.pos:
+				if host.pos.get_beam_to(foe.pos, 1)[1].distance_to(foe.pos) <= 1:
 					foe.pilot.engage(host)
 			elif distx + disty <= noise:
 				foe.pilot.hear(host.pos)
@@ -138,11 +150,13 @@ func pickup():
 		var item = host.pos.items[i]
 		if item.get_type() == 1 and item.dat.name == "skill":
 			var skills = G.you.host.dat.get("skills", [])
-			var level = G.you.host.dat.get("level", 1)
-			if level > skills.size():
+			var lvl = int(G.vars.xp / 100) + 1
+			if lvl > skills.size():
 				skills.append(item.dat.get("skill"))
+				host.action.delay = 4
 				item.animation.play("pickup")
-				return
+				G.sfx.play("pickup", host.pos)
+				return true
 
 func unserialize():
 	var player_pos = G.world.get_spawn_point()

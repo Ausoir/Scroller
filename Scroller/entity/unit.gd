@@ -15,9 +15,9 @@ var pilot
 var injury = false
 var gene = -1
 var action = Action.new(self)
+var ded = false
 
 func _ready():
-	col = 2
 	sprite.show()
 	offset.y = 32
 	chat.host = self
@@ -30,7 +30,7 @@ func set_seed(p):
 	gene = p
 	if gene == -1:
 		gene = G.rng.ir(0, 999999)
-	var size = 1 + gene % 26 * .01
+	var size = 1.1 + gene % 16 * .01
 	set_scale(Vector2(size, size))
 
 func set_color(p):
@@ -73,7 +73,7 @@ func face(_dir):
 func on_turn():
 	.on_turn()
 	chat._on_turn()
-	if pos.state != null and pos.state[1] >= G.world.turn.turns:
+	if pos.state != null and pos.state[1] >= G.world.turn.turns and pos.state[3] != team:
 		hit(pos.state[0], pos.state[2])
 	elif fall_height > 0:
 		set_animation("fall")
@@ -100,8 +100,8 @@ func set_texture_from_path(path):
 				sprite.offset.y = -int((img_size.y - G.H) / 2)
 
 func die():
-	drop_loot()
 	pilot.on_die()
+	drop_loot()
 	.die()
 
 func remove():
@@ -141,9 +141,13 @@ func drop_skill(skill):
 	return r
 
 func drop_loot():
-	var skills = dat.get("skills", [])
-	if G.rng.r_percent(0.2):
-		drop_skill(G.rng.r_arr(skills))
-	elif G.rng.r_percent(0.01):
-		var rskill = G.rng.r_arr(G.data.skill_data.keys())
-		drop_skill(rskill)
+	var loot = dat.get("loot")
+	if loot != null:
+		drop_skill(loot)
+	else:
+		var skills = dat.get("skills", [])
+		if G.rng.r_percent(0.2):
+			drop_skill(G.rng.r_arr(skills))
+		elif G.rng.r_percent(0.01):
+			var rskill = G.rng.r_arr(G.data.skill_data.keys())
+			drop_skill(rskill)

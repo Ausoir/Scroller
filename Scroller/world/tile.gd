@@ -5,6 +5,7 @@ var y
 var icon = '?'
 var items = []
 var img
+var step_sound
 var height = 0
 var light = 0
 var sight_frame = -1
@@ -54,13 +55,14 @@ func set_terrain(val):
 	dat.col = int(dat.get("col", 0))
 	col = dat.col
 	icon = val
+	step_sound = dat.get("step", "step_stone")
 	var aut = G.data.get_autotile(dat.get("autotile", 0))
 	var path = data.img + " (" + str(aut) + ")"
 	var tid = G.world.tileset.find_tile_by_name(path)
 	G.world.tilemap.set_cell(x, y, tid)
 
-func set_state(p, from):
-	state = [p, G.world.turn.turns+1, from]
+func set_state(p, from, team=0, sfx=null):
+	state = [p, G.world.turn.turns+1, from, team, sfx]
 
 func add_item(item):
 	if item.get_parent() == null:
@@ -126,6 +128,10 @@ func difference_to(tile):
 	var v = to_vector()
 	var tv = tile.to_vector()
 	return abs(v.x - tv.x) + abs(v.y - tv.y)
+
+func difference_to_vec(_x, _y):
+	var v = to_vector()
+	return abs(v.x - _x) + abs(v.y - _y)
 
 func get_available_adjacents(cols):
 	var r = []
@@ -205,3 +211,8 @@ func get_items_by_team(p):
 		if i.get_type() == 2 and i.team == p and i.is_col(2):
 			r.append(i)
 	return r
+
+func remove():
+	for i in range(items.size()-1, -1, -1):
+		items[i].remove()
+	queue_free()

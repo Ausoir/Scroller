@@ -5,7 +5,7 @@
 [ext_resource path="res://ui/chat.gd" type="Script" id=3]
 
 [sub_resource type="QuadMesh" id=1]
-size = Vector2( 400, 48 )
+size = Vector2( 400, 120 )
 
 [node name="Chat" type="Node2D"]
 scale = Vector2( 0.5, 0.5 )
@@ -16,19 +16,20 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="Mesh" type="MeshInstance2D" parent="."]
-position = Vector2( 0, -12 )
+position = Vector2( 0, -60 )
 mesh = SubResource( 1 )
 
 [node name="Viewport" type="Viewport" parent="Mesh"]
-size = Vector2( 400, 48 )
+size = Vector2( 400, 120 )
 transparent_bg = true
 
 [node name="Label" type="Label" parent="Mesh/Viewport"]
 margin_right = 400.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 64, 44 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+margin_bottom = 120.0
+rect_min_size = Vector2( 64, 120 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "Ah..."
 align = 1
-valign = 1
+valign = 2
+autowrap = true

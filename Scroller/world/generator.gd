@@ -3,7 +3,8 @@ var width
 var height
 var terrains
 var objects
-var special_points
+var entrance
+var exits
 
 func generate(biome):
 	width = 62
@@ -14,11 +15,14 @@ func generate(biome):
 	objects = v[2]
 	width = terrains[0].size()
 	height = terrains.size()
-	special_points = []
+	exits = []
 	for y in range(height):
 		for x in range(width):
 			if terrains[y][x] == "@":
-				special_points.append([x, y])
+				entrance = [x, y]
+				terrains[y][x] = "O"
+			elif terrains[y][x] == "*":
+				exits.append([x, y])
 				terrains[y][x] = "O"
 	return v
 

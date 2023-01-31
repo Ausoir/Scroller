@@ -11,18 +11,19 @@ func make_any(name, pos=null):
 		r = make_unit(name, pos)
 	return r
 
-func make_unit(name, pos, data={}):
+func make_unit(name, pos, data=null):
 	var json = G.data.unit_data.get(name)
 	if json != null:
 		var r = Unit.instance()
 		assign_dat(r, combine_data(json, data), pos)
+		r.set_col(int(r.dat.get("col", 2)))
 		r.team = r.dat.get("team", -1)
 		r.set_seed(r.dat.get("seed", -1))
 		G.world.team[r.team].append(r)
 		for i in r.dat.get("skills", []):
 			r.action.skills.append(i)
 		r.set_color(Color(r.dat.get("color", "#000")))
-		if "ai" in r.dat and r.dat.ai != null:
+		if !("ai" in r.dat) or r.dat.ai != null:
 			r.possess()
 		return r
 
@@ -37,12 +38,13 @@ func make_item(name, pos):
 		else:
 			r = Item.instance()
 		assign_dat(r, json, pos)
+		r.set_col(int(r.dat.get("col", 0)))
 	return r
 
 func combine_data(orig, add):
 	var v = {}
 	for key in orig:
-		if key in add:
+		if add != null and key in add:
 			v[key] = add[key]
 		else:
 			var value = orig[key]
@@ -56,7 +58,6 @@ func assign_dat(item, json, pos):
 	item.dat = json
 	if pos != null:
 		item.relocate(pos, true)
-	item.set_col(int(item.dat.get("col", 0)))
 	item.set_texture_from_path(item.dat.get("img"))
 	item.z_index = item.dat.get("z", 0)
 
@@ -64,13 +65,7 @@ func make_group(arg, pos):
 	var groups = G.data.get_group(arg)
 	if !groups.empty():
 		var made
-		var adjs
-		var adj = pos
 		for group in groups:
 			for _i in range(group[1]):
-				if adj != null:
-					made = make_any(group[0], adj)
-					if made != null and made.col & 4 > 0:
-						adjs = adj.get_available_adjacents(12)
-						adj = G.rng.r_arr(adjs)
+				made = make_any(group[0], pos)
 		return made

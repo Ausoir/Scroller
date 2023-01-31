@@ -1,0 +1,63 @@
+[
+    [
+        {
+            "name": "city_lower",
+            "chance": 1.0,
+            "color":
+            [
+                "#7FF",
+                "#CFFFDF"
+            ],
+            "foe": "#mob_punk",
+            "left": "sewer",
+            "right": "ghetto",
+            "save": true,
+        },
+        [
+            "                                        ",
+            "DDDDDDDDDDDDD                           ",
+            "bbbbbbbbbbbbD                           ",
+            "DDDDDDDDDDHDD                       bb  ",
+            "          H                    BBB  bb  ",
+            "          H        DDDDH       bbb  bb  ",
+            "          H     BBBBB  H       bbb  bbBB",
+            "          H     mmmmm  H       bbb  bbbb",
+            "         DDDDDDDmmmmm  H       bbb  bbbX",
+            "                BBBBB  H   DDDDDDDDDDDDD",
+            "       DD   bbbbBBBBB  WWWWWWW          ",
+            "          bbbbbbBBBBB #WWWWWWW          ",
+            "         BbbbbbbbbbbB##WWWWWWW          ",
+            "         BbbbbbbbXbbb##wXw=wXw          ",
+            "        DDDDDDDDDDDDDDDDDDDDDDDDHDD     ",
+            "   BB   DDDDDDDDDDDDDDDDDDDDDDDDHDD     ",
+            "   BB                           H       ",
+            "   BBBBBBB                      H       ",
+            "   BBBBBBB                      H       ",
+            "   BBBBBBB                      H       ",
+            "   BBBBBBB                      H     DD",
+            "   BBBBBBB                      H     DD",
+            "   BBBBBBB   mmmmm           HDDDDDDDDDD",
+            "   BBBBBBB   mmmmm           H        DD",
+            "   BBBBBBB  mmmmmmm          H WWWWWW DD",
+            "   BBBBBBB  mmm-mmm   WWWWW  H WWWWWW DD",
+            "   BBBBBBB mmm---mmm  WwwwW  H WWWWWW DD",
+            "   BBBBBBB mmmm-mmmm  wwwww  H WWWWWW DD",
+            "   BBbbbBB mmmmmmmmm  wwwww  H wwwwww DD",
+            "   BbbXbbb mmmmXmmmm  ww@ww  H wwwXww DD",
+            "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
+            "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
+        ],
+        {
+            "H":
+            [
+                " ",
+                "ladder"
+            ],
+            "_":
+            [
+                " ",
+                "platform"
+            ]
+        }
+    ]
+]

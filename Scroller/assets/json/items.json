@@ -7,4 +7,8 @@
 		"img": "tile/ladder",
 		"col": 4,
 	},
+	"platform": {
+		"img": "tile/platform",
+		"col": 4,
+	},
 }

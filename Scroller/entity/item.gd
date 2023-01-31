@@ -7,7 +7,6 @@ var dir = 1
 var tags = []
 var light = 0
 var pos
-var flash_state = [0, 0, 0, 0]
 var beneath
 var fall_height = 0
 
@@ -74,7 +73,7 @@ func on_turn():
 func on_land():
 	fall_height = 0
 
-func hit(_force, _dir):
+func hit(_state, _dir):
 	pos.state = null
 
 func relocate(to, force=false):
@@ -106,29 +105,6 @@ func _physics_process(_delta):
 		var diff = pos.position + offset - position
 		position += diff * -position_speed * 0.01
 		position_speed = max(-16, position_speed-0.5)
-
-func _process(delta):
-	if flash_state[0] > 0:
-		var percent = flash_state[0] / flash_state[1]
-		if flash_state[2] > 0:
-			modulate.r = 1
-			modulate.g = 1-flash_state[2]*percent
-			modulate.b = modulate.g
-		elif flash_state[3] > 0:
-			modulate.r = 1-flash_state[3]*percent
-			modulate.g = 1
-			modulate.b = modulate.r
-		flash_state[0] -= delta
-		if flash_state[0] <= 0:
-			modulate = Color.white
-	else:
-		set_process(false)
-
-func flash(c, dur):
-	dur = max(.1, dur)
-	flash_state = [dur, dur, 0, 0]
-	flash_state[2 + c] = 1
-	set_process(true)
 
 func set_texture_from_path(path):
 	if path != null:

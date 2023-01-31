@@ -201,11 +201,11 @@ class Attack extends TargetTask:
 			var diff = target.pos.difference_to(pilot.host.pos)
 			if !pilot.host.action.focusing:
 				if diff == 0:
-					if target.is_col(2):
+					if target.is_col(2) and pilot.host.action.has_moveset("grab"):
 						pilot.host.action.next_action = ["attack", 0]
 					else:
 						pilot.host.action.next_action = ["walk", G.rng.dr()]
-				elif diff == 2 and target.pos.y == pilot.host.pos.y and target.is_col(2):
+				elif diff == 2 and target.pos.y == pilot.host.pos.y and target.is_col(2) and pilot.host.action.has_moveset("lunge"):
 					pilot.host.action.next_action = ["lunge", G.get_face(pilot.host.pos.x, target.pos.x)]
 				elif diff == 1:
 					if target.pos.x != pilot.host.pos.x:
@@ -261,27 +261,3 @@ class Guard extends Pathing:
 				tile = pilot.host.pos
 			target = tile
 		return .on_turn()
-
-
-class Talk extends Idle:
-	func on_set():
-		.on_set()
-		pilot.lifetime = -1
-		pilot.priority = 3
-
-	func on_turn():
-		if .on_turn():
-			pilot.move.target = G.you.host.pos
-			pilot.move.on_turn()
-			return true
-
-	func perform():
-		var diff = G.you.host.pos.difference_to(pilot.host.pos)
-		if diff == 0:
-			pilot.host.action.next_action = ["walk", G.rng.dr()]
-		elif diff <= 2:
-			pilot.host.face_toward(G.you.host.pos.x)
-			pilot.host.action.next_action = ["talk"]
-		else:
-			pilot.move.target = G.you.host.pos
-			pilot.move.perform()

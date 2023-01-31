@@ -3,10 +3,18 @@ extends Node
 var player_name = "Player"
 
 func travel(args):
-	G.get_tree().set_pause(true)
-	G.world.create(args)
-	G.you.host.relocate(G.world.get_spawn_point(), true)
-	G.get_tree().set_pause(false)
+	if args != null:
+		G.get_tree().set_pause(true)
+		G.you.host.pos.remove_item(G.you.host)
+		G.world.create(args)
+		G.you.host.relocate(G.world.get_spawn_point(), true)
+		G.you.host.action.delay = 8
+		G.camera.prev_pos = G.you.host.pos
+		G.camera.start_process()
+		G.get_tree().set_pause(false)
+		G.ui.fadein()
+		if G.world.mapdata.get("save"):
+			save_game()
 
 func end_game():
 	G.ui.clear()
@@ -42,12 +50,12 @@ func start_game():
 	G.get_tree().set_pause(true)
 	G.time.reset()
 	G.get_tree().change_scene_to(load('res://world/World.tscn'))
+	G.get_tree().set_pause(false)
 
 func save_game(end=false):
 	if G.you.host != null and !G.vars.get("dead", false):
 		var tile = G.you.host.pos
 		tile.remove_item(G.you.host)
-		G.world.save()
 		var save_game = File.new()
 		save_game.open("user://savegame.save", File.WRITE)
 		if end:
@@ -56,18 +64,20 @@ func save_game(end=false):
 		else:
 			G.you.host.relocate(tile, true)
 		if G.you.host != null:
-			var line = to_json(G.vars)
-			save_game.store_line(line)
+			G.vars.map = G.world.mapname
+			save_game.store_line(to_json(G.vars))
+			save_game.store_line(to_json(G.you.host.dat))
 		save_game.close()
 
 func load_game():
 	var save_game = File.new()
 	var line
-	save_game.open("user://current.save", File.READ)
+	save_game.open("user://savegame.save", File.READ)
 	var is_open = save_game.is_open()
 	if is_open:
 		line = save_game.get_line()
-		G.vars = parse_json(line)
+		if !line.empty():
+			G.vars = parse_json(line)
 	if !is_open or line.empty():
 		save_game.close()
 		save_game = File.new()
@@ -80,5 +90,5 @@ func load_game():
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
 		get_tree().quit() # default behavior
-	elif what == MainLoop.NOTIFICATION_WM_FOCUS_OUT:
-		save_game()
+#	elif what == MainLoop.NOTIFICATION_WM_FOCUS_OUT:
+#		save_game()

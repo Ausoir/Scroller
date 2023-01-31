@@ -1,0 +1,62 @@
+[
+    [
+        {
+            "name": "city_middle",
+            "chance": 1.0,
+            "color":
+            [
+                "#000",
+                "#000"
+            ],
+            "foes": "#mob_gang",
+            "left": "dojo",
+            "right": "dojo",
+        },
+        [
+            "                                        ",
+            "                                        ",
+            "                              DDDDDDDDDD",
+            "                       DDDDDDDD         ",
+            "                 DDDDDDD                ",
+            "      DDHDDDDDDDDD                      ",
+            "  www   H                               ",
+            " wwwwW  H                               ",
+            " wwwww  Hwwww             mmm           ",
+            " wWWWw  HwwwW             mmm           ",
+            " wwwww  HWWww  WWww       mmm mmmm      ",
+            "DDDDDDDDDwwWw  ww#w       mmm mmmm      ",
+            "       DDwwww  wwWW       mmm mmmm      ",
+            "       DDwwww  w#ww       mmm mmmm      ",
+            "      DDDDDDDDDDDDDDDDDHDDDDDDDDDD      ",
+            "                       H                ",
+            "                       H         BBBBBB ",
+            " BBHBBBBBBB            H         BBBBBB ",
+            " BXHB@XXXXX            H         BBBBBB ",
+            " BHBBBBBBBBDDHDDDDDDDDDDDDDDDDDDDBBBBBB ",
+            " BHB         H           DDDD    BBBBBB ",
+            " BHB         H                   BBBBBB ",
+            " BHB         H                   BBBBBB ",
+            " BHB   DDDDDDDDDDDDDD            BBBBBB ",
+            " BHB                             BBBBBB ",
+            " BHB                  mmmmm      BBBBBB ",
+            " BHB                  mmmmm      BBBBBB ",
+            " BHX             mmm  mmmmm      BbbbbB ",
+            "BBBBBBB      DD  mmm  mmmmm      BbbbbB ",
+            "BBBBBBB#     DDD mXm  mmXmm      bbb@bB ",
+            "DDDDDDDDDDDDDDDDDDDDDDDDDDDDD    BBBBBB ",
+            "DDDDDDDDDDDDDDDDDDDDDDDDDDDDD    BBBBBB "
+        ],
+        {
+            "H":
+            [
+                " ",
+                "ladder"
+            ],
+            "_":
+            [
+                " ",
+                "platform"
+            ]
+        }
+    ]
+]

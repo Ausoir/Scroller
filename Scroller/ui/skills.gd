@@ -4,12 +4,14 @@ onready var tween = $Tween
 
 func display():
 	show()
-	$Label.set_text("Level " + str(G.you.host.dat.get("level", 1)) + " / 77%")
+	var lvl = int(G.vars.xp / 100)
+	var xp = str(int(int(G.vars.xp) % 100 / float(lvl*lvl+1) * 100))
+	$Label.set_text("Level " + str(lvl) + " / " + xp + "%")
 	for i in get_children():
 		if i is RichTextLabel:
 			i.queue_free()
 	var skills = G.you.host.dat.get("skills", [])
-	for i in range(max(G.you.host.dat.get("level", 1), skills.size())):
+	for i in range(max(lvl, skills.size())):
 		var new
 		if i >= skills.size():
 			new = make_label("[center]---[/center]")

@@ -1,6 +1,20 @@
 {
 	"block": [null, "You cannot best me!", "Tickles."],
 	"hit": [null, "Oof!", "Nani?!"],
-	"die": [null, "Ah......", "Noooo.....", "You have defeated me..."],
+	"die": [null, "Ah......", "Noooo.....", "I have been defeated..."],
 	"dodge": [null, "Hmph!", "Not fast enough!"],
+	"hint_begin": [
+		"*YAWN*",
+		"Let's see...",
+		"Use <A> and <D> to move. <W> to jump, and <S> to attack.",
+		"Alright, good to go.",
+	],
+	"hint_begin_touch": [
+		"*YAWN*",
+		"Let's see...",
+		"Tap and drag sideways to move. Drag upward to jump, downward to attack.",
+		"Alright, good to go.",
+	],
+	"hint_pickup": ["I should walk over and learn that skill by pressing <TAB>.", "Pressing <TAB> also shows my current list of skills."],
+	"hint_pickup_touch": ["I should walk over and learn that skill by tapping top left screen corner.", "It can also show my current list of skills."],
 }

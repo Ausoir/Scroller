@@ -10,7 +10,7 @@ func say(p):
 	if p != null:
 		$Mesh/Viewport/Label.set_text(p)
 		show()
-		lifetime = 20
+		lifetime = 12 + int(p.length() / 4)
 
 func say_personalized(p):
 	if !p.empty():
@@ -19,7 +19,8 @@ func say_personalized(p):
 			say(p[personality])
 
 func _on_turn():
-	lifetime -= 1
 	if lifetime == 0:
 		$Mesh/Viewport/Label.set_text("")
 		hide()
+	elif lifetime > 0:
+		lifetime -= 1

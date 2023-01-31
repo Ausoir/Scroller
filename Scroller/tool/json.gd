@@ -124,7 +124,7 @@ func get_sound(p):
 	if r != null:
 		return r
 	else:
-		r = load("res://assets/audio/" + p + ".wav")
+		r = load("res://assets/sounds/" + p + ".wav")
 		sounds_cache[p] = r
 		return r
 

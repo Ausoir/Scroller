@@ -1,16 +1,17 @@
 extends Node
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+func run(p):
+	if p == null:
+		return
+	if p == "hint begin":
+		show_hint("hint_begin")
+	elif p == "hint kill":
+		show_hint("hint_pickup")
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func show_hint(p):
+	if OS.get_name() in ["Android", "BlackBerry 10", "iOS"]:
+		G.you.host.dat.dialog += G.data.dialog_data.get(p + "_touch")
+	else:
+		G.you.host.dat.dialog += G.data.dialog_data.get(p)
+	G.you.host.action.has_dialog = true

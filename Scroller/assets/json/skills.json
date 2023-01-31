@@ -4,14 +4,14 @@
 		"color": "#333",
 		"color2": "#ACC",
 		"quote": ["Die!", "Grab-And-Slam!"],
-		"run": [[0, "dod", "takedown_1"],[5, "col", 0], [5, "grab"], [6, "col", 2]],
+		"run": [[0, "dod", "takedown_1"],[5, "grab"]],
 	},
 	"uppercut": {
 		"type": "grab",
 		"color": "#333",
 		"color2": "#99C",
 		"quote": ["Wataaa!", "Uppercut!"],
-		"run": [[0, "dod", "takedown_2"],[0, "pop", "uppercut"],[4, "col", 0], [4, "grab"], [5, "col", 2]],
+		"run": [[0, "dod", "takedown_2"],[0, "pop", "uppercut"],[4, "grab"]],
 	},
 	"right straight": {
 		"type": "melee",

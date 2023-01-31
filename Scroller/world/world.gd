@@ -9,6 +9,7 @@ var size
 var sound
 var tiles
 var mapname
+var mapdata
 
 onready var tilemap = $Tilemap
 onready var shademap = $Shademap
@@ -42,16 +43,17 @@ func _ready():
 	add_child(G.sfx)
 	overlay.add_child(G.you)
 	G.you.unserialize()
-	G.get_tree().set_pause(false)
 
 func create(_name):
 	remove()
 	mapname = _name
-	var metadata = generator.generate(_name)[0][0]
-	if 'color' in metadata:
-		background.texture.gradient.set_color(0, Color(metadata.color[0]))
-		background.texture.gradient.set_color(1, Color(metadata.color[1]))
+	mapdata = generator.generate(_name)[0][0]
 	unserialize(generator.terrains, generator.objects)
+	if 'color' in mapdata:
+		background.texture.gradient.set_color(0, Color(mapdata.color[0]))
+		background.texture.gradient.set_color(1, Color(mapdata.color[1]))
+	if 'foe' in mapdata:
+		spawn_mob(mapdata.foe)
 	for y in range(-15, size.y+1):
 		for x in range(size.x, size.x+10):
 			shadowmap.set_cell(x, y, 1)
@@ -70,16 +72,18 @@ func create(_name):
 	$Background.position = Vector2(size.x * G.HW, size.y * G.HH - G.ui.screen_size.y/2)
 	$Background.scale = Vector2(size.y * G.W + G.ui.screen_size.y, size.x * G.H + G.ui.screen_size.x)
 
-func spawn_mob():
-	var mob = G.data.vars.habitat.get(mapname)
-	for _i in range(8):
-		var x = G.rng.ir(0, size.x-1)
-		var y = G.rng.ir(0, size.y-2)
-		for yy in range(y, size.y-1):
+func spawn_mob(mob):
+	var times = (size.x + size.y) / 3
+	for _i in range(times):
+		var x = G.rng.ir(1, size.x-1)
+		var y = G.rng.ir(1, size.y-2)
+		var candidates = []
+		for yy in range(y, size.y-2):
 			var tile = tiles[yy][x]
-			if !tile.is_col(8) and tiles[yy+1][x].is_col(8):
-				G.factory.make_any(mob, tile)
-				return
+			if tile.is_land() and abs(tile.difference_to_vec(generator.entrance[0], generator.entrance[1])) > 4:
+				candidates.append(tile)
+		if !candidates.empty():
+			G.factory.make_any(mob, G.rng.r_arr(candidates))
 
 func set_dark(tile):
 	if tile.visible:
@@ -103,10 +107,7 @@ func remove():
 	if tiles != null:
 		for row in tiles:
 			for cell in row:
-				for item in cell.items:
-					if item != G.you.host:
-						item.remove()
-				cell.queue_free()
+				cell.remove()
 	tilemap.clear()
 	shademap.clear()
 	shadowmap.clear()
@@ -133,9 +134,14 @@ func fit_bound(x, y):
 	return tiles[clamp(y, 0, size.y-1)][clamp(x, 0, size.x-1)]
 
 func get_spawn_point():
-	var pt = G.rng.r_arr(generator.special_points)
-	var r = G.world.get_tile(pt[0], pt[1])
-	return r
+	return G.world.get_tile(generator.entrance[0], generator.entrance[1])
+
+func get_exit(pos):
+	for i in range(generator.exits.size()):
+		var exit = generator.exits[i]
+		if pos.x == exit[0] and pos.y == exit[1]:
+			return mapdata.to[i]
+	return null
 
 func unserialize(line_terrains, line_objects):
 	if line_terrains[0] is Array:

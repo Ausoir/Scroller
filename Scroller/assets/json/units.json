@@ -1,42 +1,58 @@
 {
 	"ghost": {
-		"img": "blank",
+		"img": "face/face",
 		"team": 1,
 		"skills": [],
 	},
 	"player": {
 		"img": "face/face",
 		"color": "#276",
-		"level": 3,
 		"team": 1,
 		"sight_r": 5,
 		"sight_c": 1,
 		"ai": null,
-		"skills": ["uppercut", "flurry", "plunge", "kick"],
+		"skills": ["right hook"],
+		"dialog": ["#hint begin"],
 	},
 	"ally": {
 		"img": "face/face",
 		"team": 1,
-		"value": 200,
 		"skills": ["lunge", "takedown", "left hook", "right straight", "meditate"],
 	},
-	"man": {
+	"noob": {
 		"img": "face/bandana",
-		"team": -1,
-		"value": 200,
+		"loot": "right straight",
+		"skills": ["left straight", "right straight"],
+		"onkill": "hint kill",
+	},
+	"punk": {
+		"img": "face/bandana",
+		"skills": ["left straight", "right straight"],
+	},
+	"gang": {
+		"img": "face/bandana",
+		"skills": ["takedown", "left hook", "right hook"],
+	},
+	"sickly": {
+		"img": "face/bandages",
+		"skills": ["right hook"],
+	},
+	"renegade": {
+		"img": "face/bandages",
+		"skills": ["right hook", "lunge"],
+	},
+	"gang leader": {
+		"img": "face/bandana",
 		"skills": ["lunge", "takedown", "left hook", "right straight", "meditate"],
 	},
 	"boss": {
 		"img": "face/bandana",
-		"team": 1,
 		"col": 0,
-		"skills": ["takedown", "kick", "flurry", "flurry", "flurry", "flurry", "crush", "retreat", "roll"],
+		"skills": [],
 		"ai": ["talk", "idle"],
 		"dialog": [
-			[0,"say","Tap and drag sideways to move."],
-			[8,"say","Drag upward to jump, downward to attack."],
-			[16,"say","Stand still to block."],
-			[32,"say","Double tap to open the skill menu."],
+			"The time has come.",
+			"Go on! Your goal rests at the very top of this city.",
 		],
 	},
 }

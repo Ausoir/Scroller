@@ -1,0 +1,66 @@
+[
+    [
+        {
+            "name": "ghetto",
+            "chance": 1.0,
+            "color":
+            [
+                "#000",
+                "#000"
+            ],
+            "foe": "#mob_gang",
+            "right": "city_middle",
+        },
+        [
+            "                                        ",
+            "                                        ",
+            "                                        ",
+            "                           B       Bb   ",
+            "                          BBBBHBBBBBbb  ",
+            "                          BbbbHbbbbbBb  ",
+            "                BBHBB     BbbbHbbbbbbb  ",
+            "          BbBBBBBbHbB     BbbbBbBbbbbB  ",
+            "      BB  BbbbbbbbHbB     BbbbbBbBbbbb  ",
+            " BBBHB    BBbbbbbbHbb     bbbbbbbb#bBb  ",
+            "    H     BbbbbbBBBBB          B  Bbbb  ",
+            "    H     BbBbb#bbbBB     bbbbbbbbbbbB  ",
+            "    H     BbbbBBb##BB     bbbbbbbbbbbb  ",
+            "    H     BBbbbb###BB     BbBBBBBBBBBB  ",
+            " BbBBB    bbbbb##BBBB     bbbbbbBbbbbB  ",
+            " B#bbB   HBBBBBB Bmm-     bbbbbbBbbbbB  ",
+            " B##bB   HBmmmmmmmmmB     BBBbBBBBbB#B  ",
+            " B##bB   HBBBBBBBBBBB     BbbbbBbbbB#B  ",
+            " B###b   HbbbbBBBbbb-     BbBbbbbbBB#B  ",
+            " BBBBB    BbbbbbbbbbB     BhBhBBBBBB#B  ",
+            " bbbbb    BBBBBhBBBBB     B#bhBbbbbB#B  ",
+            " bbbbb    -bbbBhBbbb-     B##hbbBBbB#B  ",
+            " bbbbb    BbbbbhbbbbB     BBBBBBBbbBBb  ",
+            " bbbbb    BBBBBhBBBhB     bbbbBbbbBBBBb ",
+            " bbbbb    -bbbBhBbbhB       BbBbbBBb##B ",
+            " bbbbb    B  bbhbbbhB     -bBhBb#Bb###B ",
+            " bbbbb   BBBBBBhBBBBBD    -bBhbb#bBBBBB ",
+            " bbbbb    BbbbbhBbbbBD    -bBBBBBBBbbbB ",
+            " bbbbb    =bbbbhbbbbBDD   BbbbbbbbbbbbB ",
+            " bb@bb  BBBBBBBBBBBBBDD   bbBBbbbbbbbbb ",
+            "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
+            "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
+        ],
+        {
+            "H":
+            [
+                " ",
+                "ladder"
+            ],
+            "h":
+            [
+                "b",
+                "ladder"
+            ],
+            "_":
+            [
+                " ",
+                "platform"
+            ]
+        }
+    ]
+]

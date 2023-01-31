@@ -8,7 +8,7 @@
                 "#000",
                 "#000"
             ],
-            "foes": 0
+            "right": "start_2",
         },
         [
             "WWWWWWWWWWWWWWWW",
@@ -16,21 +16,28 @@
             "WwwwwwwwwwwwWWWW",
             "WwwwwwwwwwwwWWWW",
             "WwwwwwwwwwwwWWWW",
-            "W#wwwwwwwwwwwwwW",
-            "W##ww@wwwwwwwwwW",
-            "W##wWWWWwwwwwwwW",
-            "W###WWWWWwwwIwww",
+            "WwwwwwwwwwwwwwwW",
+            "@wwwwwwwwwwwwwwW",
+            "WWwwwwwwwwwwwwww",
+            "WWWwwwww!wwwWWWW",
             "WWWWWWWWWWWWWWWW"
         ],
         {
             "H":
             [
-                " ", "ladder"
+                "w",
+                "ladder"
             ],
-            "I":
+            "_":
             [
-                "w", "boss"
+                "w",
+                "platform"
             ],
+            "!":
+            [
+                "w",
+                "noob"
+            ]
         }
     ]
 ]

@@ -15,7 +15,6 @@ func _ready():
 	G.get_tree().get_root().connect("size_changed", self, "on_resize")
 	on_resize()
 	fadein()
-	menu_skills.hide()
 
 func on_resize():
 	screen_size = get_viewport().get_size_override()
@@ -39,6 +38,13 @@ func _input(event):
 			G.you.zoom(1.1)
 		elif event.is_pressed():
 			last_touch_time = 0
+			if event.position.y < 100:
+				if event.position.x < 100:
+					if !on:
+						if !G.you.pickup():
+							display(0)
+					else:
+						clear()
 	elif event is InputEventKey:
 		if Input.is_action_just_pressed("ui_exit"):
 			if !on:
@@ -49,7 +55,8 @@ func _input(event):
 			OS.window_fullscreen = !OS.window_fullscreen
 		elif Input.is_action_just_pressed("ui_menu"):
 			if !on:
-				display(0)
+				if !G.you.pickup():
+					display(0)
 			else:
 				clear()
 		elif Input.is_action_just_pressed("use"):
