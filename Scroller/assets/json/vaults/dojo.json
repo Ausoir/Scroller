@@ -1,1 +1,49 @@
-[[{"name": "dojo", "chance": 1.0, "color": ["#000", "#000"], "foes": "#none"}, ["WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW", "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW", "WWWWWWWWWWWWWWWWWmmmmmmmmmmWWWWWWWWWWWWW", "WWWWWWWWWWWWWWWWWmmWmWmWmWmWWWWWWWWWWWWW", "WWWWWWWWWWWWWWWWWWmmmmmmmmmWWWWWWWWWWWWW", "WWWWWmmmmmmmmmmmWmWmWmWmWmmWWWWWWWWWWWWW", "WWWWWmmmmmmmmmmWmWmWmWmWmWmWWWWWWWWWWWWW", "WWWWWmmmmmmmmmmmWmmmmmmmmmmmWmmmmmmWWWWW", "WWWWWmmmmmmmmmmWmmmWmWWmmmWmmmmmmmmWWWWW", "WWWWWmmmmmmmmmmmWmWWWmmWmWmmWmmmmmmWWWWW", "WWWWWmmmmmmmmmmWmmmWmWmmWmmWmmmmmmmWWWWW", "WWmmmmmmmmmmmmmmWWWmWmmWmWmmmmmmmmmmmmWW", "WWmmmWmWmmmmmmmmmWmWmmWmmmWmmmmmmmmmmmWW", "WWmmWmWmWmmmmmmmWmWWmWmmWmmmWmWmmmWmWmWW", "WWmWmmmmmWmmmmmWmWmWmmWWWWWWWWmmWmmWmmWW", "WWmmWmWmWmmWmWmmmmWWWmmWWWWWWWmWmmWmmWWW", "WWmWmWmWmWWWWWWWWWmmmmmWWWWWWWmmmWmmmmWW", "WWWm@mmmmWWWWWWWWWWWWWWWWWWWWWWmWmXmWWWW", "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW", "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"], {"H": [" ", "ladder"], "_": [" ", "platform"]}]]
+[
+    [
+        {
+            "name": "dojo",
+            "chance": 1.0,
+            "color":
+            [
+                "#000",
+                "#000"
+            ],
+            "foes": "#mob_fighters",
+            "to": ["dojo_2"],
+        },
+        [
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+            "WWWWWWWWWWWWWWWWWmmmmmmmmmmWWWWWWWWWWWWW",
+            "WWWWWWWWWWWWWWWWWmmWmWmWmWmWWWWWWWWWWWWW",
+            "WWWWWWWWWWWWWWWWWWmmmmmmmmmWWWWWWWWWWWWW",
+            "WWWWWmmmmmmmmmmmWmWmWmWmWmmWWWWWWWWWWWWW",
+            "WWWWWmmmmmmmmmmWmWmWmWmWmWmWWWWWWWWWWWWW",
+            "WWWWWmmmmmmmmmmmWmmmmmmmmmmmWmmmmmmWWWWW",
+            "WWWWWmmmmmmmmmmWmmmWmWWmmmWmmmmmmmmWWWWW",
+            "WWWWWmmmmmmmmmmmWmWWWmmWmWmmWmmmmmmWWWWW",
+            "WWWWWmmmmmmmmmmWmmmWmWmmWmmWmmmmmmmWWWWW",
+            "WWmmmmmmmmmmmmmmWWWmWmmWmWmmmmmmmmmmmmWW",
+            "WWmmmWmWmmmmmmmmmWmWmmWmmmWmmmmmmmmmmmWW",
+            "WWmmWmWmWmmmmmmmWmWWmWmmWmmmWmWmmmWmWmWW",
+            "WWmWmmmmmWmmmmmWmWmWmmWWWWWWWWmmWmmWmmWW",
+            "WWmmWmWmWmmWmWmmmmWWWmmWWWWWWWmWmmWmmWWW",
+            "WWmWmWmWmWWWWWWWWWmmmmmWWWWWWWmmmWmmmmWW",
+            "WWWm@mmmmWWWWWWWWWWWWWWWWWWWWWWmWm*mWWWW",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+        ],
+        {
+            "H":
+            [
+                "m",
+                "ladder"
+            ],
+            "_":
+            [
+                "m",
+                "platform"
+            ]
+        }
+    ]
+]

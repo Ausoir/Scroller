@@ -59,10 +59,10 @@ theme = ExtResource( 3 )
 
 [node name="Skills" parent="Menu" instance=ExtResource( 1 )]
 visible = false
-margin_left = 512.0
-margin_top = 300.0
-margin_right = 512.0
-margin_bottom = 300.0
+margin_left = 474.0
+margin_top = 280.0
+margin_right = 550.0
+margin_bottom = 319.0
 mouse_filter = 1
 
 [node name="Settings" parent="Menu" instance=ExtResource( 2 )]

@@ -25,7 +25,7 @@ func fadein():
 
 func _process(_delta):
 	last_touch_time += _delta
-	if G.vars.setting.showfps:
+	if G.settings.showfps:
 		n_fps.set_text(str(Engine.get_frames_per_second())+' FPS')
 
 func _input(event):

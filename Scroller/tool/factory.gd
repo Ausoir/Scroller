@@ -17,9 +17,10 @@ func make_unit(name, pos, data=null):
 		var r = Unit.instance()
 		assign_dat(r, combine_data(json, data), pos)
 		r.set_col(int(r.dat.get("col", 2)))
-		r.team = r.dat.get("team", -1)
 		r.set_seed(r.dat.get("seed", -1))
 		G.world.team[r.team].append(r)
+		if r.dat.get("injury"):
+			r.injury = true
 		for i in r.dat.get("skills", []):
 			r.action.skills.append(i)
 		r.set_color(Color(r.dat.get("color", "#000")))
@@ -37,22 +38,28 @@ func make_item(name, pos):
 			r = Text.instance()
 		else:
 			r = Item.instance()
-		assign_dat(r, json, pos)
+		assign_dat(r, combine_data(json), pos)
 		r.set_col(int(r.dat.get("col", 0)))
 	return r
 
-func combine_data(orig, add):
+func combine_data(orig, add=null):
+	if add == null:
+		add = {}
 	var v = {}
 	for key in orig:
-		if add != null and key in add:
-			v[key] = add[key]
+		if key in add:
+			v[key] = duplicate(add[key])
 		else:
-			var value = orig[key]
-			if value is Dictionary or value is Array:
-				v[key] = value.duplicate()
-			else:
-				v[key] = value
+			v[key] = duplicate(orig[key])
+	for key in add:
+		if !(key in orig):
+			v[key] = duplicate(add[key])
 	return v
+
+func duplicate(p):
+	if p is Array or p is Dictionary:
+		return p.duplicate()
+	return p
 
 func assign_dat(item, json, pos):
 	item.dat = json
@@ -60,6 +67,7 @@ func assign_dat(item, json, pos):
 		item.relocate(pos, true)
 	item.set_texture_from_path(item.dat.get("img"))
 	item.z_index = item.dat.get("z", 0)
+	item.team = item.dat.get("team", -1)
 
 func make_group(arg, pos):
 	var groups = G.data.get_group(arg)

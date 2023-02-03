@@ -8,7 +8,7 @@
                 "#000",
                 "#000"
             ],
-            "foe": "#mob_sick",
+            "foe": "#mob_sewer",
             "left": "city_middle",
         },
         [

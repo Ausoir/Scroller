@@ -1,0 +1,54 @@
+[
+    [
+        {
+            "name": "scrapyard",
+            "chance": 1.0,
+            "color":
+            [
+                "#000",
+                "#000"
+            ],
+            "foe": "#mob_robots",
+            "to": ["city_upper"]
+        },
+        [
+            "                                                                                                    ",
+            "                                                                                                    ",
+            "              M                                                                                   M ",
+            "                                                                                                  MM",
+            "     M                                                                                            MM",
+            "     M H-                                                                                         MM",
+            "     M H M                                                                                        MM",
+            "       H         -                                                                                MM",
+            "       M_ -M         -                                   M                                    M  MMM",
+            "    M__     -  M #__- -                        M        MM         -                  M  M       MMM",
+            "   #M -   -   #M-M# M    M                   -         MMMM         --               HM    _M _M MMM",
+            "   M         MM   -       -MHMM       M   #           M MM -          - M M          HMH  -  M  MMMM",
+            "  #  -  _M__       -M_   MM H -           MM  #H-      -MMMMM       -- M _MM       H MMM M   H  MMMM",
+            " --   -M     MM -M -M   - H H   MM          H MMMM    - MMMMM      -      MM__     H MMMH   -_- MMMM",
+            "M        M M @MMM  MMM    HMH   - M    M -H MMMMMM   M MMMMMM-      --   MMM       HMMMMH -_  MMMMMM",
+            " M  MM-    ---MMMMMMMMM   HM-   -__M      H-MMMMMM#   MMMMMMMM -    H -  MMM  H  H MMMMMMH  XH MMMMM",
+            "  -   MMMMMMMMMMMMMMMMMMMMM M   H H MM   MMMMMMMMMMMMMMMMMMMMMM  -  H-   MMMM H  HMMMMMMMMMMMMMMMMMM",
+            "  -M MMMMMMMMMMMMMMMMMMMMMMMMMMMMM____ MMMMMMMMMMMMMMMMMMMMMMMMM--  H   MMMMMMH MMMMMMMMMMMMMMMMMMMM",
+            " MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM",
+            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+        ],
+        {
+            "H":
+            [
+                " ",
+                "ladder"
+            ],
+            "_":
+            [
+                " ",
+                "platform"
+            ],
+            "=":
+            [
+                " ",
+                "wooden door"
+            ]
+        }
+    ]
+]

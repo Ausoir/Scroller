@@ -55,9 +55,7 @@ func create(_name):
 	if 'foe' in mapdata:
 		spawn_mob(mapdata.foe)
 	for y in range(-15, size.y+1):
-		for x in range(size.x, size.x+10):
-			shadowmap.set_cell(x, y, 1)
-		for x in range(-10, 0):
+		for x in range(size.x):
 			shadowmap.set_cell(x, y, 1)
 	for y in range(size.y+1):
 		for x in range(size.x):
@@ -70,7 +68,7 @@ func create(_name):
 	tilemap.update_bitmask_region(Vector2(), size)
 	shademap.update_bitmask_region(Vector2(), size)
 	$Background.position = Vector2(size.x * G.HW, size.y * G.HH - G.ui.screen_size.y/2)
-	$Background.scale = Vector2(size.y * G.W + G.ui.screen_size.y, size.x * G.H + G.ui.screen_size.x)
+	$Background.scale = Vector2(size.y * G.W + G.ui.screen_size.y, size.x * G.H)
 
 func spawn_mob(mob):
 	var times = (size.x + size.y) / 3
@@ -80,7 +78,7 @@ func spawn_mob(mob):
 		var candidates = []
 		for yy in range(y, size.y-2):
 			var tile = tiles[yy][x]
-			if tile.is_land() and abs(tile.difference_to_vec(generator.entrance[0], generator.entrance[1])) > 4:
+			if tile.is_land() and tile.icon != " " and abs(tile.difference_to_vec(generator.entrance[0], generator.entrance[1])) > 4:
 				candidates.append(tile)
 		if !candidates.empty():
 			G.factory.make_any(mob, G.rng.r_arr(candidates))

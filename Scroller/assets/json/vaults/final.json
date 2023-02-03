@@ -1,0 +1,35 @@
+[
+    [
+        {
+            "name": "final",
+            "chance": 1.0,
+            "color":
+            [
+                "#000",
+                "#000"
+            ],
+            "foe": "#mob_final",
+            "to": ["final_2"]
+        },
+        [
+            "                              WWWWWWWWWWWWWWWWWWWW",
+            "                            WWWWWWWWWWWWWWWWWWWWWW",
+            "                          WWWWWWWWWWWWWWWWWWWWWWWW",
+            "                             WwwwwwWwwwwwWwwwwwWww",
+            "                             WwwwwwWwwwwwWwwwwwWww",
+            "                             wwwwwwwwwwwwwwwwwwwww",
+            "                             wwwwwwwwwwwwwwwwwwwww",
+            "                             wwwwwwwwwwwwwwwwwwwww",
+            "                             wwwwwwwwwwwwwwwwwwwww",
+            "                             wwwwwwwwwwwwwwwwwwwww",
+            "                             wwwwwwwwwwwwwww*wwwww",
+            "                         WWWWWWWWWWWWWWWWWWWWWWWWW",
+            "W                DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
+            "W  @     DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
+            "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
+            "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
+        ],
+        {
+        }
+    ]
+]

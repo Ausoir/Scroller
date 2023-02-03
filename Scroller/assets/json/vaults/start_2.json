@@ -8,14 +8,14 @@
                 "#000",
                 "#000"
             ],
-            "right": "city_lower",
+            "to": ["start_3"],
             "save": true,
         },
         [
             "WWWWWWWWWWWWWWWWWWWWWWWWWW",
             "WwwwwwwwwwwwwwwwwwwWWWWWWW",
             "WwwwwwwwwwwwwwwwwwwwWWWWWW",
-            "Www@wwwwwwwwwwwww!wwWWWWWW",
+            "Www@wwwwwwwwwwwww1wwWWWWWW",
             "WWwWWWWWWWWWWWWWHWWWWWWWWW",
             "Wwwwwwwwwwww!wwwHwwwWWWWWW",
             "WwwwwwHWWWWWWWWWWWWwWWWWWW",
@@ -23,8 +23,7 @@
             "WwwwwwHwwwwwwwwwwwwwwwwWWW",
             "WwwwwwHwwwww!wwwwwwwwwwWWW",
             "WwwwwwHwwwWWWWWwwwwwwwwWWW",
-            "WwwwwwHwwWWWWWWwwwwwwwwWWW",
-            "WwwWWWWWWWWWWWWWwwww!wwwww",
+            "WwwwwwHwwWWWWWWwwwww2wwww*",
             "WWWWWWWWWWWWWWWWWWWWWWWWWW",
             "WWWWWWWWWWWWWWWWWWWWWWWWWW"
         ],
@@ -42,7 +41,17 @@
             "!":
             [
                 "w",
-                "punk"
+                "hobo"
+            ],
+            "1":
+            [
+                "w",
+                "noob2"
+            ],
+            "2":
+            [
+                "w",
+                "punk leader"
             ]
         }
     ]

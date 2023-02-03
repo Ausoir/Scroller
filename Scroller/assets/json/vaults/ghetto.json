@@ -5,11 +5,11 @@
             "chance": 1.0,
             "color":
             [
-                "#000",
-                "#000"
+                "#734",
+                "#877"
             ],
             "foe": "#mob_gang",
-            "right": "city_middle",
+            "to": ["city_middle"],
         },
         [
             "                                        ",
@@ -41,7 +41,7 @@
             " bbbbb   BBBBBBhBBBBBD    -bBhbb#bBBBBB ",
             " bbbbb    BbbbbhBbbbBD    -bBBBBBBBbbbB ",
             " bbbbb    =bbbbhbbbbBDD   BbbbbbbbbbbbB ",
-            " bb@bb  BBBBBBBBBBBBBDD   bbBBbbbbbbbbb ",
+            " bb@bb  BBBBBBBBBBBBBDD   bbBBbbbbbb*bb ",
             "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
             "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
         ],

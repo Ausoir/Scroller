@@ -208,7 +208,7 @@ func get_items_by_type(p):
 func get_items_by_team(p):
 	var r = []
 	for i in items:
-		if i.get_type() == 2 and i.team == p and i.is_col(2):
+		if i.team == p and i.is_col(2):
 			r.append(i)
 	return r
 

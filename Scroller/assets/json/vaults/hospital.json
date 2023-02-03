@@ -1,0 +1,61 @@
+[
+    [
+        {
+            "name": "hospital",
+            "chance": 1.0,
+            "color":
+            [
+                "#000",
+                "#000"
+            ],
+            "foe": "#mob_sick",
+            "to": ["city_lower"]
+        },
+        [
+            "                                        ",
+            "MMM-----------------------------------MM",
+            "Mm=          !                        MM",
+            "MHMMMMMMMMMMMMMMMMM MMMMMMMMMMMMMMMMMMMM",
+            "MHmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmM",
+            "MHmmmmmmmmmmmmmmmmm-mmmmmmmmmmmmmmmmmmmM",
+            "MHmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmM",
+            "MHmmmmmmmmmmmmmmmm-m-mmmmmmmmmmmmmmmmmmM",
+            "MHmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmM",
+            "MHmmmmmmmmmmmmmmmmm-mmmmmmmmmmmmmmmmmmmM",
+            "MHmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmM",
+            "MMMMMMMMM-mMMMMMMM-m-MMMMMMMMMm-MMMMMMMM",
+            "Mmmmmmmmmm-mmmmmmmmmmmmmmmmmmmmmmmmmmmmM",
+            "Mmmmmmmmm-mmmmmmmmm-mmmmmmmmmm-mmmmmmmmM",
+            "Mmmmmmmmmm-mmmmmmmmmmmmmmmmmmmmmmmmmmmmM",
+            "Mmmmmmmmm-mmmmmmmm-m-mmmmmmmmmm-mmmmmmmM",
+            "Mmmmmmmmmm-mmmmmmmmmmmmmmmmmmmmmmmmmmmmM",
+            "Mmmmmmmmm-mmmmmmmmm-mmmmmmmmmm-mmmmmmmmM",
+            "Mmmmmmmmmm-mmmmmmm---mmmmmmmmmmmmmmmmmmM",
+            "Mmmmmmmmm-mmmmmmmm@-*mmmmmmmmmm-mmmmmmmM",
+            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM",
+            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+        ],
+        {
+            "H":
+            [
+                " ",
+                "ladder"
+            ],
+            "_":
+            [
+                " ",
+                "platform"
+            ],
+            "=":
+            [
+                "m",
+                "wooden door"
+            ],
+            "!":
+            [
+                " ",
+                "patient zero"
+            ]
+        }
+    ]
+]

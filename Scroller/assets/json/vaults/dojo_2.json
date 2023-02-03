@@ -1,0 +1,54 @@
+[
+    [
+        {
+            "name": "dojo_2",
+            "chance": 1.0,
+            "color":
+            [
+                "#000",
+                "#000"
+            ],
+            "foe": "#mob_fighters",
+            "to": ["city_lower"]
+        },
+        [
+            "WWWWWWWWWWWWWWWWWWWWW",
+            "WmmmmmmmmmmmmmmmmmmmW",
+            "WmmmmmmmmWmmmmmmmmmmW",
+            "WmmmmmmmWmWmmmmmmmmmW",
+            "WmmmmmmWmmmWmWWWWWmmW",
+            "WmmmmmmmWmmmWWmmmmWmW",
+            "WmmmmmmWmmmmmWmmmmmmW",
+            "W____________WmWWWmWW",
+            "WWmmmmmmmmmmmWmmmmWmW",
+            "W____________WWmmmmmW",
+            "WmmmmmmmmmmmWWmWmmmmW",
+            "WmWWWWmWmWmWmWmmWmmmW",
+            "WWmWmmWmWmWmmWmmmmWmW",
+            "WmWmWmmmmmmmmWWmmWmmW",
+            "WmmWmWmWmWWWWWWWWWmWW",
+            "WmWmmmWmmWWmmmmmmmmmW",
+            "WmmWmWmWmWmmWmmWmmWmW",
+            "WmWm@mWmmWXmmWmmWmmWW",
+            "WWWWWWWWWWWWWWWWWWWWW",
+            "WWWWWWWWWWWWWWWWWWWWW"
+        ],
+        {
+            "H":
+            [
+                " ",
+                "ladder"
+            ],
+            "_":
+            [
+                " ",
+                "platform"
+            ],
+            "=":
+            [
+                " ",
+                "wooden door"
+            ]
+        }
+    ]
+]

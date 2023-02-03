@@ -2,8 +2,10 @@ extends Node
 
 var player_name = "Player"
 
-func travel(args):
+func travel(args, sound=null):
 	if args != null:
+		if sound != null:
+			G.sfx.play(sound, G.you.host.pos)
 		G.get_tree().set_pause(true)
 		G.you.host.pos.remove_item(G.you.host)
 		G.world.create(args)
@@ -65,6 +67,7 @@ func save_game(end=false):
 			G.you.host.relocate(tile, true)
 		if G.you.host != null:
 			G.vars.map = G.world.mapname
+			G.vars.seed = G.rng.init_seed
 			save_game.store_line(to_json(G.vars))
 			save_game.store_line(to_json(G.you.host.dat))
 		save_game.close()
@@ -85,6 +88,23 @@ func load_game():
 		line = save_game.get_line()
 		G.vars = parse_json(line)
 	G.vars["load_data"] = parse_json(save_game.get_line())
+	save_game.close()
+
+func load_settings():
+	var save_game = File.new()
+	var line
+	save_game.open("user://settings.save", File.READ)
+	var is_open = save_game.is_open()
+	if is_open:
+		line = save_game.get_line()
+		if !line.empty():
+			G.settings = parse_json(line)
+	G.ui.menu_settings.update_changes()
+
+func save_settings():
+	var save_game = File.new()
+	save_game.open("user://settings.save", File.WRITE)
+	save_game.store_line(to_json(G.settings))
 	save_game.close()
 
 func _notification(what):

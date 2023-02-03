@@ -22,9 +22,6 @@ func on_turn():
 		if next_action != null:
 			set_action(next_action)
 			next_action = null
-		elif turns > 9:
-			focus()
-			turns = 0
 		elif has_dialog and !focusing:
 			talk()
 	barrier = max(0, barrier - 1)
@@ -60,7 +57,6 @@ func pop_moveset(moveset, dir=0):
 			if dir != 0:
 				host.face(dir)
 			host.chat.say(skill.name.capitalize() + "!")
-#			host.chat.say(skill.get("quote", []))
 			return true
 
 func refresh_skills(p=null):
@@ -99,9 +95,13 @@ func lunge(dir):
 		if pop_moveset("lunge", dir):
 			return true
 
-func attack(dir):
+func grab():
 	var foe = host.pos.get_items_by_team(host.team * -1).pop_front()
 	if foe != null and pop_moveset("grab"):
+		return true
+
+func attack(dir):
+	if grab():
 		return
 	if lunge(dir):
 		return
@@ -128,7 +128,6 @@ func hit(type):
 		host.set_animation("ko_" + str(G.rng.ir(1, 3)))
 		commands = [[10, "col", 2]]
 		delay = 12
-		barrier = 16
 	elif (barrier > 0 and type != "fall") or (delay == 0 and type == "light" and !focusing):
 		G.sfx.play("block", host.pos)
 		G.you.make_noise(3)
@@ -158,21 +157,23 @@ func hit(type):
 					host.chat.say_personalized(G.data.dialog_data.get("die"))
 				host.team = 0
 				host.set_animation("ko_" + str(G.rng.ir(2, 3)))
-				commands = [[14, "do", "fadeout"],[32, "die"]]
+				commands = [[10, "do", "fadeout"],[11, "loot"],[28, "die"]]
 				delay = -1
 		else:
 			G.sfx.play("dodge", host.pos)
 			host.chat.say_personalized(G.data.dialog_data.get("dodge"))
 
 func down():
-	if host.beneath.is_col(4):
-		host.position_speed = 1
-		var targetpos = host.pos.get_neighbor(0, 1)
-		host.relocate(targetpos)
-		host.set_animation("climb", 1.5)
-		delay = 3
-	else:
-		attack(host.dir)
+	if !grab():
+		if host.beneath.is_col(4):
+			host.position_speed = 1
+			var targetpos = host.pos.get_neighbor(0, 1)
+			host.relocate(targetpos)
+			host.set_animation("climb", 1.5)
+			G.sfx.play("climb", host.pos)
+			delay = 3
+		else:
+			attack(host.dir)
 
 func jump(dir):
 	host.face(dir)
@@ -205,10 +206,9 @@ func jump_1():
 func walk(dir):
 	host.face(dir)
 	var targetpos = host.pos.get_neighbor(host.dir, 0)
-	for i in targetpos.get_items_by_team(host.team * -1):
+	if targetpos.is_col(2) and !targetpos.get_items_by_team(host.team * -1).empty():
 		attack(dir)
-		return
-	if !targetpos.is_col(host.col_mask):
+	elif !targetpos.is_col(host.col_mask):
 		host.position_speed = 4
 		if host.injury:
 			host.set_animation("walk_injured", 1)
@@ -226,7 +226,7 @@ func talk():
 		var text = host.dat.get("dialog", []).pop_front()
 		if text != null:
 			if text.begins_with("#"):
-				G.event.run(text.substr(1))
+				G.event.show_hint(text.substr(1))
 			else:
 				host.chat.say(text)
 				host.set_animation("talk")
@@ -281,6 +281,8 @@ func process_commands():
 		host.chat.say(cmd[2])
 	elif cmd[1] == "sfx":
 		G.sfx.play(cmd[2], host.pos)
+	elif cmd[1] == "loot":
+		host.drop_loot()
 	return true
 
 func is_req_met(p):

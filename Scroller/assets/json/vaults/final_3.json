@@ -1,0 +1,51 @@
+[
+    [
+        {
+            "name": "final_3",
+            "chance": 1.0,
+            "color":
+            [
+                "#000",
+                "#000"
+            ],
+            "foe": "#none",
+            "to": []
+        },
+        [
+            "                           ",
+            "                           ",
+            "                           ",
+            "                           ",
+            "                           ",
+            "                 !         ",
+            "                ----      M",
+            " www                      M",
+            " www     HMMMMMMMMMMMMMMMMM",
+            " w@w     HMMMMMMMMMMMMMMMMM",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWW",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWW"
+        ],
+        {
+            "H":
+            [
+                " ",
+                "ladder"
+            ],
+            "_":
+            [
+                " ",
+                "platform"
+            ],
+            "=":
+            [
+                " ",
+                "wooden door"
+            ],
+            "!":
+            [
+                " ",
+                "boss"
+            ]
+        }
+    ]
+]

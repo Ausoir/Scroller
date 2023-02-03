@@ -1,5 +1,5 @@
 {
-	"skill": {
+	"item": {
 		"class": "text",
 		"col": 0,
 	},
@@ -10,5 +10,16 @@
 	"platform": {
 		"img": "tile/platform",
 		"col": 4,
+	},
+	"wooden door": {
+		"class": "door",
+		"team": -1,
+		"color": "#730",
+		"col": 11,
+	},
+	"side window": {
+		"class": "door",
+		"color": "#BFF",
+		"col": 10,
 	},
 }

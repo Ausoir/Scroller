@@ -9,7 +9,6 @@ onready var chat = $Chat
 
 var delay = 0
 
-var team = -1
 var col_mask = 8
 var pilot
 var injury = false
@@ -76,6 +75,7 @@ func on_turn():
 	if pos.state != null and pos.state[1] >= G.world.turn.turns and pos.state[3] != team:
 		hit(pos.state[0], pos.state[2])
 	elif fall_height > 0:
+		pilot.on_turn()
 		set_animation("fall")
 	else:
 		pilot.on_turn()
@@ -101,7 +101,6 @@ func set_texture_from_path(path):
 
 func die():
 	pilot.on_die()
-	drop_loot()
 	.die()
 
 func remove():
@@ -134,20 +133,26 @@ func callback_animation(p):
 func _on_animation_finished(anim_name):
 	action.on_animation_done(anim_name)
 
-func drop_skill(skill):
-	dat.get("skills", []).erase(skill)
-	var r = G.factory.make_item("skill", pos)
-	r.set_skill(skill)
+func drop_item(item):
+	var r = G.factory.make_item("item", pos)
+	if typeof(item) <= 3:
+		r.set_xp(item)
+	else:
+		dat.get("skills", []).erase(item)
+		r.set_skill(item)
 	return r
 
 func drop_loot():
 	var loot = dat.get("loot")
 	if loot != null:
-		drop_skill(loot)
+		if loot is Array:
+			drop_item(G.rng.r_arr(loot))
+		else:
+			drop_item(loot)
 	else:
 		var skills = dat.get("skills", [])
 		if G.rng.r_percent(0.2):
-			drop_skill(G.rng.r_arr(skills))
+			drop_item(G.rng.r_arr(skills))
 		elif G.rng.r_percent(0.01):
 			var rskill = G.rng.r_arr(G.data.skill_data.keys())
-			drop_skill(rskill)
+			drop_item(rskill)

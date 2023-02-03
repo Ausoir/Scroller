@@ -9,6 +9,7 @@ var light = 0
 var pos
 var beneath
 var fall_height = 0
+var team = 0
 
 func _ready():
 	hide()
@@ -16,9 +17,6 @@ func _ready():
 
 func get_type():
 	return 1
-
-func get_default_team():
-	return 0
 
 func set_col(p):
 	if pos.visible:
@@ -73,7 +71,7 @@ func on_turn():
 func on_land():
 	fall_height = 0
 
-func hit(_state, _dir):
+func hit(_state, _from):
 	pos.state = null
 
 func relocate(to, force=false):

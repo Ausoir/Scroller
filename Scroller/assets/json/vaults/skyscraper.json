@@ -1,0 +1,84 @@
+[
+    [
+        {
+            "name": "skyscraper",
+            "chance": 1.0,
+            "color":
+            [
+                "#000",
+                "#000"
+            ],
+            "foe": "#mob_nerds",
+            "to": ["city_lower"]
+        },
+        [
+            "MBBB                ",
+            "MBbB                ",
+            "MBb=                ",
+            "MBHBMMMMMMMMMMMMMHMM",
+            "MBHBMbbbbbbbbbbbbHbM",
+            "MBHBMbbbbbbbbbbbbHbM",
+            "MBHBMbbbbbbbbbbbbHbM",
+            "MBHBMbbbbbbbbbbMMMbM",
+            "MBHBMbbbbbbbbbbbbbbM",
+            "MBH==bbbbbbbbbbbbbbM",
+            "MBHBMMMMMMMMHbbbbbbM",
+            "MBHBMmmmMmmmHbbbbbbM",
+            "MBHBMmmmMmmmHbbbbbbM",
+            "MBHBMmmmmmmmMMMMMMMM",
+            "MBHBMHMmmmmMMMMMMMMM",
+            "MBHBMHMMMMMMMMMMMMMM",
+            "MBHBMHmmmmmmmmmmmmmM",
+            "MBHBMHmmmmmmmmmmmmmM",
+            "MBHBMMMmmmmmmmmmmmmM",
+            "MBHBMMMMmmmmmmmmmmmM",
+            "MBHBMMMMMmmmmmmmmmmM",
+            "MBHBMMMMMMHMMMMMMMMM",
+            "MBHBMmmmm-H=bbb=bbbM",
+            "MBHBMmmmm-HMMMMMbbbM",
+            "MBHBMmmmm=HMmmmM#bbM",
+            "MBHBMMMMMMH-mm#M###M",
+            "MBHBMmmmm-H=m##M###M",
+            "MBHBMmmmm-HMMMMMMMMM",
+            "MBHBMmmmm=H-mmm-bbbM",
+            "MBHBMMMMMMH-mmm=bb#M",
+            "MBHBMmmmm-H=mm#MMMMM",
+            "MBHBMmmmm-HMMMMMMMMM",
+            "MBHBMmmmm=H-mmmMbbbM",
+            "MBHBMMMMMMH-mmmMb#bM",
+            "MBHBMmmmmMH=mmmM##bM",
+            "MBHBMmmmm-HMMMMMMMHM",
+            "MBHBMmmmm=HbbbbbbbHM",
+            "MBHBMMMMMMMMMMMM__MM",
+            "MBH=bb=bbbbbbbbbbMMM",
+            "MBHB__MMMMMMMMMMMMMM",
+            "MBHBBbbbbbbbbbbbbbbM",
+            "MBHBBBbbbbbbbbbbbbbM",
+            "MBHBBBBbbbbbbbbbbbbM",
+            "MBHBBBBBBBBBBB_____M",
+            "MBHBbbbbbbbbbBbbbbMM",
+            "MBHBbbbbbbbbbBbbbMMM",
+            "MBHBbbbbbbbbbBbbMMMM",
+            "MBH=bbbb@bbbb=bMMMMM",
+            "MMMMMMMMMMMMMMMMMMMM",
+            "MMMMMMMMMMMMMMMMMMMM"
+        ],
+        {
+            "H":
+            [
+                " ",
+                "ladder"
+            ],
+            "_":
+            [
+                "b",
+                "platform"
+            ],
+            "=":
+            [
+                " ",
+                "wooden door"
+            ]
+        }
+    ]
+]

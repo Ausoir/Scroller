@@ -73,10 +73,9 @@ func hear(at):
 			if at.distance_to(host.pos) >= 1:
 				var seentile = host.pos.get_beam_to(at, 1)[1]
 				if seentile == at:
-					for i in at.items:
-						if host.team == i.team * -1:
-							engage(i)
-							return
+					for i in at.get_items_by_team(host.team * -1):
+						engage(i)
+						return
 				else:
 					move.target = at
 					set_task(move)

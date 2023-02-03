@@ -1,1 +1,62 @@
-[[{"name": "city_upper", "chance": 1.0, "color": ["#000", "#000"], "foes": "#none"}, ["                  MMM                   ", "                MMwwwMM                 ", "               MwwwwwwwM                ", "              MMwMwwwMwMM               ", "               wwMwwwMww                ", "               wwwwwwwww                ", "               wwwwXwwww                ", "              WWWWWWWWWWW               ", "            BBBBBBBBBBBBBBB             ", "            B             B             ", "                               H        ", "                               H        ", "                            BBBHB       ", "                            BbbHB       ", "                            bbbHb       ", "                            bbbHb       ", "                            bbbHb       ", "        HM                  BBBHB       ", "        HM                  BbbHB       ", "        HM                  BbbHB       ", "       HMMmmmm              BHBBB       ", "       HMM#mmmmmmm          BHbbB       ", "       HMM#mmmmmmmm         BHbbB       ", "       MMM#mmmmmmmm     ##  BHbbB       ", "     ##MMM##mmmmmmm #  ###  BHbbB       ", "     ##MMM###mXmmmm##  #### bHXbb       ", "DDHDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD", "  H                                     ", " DDDH                                   ", "    H                                   ", "    H @                                 ", "   DDDDD                                "], {"H": [" ", "ladder"], "_": [" ", "platform"]}]]
+[
+    [
+        {
+            "name": "city_upper",
+            "chance": 1.0,
+            "color":
+            [
+                "#000",
+                "#000"
+            ],
+            "foes": "#mob_gang",
+            "to": ["final", "scrapyard", "warehouse"],
+            "save": true,
+        },
+        [
+            "                  MMM                   ",
+            "                MMwwwMM                 ",
+            "               MwwwwwwwM                ",
+            "              MMwMwwwMwMM               ",
+            "               wwMwwwMww                ",
+            "               wwwwwwwww                ",
+            "               wwww*wwww                ",
+            "              WWWWWWWWWWW               ",
+            "            BBBBBBBBBBBBBBB             ",
+            "            B             B_____        ",
+            "                               H        ",
+            "                               H        ",
+            "                            BBBHB       ",
+            "                            BbbHB       ",
+            "                            bbbHb       ",
+            "                            bbbHb       ",
+            "                            bbbHb       ",
+            "        HM                  BBBHB       ",
+            "        HM                  BbbHB       ",
+            "        HM                  BbbHB       ",
+            "       HMMmmmm              BHBBB       ",
+            "       HMM#mmmmmmm          BHbbBBBBBBBB",
+            "       HMM#mmmmmmmm         BHbbbbbbbb#B",
+            "       MMM#mmmmmmmm     ##  BHbbbbbb###B",
+            "     ##MMM##mmmmmmm #  ###  BHbbbb#####B",
+            "     ##MMM###m*mmmm##  #### bHbbb#####*B",
+            "DDHDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
+            "  H                                     ",
+            " DDDH                                   ",
+            "    H                                   ",
+            "    H @                                 ",
+            "   DDDDD                                "
+        ],
+        {
+            "H":
+            [
+                " ",
+                "ladder"
+            ],
+            "_":
+            [
+                " ",
+                "platform"
+            ]
+        }
+    ]
+]

@@ -1,0 +1,64 @@
+[
+    [
+        {
+            "name": "final_2",
+            "chance": 1.0,
+            "color":
+            [
+                "#000",
+                "#000"
+            ],
+            "foe": "#mob_final",
+            "to": ["final_3"]
+        },
+        [
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+            "WwwwwwwwwwbbbwwwwwwwwwwwwbbbwwwwwwwwwwwW",
+            "WwwwwwwwwwbbbwwwwwwwwwwwwbbbwwwwwwwwwwwW",
+            "WwwwwwwwwwbbbwwwwwwwwwwwwbbbwwwwwwwwwwwW",
+            "WwwwwwwwwwbbbwwwwwXwwwwwwbbbwwwwwwwwwwwW",
+            "WwwwwwwwwwBBB____________bbb___________W",
+            "Wwwwwwwwwwbbbwwwwwwwwwwwwbbbwwwww#wwwwwW",
+            "Wwwwwwwwwwbbbwwwwwwwwwwwwbbbwwww##wwwwwW",
+            "Wwwwwwwwwwbbbwwwwwwwwwwwwbbbwwww###wwwwW",
+            "Wwwwwwwwwwbbbwwwwwwwwwwwwbbbwww#####wwwW",
+            "W_________BBB____________BBB___________W",
+            "WwwwHwwwwwbbbwwwwwwwwwwwwbbbwwwwwwwwwwwW",
+            "WwwwHwwwwwbbbwwwwwwwwwwwwbbbwwwwwwwwwwwW",
+            "WwwwHwwwwwbbbwwwwwwwwwwwwbbbwwwwwwwwwwwW",
+            "WwwwHwwwwwbbbwwwwwwwwwwwwbbbwwwwwwwwwwwW",
+            "WwwwHwwwwwbbbwwwwwwwwwwwwbbbwwwwwwwwwwwW",
+            "WwwwHwwwwwbbbwwwwwwwwwwwwbbbwwwwwwwwwwwW",
+            "WwwwHwwwwwbbbwwwwwwwwwwwwbbbwwwwwwwwwwwW",
+            "WwwwHwwwwwbbbwwwwwwwwwwwwbbbwwwwwwwwwwwW",
+            "W_________BBB____________BBB___________W",
+            "Wwwwwwwwwwbbbwwwwwwwwwwwwbbbwww-wwwwwwwW",
+            "Wwwwwwwwwwbbbwwwwwwwwwwwwbbbww-wwwwwwwwW",
+            "Wwwwwwwwwwbbbwwwwwwwwwwwwbbbwww-wwwwwwwW",
+            "Wwwwwwwwwwbbbwwwwwwwwwwwwbbbww-wwwwwwwwW",
+            "Wwwwwwwwwwbbbwwwwwwwwwwwwbbbwww-wwwwwwwW",
+            "Wwwwwwwwwwbbbwwwwwwwwwwwwbbbww-wwwwwwwwW",
+            "Wwwwwwwwwwbbbwwwwwwwwwwwwbbbwww-wwwwwwwW",
+            "Wwwwwwww@wbbbwwwwwwwwwwwwbbbww-wwwwwwwwW",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+        ],
+        {
+            "H":
+            [
+                "w",
+                "ladder"
+            ],
+            "_":
+            [
+                "w",
+                "platform"
+            ],
+            "=":
+            [
+                "w",
+                "wooden door"
+            ]
+        }
+    ]
+]

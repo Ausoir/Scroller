@@ -32,19 +32,19 @@ margin_bottom = 225.0
 text = "Show FPS"
 align = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="List"]
+[node name="Sounds" type="HBoxContainer" parent="List"]
 margin_top = 249.0
 margin_right = 480.0
 margin_bottom = 288.0
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="List/HBoxContainer"]
-margin_right = 78.0
+[node name="Label" type="Label" parent="List/Sounds"]
+margin_right = 65.0
 margin_bottom = 39.0
-text = "Volume"
+text = "Sound"
 
-[node name="Volume" type="HSlider" parent="List/HBoxContainer"]
-margin_left = 82.0
+[node name="Sound" type="HSlider" parent="List/Sounds"]
+margin_left = 69.0
 margin_right = 480.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
@@ -65,6 +65,6 @@ text = "EXIT GAME"
 [node name="Tween" type="Tween" parent="List"]
 
 [connection signal="toggled" from="List/Fps" to="." method="_on_Fps_toggled"]
-[connection signal="value_changed" from="List/HBoxContainer/Volume" to="." method="_on_Volume_value_changed"]
+[connection signal="value_changed" from="List/Sounds/Sound" to="." method="_on_Volume_value_changed"]
 [connection signal="pressed" from="List/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="List/Exit" to="." method="_on_Exit_pressed"]

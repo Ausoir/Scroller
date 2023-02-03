@@ -19,21 +19,15 @@ func on_assign():
 	G.camera.set_process(true)
 
 func on_kill(_victim):
-	gain_xp(1)
-	G.event.run(_victim.dat.get("onkill"))
+	G.event.show_hint(_victim.dat.get("onkill"))
 
 func on_die():
 	G.game.load_game()
+	G.vars.time += 1
+	if int(G.vars.time) % 3 == 0:
+		G.vars.seed += G.rng.ir(-1, 1)
 	unserialize()
 	G.game.travel(G.vars.map)
-
-func gain_xp(p):
-	G.vars.xp += p
-	var lvl = int(G.vars.xp / 100)
-	var xp = int(G.vars.xp) % 100
-	if xp > lvl * lvl:
-		G.vars.xp = (lvl+1) * 100
-		G.display_damage("LEVEL UP", host.pos, Color.blueviolet, 1, 150)
 
 func get_mouse():
 	var screen_mouse = G.ui.mouse_pos
@@ -71,11 +65,18 @@ func _on_input(event: InputEvent):
 				n_movement.position = event.position
 			last_touch_time = 0
 
+func get_face():
+	return G.get_face(host.position.x, get_mouse().x)
+
 func _physics_process(_delta):
 	last_touch_time += _delta
 	if host.action.delay == 0:
 		if Input.is_action_pressed("ui_up"):
-			host.action.next_action = ["jump", host.dir]
+			var exit = G.world.get_exit(host.pos)
+			if exit != null:
+				G.game.travel(exit, "open")
+			else:
+				host.action.next_action = ["jump", host.dir]
 		elif Input.is_action_pressed("ui_down"):
 			host.action.next_action = ["down"]
 		elif Input.is_action_pressed("ui_right"):
@@ -86,9 +87,6 @@ func _physics_process(_delta):
 			var action = diff_to_dir(drag_position.x, drag_position.y)
 			if action != null:
 				host.action.next_action = action
-
-func get_face():
-	return G.get_face(host.position.x, get_mouse().x)
 
 func diff_to_dir(diffx, diffy):
 	if abs(diffx) > abs(diffy):
@@ -112,13 +110,6 @@ func on_turn():
 		G.camera.start_process()
 		G.camera.prev_pos = host.pos
 		make_noise(1)
-	elif host.action.delay == 0:
-		if host.pos.x == 0:
-			G.sfx.play("open", host.pos)
-			G.game.travel(G.world.mapdata.get("left"))
-		elif host.pos.x == G.world.size.x-1:
-			G.sfx.play("open", host.pos)
-			G.game.travel(G.world.mapdata.get("right"))
 
 func perceive():
 	var foe_list = G.world.team[2]
@@ -148,11 +139,19 @@ func make_noise(p):
 func pickup():
 	for i in range(host.pos.items.size()-1, -1, -1):
 		var item = host.pos.items[i]
-		if item.get_type() == 1 and item.dat.name == "skill":
+		if item.get_type() == 1 and item.dat.name == "item" and !("picked" in item.tags):
 			var skills = G.you.host.dat.get("skills", [])
-			var lvl = int(G.vars.xp / 100) + 1
-			if lvl > skills.size():
+			if "skill" in item.dat and G.vars.level > skills.size():
+				item.tags.append("picked")
 				skills.append(item.dat.get("skill"))
+				host.action.delay = 4
+				item.animation.play("pickup")
+				G.sfx.play("pickup", host.pos)
+				return true
+			elif "xp" in item.dat and G.vars.level < item.dat.xp:
+				item.tags.append("picked")
+				G.vars.level = G.vars.level + 1
+				G.display_damage("LEVEL UP", host.pos, Color.blueviolet, 1, 150)
 				host.action.delay = 4
 				item.animation.play("pickup")
 				G.sfx.play("pickup", host.pos)
@@ -162,5 +161,6 @@ func unserialize():
 	var player_pos = G.world.get_spawn_point()
 	var player_unit = G.factory.make_unit("player", player_pos, G.vars.load_data)
 	player_unit.possess(self)
+	G.vars.erase("load_data")
 	if G.camera.set_sight():
 		G.camera.start_process()

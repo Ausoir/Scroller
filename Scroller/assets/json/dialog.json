@@ -3,18 +3,14 @@
 	"hit": [null, "Oof!", "Nani?!"],
 	"die": [null, "Ah......", "Noooo.....", "I have been defeated..."],
 	"dodge": [null, "Hmph!", "Not fast enough!"],
-	"hint_begin": [
-		"*YAWN*",
-		"Let's see...",
-		"Use <A> and <D> to move. <W> to jump, and <S> to attack.",
-		"Alright, good to go.",
+	"hint begin": [
+		"Use <WASD> to move and attack.", "Stand still to block and recharge.",
 	],
-	"hint_begin_touch": [
-		"*YAWN*",
-		"Let's see...",
-		"Tap and drag sideways to move. Drag upward to jump, downward to attack.",
-		"Alright, good to go.",
+	"hint begin touch": [
+		"Tap and drag in cardinal directions to move and attack.", "Stand still to block and recharge.",
 	],
-	"hint_pickup": ["I should walk over and learn that skill by pressing <TAB>.", "Pressing <TAB> also shows my current list of skills."],
-	"hint_pickup_touch": ["I should walk over and learn that skill by tapping top left screen corner.", "It can also show my current list of skills."],
+	"hint kill": ["I should walk over and pick up that item by pressing <TAB>."],
+	"hint kill touch": ["I should pick up that item by tapping the top left corner of the screen.", "It can also show my current list of skills."],
+	"hint kill2": ["Pressing <TAB> can also show the menu."],
+	"hint kill2 touch": ["Tapping the top left corner can also show the menu."]
 }

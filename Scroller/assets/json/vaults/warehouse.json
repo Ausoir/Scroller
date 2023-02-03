@@ -1,0 +1,56 @@
+[
+    [
+        {
+            "name": "warehouse",
+            "chance": 1.0,
+            "color":
+            [
+                "#000",
+                "#000"
+            ],
+            "foe": "#mob_warehouse",
+            "to": ["city_upper"]
+        },
+        [
+            "                                        ",
+            "B              BBBBBBBBBBB             B",
+            "B            B B#########B B           B",
+            "BHBBBBBBBBBBBB =###B#B###= BBBBBBBBBBHBB",
+            "BHwwwwwwwwwwwBBBBBBBbBBBBBBBwwwwwwwwwHwB",
+            "BHwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwHwB",
+            "BHwwwwwwwwwwwwwwwww###wwwwwwwwwwwwwwwHwB",
+            "BHwwwwwwww########################w###wB",
+            "BHwwwww###############################wB",
+            "BHwwwww################################B",
+            "BHwwwww################################B",
+            "BBBB#BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB###B",
+            "Bww###wwwwwwwwwwwwwwwwwwwwwwwwwwwwww###B",
+            "Bw#####wwwwwwwwwwwwwwwwwwwwwwwwwwww####B",
+            "B######wwwwwwwwwwwwwwwwwwwwwwwwwwww####B",
+            "B########wwwwwwwwwwwwwwwwwwwwwwwww#####B",
+            "B########wwwwwwwwwwwwwwwwwwwwwwwww#####B",
+            "B#########wwwwwwwwwwwwwwwwwwwwwww######B",
+            "B#########wwwwwwww###wwwwwwwwwww#######B",
+            "BBBBBBBB#####w@ww#####ww*ww###wBBBBBBBBB",
+            "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+            "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+        ],
+        {
+            "H":
+            [
+                "w",
+                "ladder"
+            ],
+            "_":
+            [
+                "w",
+                "platform"
+            ],
+            "=":
+            [
+                "b",
+                "wooden door"
+            ]
+        }
+    ]
+]

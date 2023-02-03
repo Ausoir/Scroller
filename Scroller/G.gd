@@ -36,6 +36,7 @@ var census
 var event = preload("res://tool/event.gd").new()
 var events
 var vars
+var settings = {"sound":50, "showfps":false}
 var you
 var camera
 var generator

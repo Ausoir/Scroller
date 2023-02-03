@@ -204,7 +204,14 @@ class Attack extends TargetTask:
 					if target.is_col(2) and pilot.host.action.has_moveset("grab"):
 						pilot.host.action.next_action = ["attack", 0]
 					else:
-						pilot.host.action.next_action = ["walk", G.rng.dr()]
+						var left = pilot.host.pos.get_neighbor(-1, 0).is_land()
+						var right = pilot.host.pos.get_neighbor(1, 0).is_land()
+						if left and right:
+							pilot.host.action.next_action = ["walk", G.rng.dr()]
+						elif left:
+							pilot.host.action.next_action = ["walk", -1]
+						elif right:
+							pilot.host.action.next_action = ["walk", 1]
 				elif diff == 2 and target.pos.y == pilot.host.pos.y and target.is_col(2) and pilot.host.action.has_moveset("lunge"):
 					pilot.host.action.next_action = ["lunge", G.get_face(pilot.host.pos.x, target.pos.x)]
 				elif diff == 1:

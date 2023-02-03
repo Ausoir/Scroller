@@ -14,9 +14,10 @@ func _ready():
 		var node = get_node(str(i))
 		nodes.append(node)
 		node.connect("finished", self, "on_finished", [i])
+	G.game.load_settings()
 
 func adjust_sound():
-	var db = G.vars.setting.volume - 50
+	var db = G.settings.sound - 50
 	for player in nodes:
 		player.set_volume_db(db)
 

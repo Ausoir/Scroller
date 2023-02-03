@@ -9,12 +9,12 @@
                 "#000"
             ],
             "foes": "#mob_gang",
-            "left": "dojo",
-            "right": "dojo",
+            "to": ["city_upper"],
+            "save": true,
         },
         [
             "                                        ",
-            "                                        ",
+            "                                       *",
             "                              DDDDDDDDDD",
             "                       DDDDDDDD         ",
             "                 DDDDDDD                ",
@@ -31,7 +31,7 @@
             "                       H                ",
             "                       H         BBBBBB ",
             " BBHBBBBBBB            H         BBBBBB ",
-            " BXHB@XXXXX            H         BBBBBB ",
+            " BbHBBBBBBB            H         BBBBBB ",
             " BHBBBBBBBBDDHDDDDDDDDDDDDDDDDDDDBBBBBB ",
             " BHB         H           DDDD    BBBBBB ",
             " BHB         H                   BBBBBB ",
@@ -40,10 +40,10 @@
             " BHB                             BBBBBB ",
             " BHB                  mmmmm      BBBBBB ",
             " BHB                  mmmmm      BBBBBB ",
-            " BHX             mmm  mmmmm      BbbbbB ",
+            " BHb             mmm  mmmmm      BbbbbB ",
             "BBBBBBB      DD  mmm  mmmmm      BbbbbB ",
             "BBBBBBB#     DDD mXm  mmXmm      bbb@bB ",
-            "DDDDDDDDDDDDDDDDDDDDDDDDDDDDD    BBBBBB ",
+            "DDDDDDDDDDDDDDDDDDDDDDDDDDDDD____BBBBBB ",
             "DDDDDDDDDDDDDDDDDDDDDDDDDDDDD    BBBBBB "
         ],
         {

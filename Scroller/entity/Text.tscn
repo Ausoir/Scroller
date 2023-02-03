@@ -4,6 +4,7 @@
 [ext_resource path="res://assets/font.tres" type="DynamicFont" id=2]
 
 [sub_resource type="QuadMesh" id=1]
+resource_local_to_scene = true
 size = Vector2( 92, 28 )
 
 [sub_resource type="StyleBoxFlat" id=3]

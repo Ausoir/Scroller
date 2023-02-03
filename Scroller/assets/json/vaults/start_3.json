@@ -1,0 +1,70 @@
+[
+    [
+        {
+            "name": "start_3",
+            "chance": 1.0,
+            "color":
+            [
+                "#000",
+                "#000"
+            ],
+            "foe": "#mob_hobo",
+            "to": ["city_lower"],
+            "save": true,
+        },
+        [
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+            "WwwwwwwwwwwwwwwwwwwwwwwwwwwwwW",
+            "WwwwwwwwwwwwH----------WWHwwwW",
+            "WwwwwwwwwwwwHwwwwwwwwwwwwHwwwW",
+            "WwwwwwwwwwwwHwwwwww@wwwwwHwwwW",
+            "WwwwwWWWWWWWWwwWWWWWWWWWwHWwwW",
+            "WwwwwWwwwwwwWwwwwWWWWWwwwHWwwW",
+            "WwwwWWwwwwwwWWWWwww=wwwWWWWwwW",
+            "WwwwWWwwwwwwWWWWWWWWWWWWWWWwwW",
+            "WwwWWWwwwwwwwwwwwwwwwwwwwwwwwW",
+            "WwwWWWHWWWWWWWWwwwwwwwwwwwwwwW",
+            "WwWWWWHwwwwwwwwwwwwwwwwwwwwwwW",
+            "WwwwwwHwwwwwwwwWWWwwwwwwwwwwwW",
+            "WWWWWWWwwwwwwwwWWWWWWWWWWWWwwW",
+            "WWWWWwwwwwwwwwWWWWWWWWWWWWWwwW",
+            "WWWWWwHWWWWWWWWWwwwwwwwwwwwwwW",
+            "WWWWWwHWWWWWWWWWwwwwwwwwwwwwwW",
+            "WwwwwwHwwwwwwwwwwwwwwwwwwwwwwW",
+            "WwwwwwHwwwww*www!wwwwwwwwwwwwW",
+            "WwwwwwHwwwWWWWWWwwWwwwWwwWwwwW",
+            "WwwwwwHwwwwwwwwWWWWWWWWWWWWWHW",
+            "WwwwwwHwwwwwwwwwWWWWWWWWWWWwHW",
+            "WwwwwwHwWwwwwwwwwwWWWWWWWWwwHW",
+            "WwwwwwHWWWWWWWWWWWWWWWWWWWWWHW",
+            "WwwWWWWWwwwwwWWwwwwwWWwwwwwwHW",
+            "WwwwwwwwwwwwwWWwwwwwWWwwwwwwHW",
+            "WwWWWWHwwwwwwWWw-H-wWWw-----HW",
+            "WwwwwwHwwwwww--wwHww--wwwwwwHW",
+            "WWwwwwHwwwwww==wwHww==wwwwwwHW",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+        ],
+        {
+            "H":
+            [
+                "w",
+                "ladder"
+            ],
+            "_":
+            [
+                "w",
+                "platform"
+            ],
+            "=":
+            [
+                "w",
+                "wooden door"
+            ],
+            "!":
+            [
+                "w",
+                "hobo leader"
+            ],
+        }
+    ]
+]

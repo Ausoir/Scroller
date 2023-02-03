@@ -27,7 +27,7 @@ def run_file(args):
         if (args == "all" or filename.startswith(args)) and filename.endswith(".png") and filename != "template.png":
             filenames.append(filename[:-4])
     writedata = []
-    objs = {'H': [' ', 'ladder'], '_': [' ', 'platform']}
+    objs = {'H': [' ', 'ladder'], '_': [' ', 'platform'], '=': [' ', 'wooden door']}
     for filename in filenames:
         filename_split = filename.split('-')
         if filename_split.__len__() == 1 or int(filename_split[1]) == 1:
@@ -45,7 +45,7 @@ def run_file(args):
             terrain.append(row)
             text += row + "\n"
         #print(text)
-        meta = {'name': filename, 'chance': 1/(writedata.__len__()+1), 'color': ['#000','#000'], 'foe': '#none'}
+        meta = {'name': filename, 'chance': 1/(writedata.__len__()+1), 'color': ['#000','#000'], 'foe': '#none', 'to': []}
         writedata.insert(0, [meta, terrain, objs])
         fwrite = open("./Scroller/assets/json/vaults/"+filename_split[0]+".json", "w+")
         fwrite.write(json.dumps(writedata))

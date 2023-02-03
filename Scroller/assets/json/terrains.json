@@ -1,8 +1,8 @@
 {
 	"O": {"name": "dark", "img": "tile/void", "col": 0},
-	" ": {"name": "background", "img": "blank", "col": 0},
+	" ": {"name": "air", "img": "blank", "col": 0},
 	"-": {"name": "window", "img": "tile/window", "col": 8, "height": 1, "step": "step_metal"},
-	"=": {"name": "door", "img": "tile/door", "col": 1},
+	"=": {"name": "doorway", "img": "tile/door", "col": 1},
 	"X": {"name": "lock", "img": "tile/lock", "col": 0},
 	"#": {"name": "box", "img": "tile/box", "col": 5, "step": "step_wood"},
 	"D": {"name": "dirt", "img": "tile/dirt", "col": 11, "height": 1},
